@@ -22,3 +22,6 @@ Schlüssel verwalten: https://login.ubuntu.com/ssh-keys
 
 ## GitHub Schlüsselverwaltung
 
+Nutzer anlegen:      https://github.com
+Schlüssel verwalten: https://github.com/settings/keys
+
