@@ -83,9 +83,8 @@ Voraussetzung ist nur, dass sie Gegensstelle den passenden öffentlichen Schlüs
 Die APIs der Quellcode-Hoster https://launchpad.net und https://github.com
 ermöglichen es, auf die hinterlegten öffentlichen SSH-Schlüssel von Nutzern
 zuzugreifen.
-
 Mit Hilfe eines Einzeilers in einem Linux-Terminal kann einem solchen Nutzer
-der Zugriff per ssh auf den aktuellen Linux-User der aktuellen Maschine
+der Zugriff per ssh auf den Login des aktuellen Linux-User der aktuellen Maschine
 gewährt werden:
 ```
 $ ssh-import-id-lp lp-user   # Launchpad
@@ -98,10 +97,10 @@ nur von einem speziellen Rechner aus der Zugriff gewährt werden soll.
 
 ### Launchpad Schlüsselverwaltung
 
-Nutzer anlegen:      https://login.ubuntu.com/+login
-Schlüssel verwalten: https://login.ubuntu.com/ssh-keys
+* Nutzer anlegen:      https://login.ubuntu.com/+login
+* Schlüssel verwalten: https://login.ubuntu.com/ssh-keys
 
 ### GitHub Schlüsselverwaltung
 
-Nutzer anlegen:      https://github.com
-Schlüssel verwalten: https://github.com/settings/keys
+* Nutzer anlegen:      https://github.com
+* Schlüssel verwalten: https://github.com/settings/keys
