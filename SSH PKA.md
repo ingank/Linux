@@ -77,3 +77,31 @@ oder grafikbasiert ausgeführt sein.
 Nach Eingabe der korrekten Passphrase übernimmt der ssh-agent die Authentifizierung
 dieser und aller weiteren ssh-Sessions (auch zu anderen Servern).
 Voraussetzung ist nur, dass sie Gegensstelle den passenden öffentlichen Schlüssel kennt und akzeptiert.
+
+## Öffentliche SSH-Schlüssel zentral verwalten und nutzen
+
+Die APIs der Quellcode-Hoster https://launchpad.net und https://github.com
+ermöglichen es, auf die hinterlegten öffentlichen SSH-Schlüssel von Nutzern
+zuzugreifen.
+
+Mit Hilfe eines Einzeilers in einem Linux-Terminal kann einem solchen Nutzer
+der Zugriff per ssh auf den aktuellen Linux-User der aktuellen Maschine
+gewährt werden:
+```
+$ ssh-import-id-lp lp-user   # Launchpad
+$ ssh-import-id-gh gh-user   # GitHub
+```
+Die abgerufenen öffentlichen Schlüssel werden in der Datei
+~/.ssh/autorized_keys hinerlegt und können mit einem beliebigen Texteditor
+im Nachhinein ausgedünnt werden. Das ist beispielweise dann angeraten, wenn
+nur von einem speziellen Rechner aus der Zugriff gewährt werden soll.
+
+### Launchpad Schlüsselverwaltung
+
+Nutzer anlegen:      https://login.ubuntu.com/+login
+Schlüssel verwalten: https://login.ubuntu.com/ssh-keys
+
+### GitHub Schlüsselverwaltung
+
+Nutzer anlegen:      https://github.com
+Schlüssel verwalten: https://github.com/settings/keys
