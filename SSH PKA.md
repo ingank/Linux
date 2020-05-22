@@ -84,7 +84,7 @@ Die APIs der Quellcode-Hoster https://launchpad.net und https://github.com
 ermöglichen es, auf die hinterlegten öffentlichen SSH-Schlüssel von Nutzern
 zuzugreifen.
 Mit Hilfe eines Einzeilers in einem Linux-Terminal kann einem solchen Nutzer
-der Zugriff per ssh auf den Login des aktuellen Linux-User der aktuellen Maschine
+der Zugriff per ssh auf den Login des aktuellen Linux-Users der aktuellen Maschine
 gewährt werden:
 ```
 $ ssh-import-id-lp lp-user   # Launchpad
