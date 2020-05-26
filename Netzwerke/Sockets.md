@@ -15,7 +15,7 @@ $ netstat --option
 | `--wide` | IPv6 Adressen werden nicht verkürzt dargestellt |
 
 ## lsof
-Lsof zeigt geöffnete Dateien des Betriebssystems.
+Lsof zeigt geöffnete Dateien des Betriebssystems.  
 Die Option -i zeigt nur die Dateien, die aktuell einem Netzwerk-Socket zugewiesen sind.
 ```
 $ sudo lsof -i
