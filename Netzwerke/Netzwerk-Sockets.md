@@ -1,3 +1,6 @@
+# Netzwerk-Sockets
+
+## netstat
 ```
 $ netstat --option
 ```
@@ -11,6 +14,7 @@ $ netstat --option
 | `--numeric` | Keine Namensauflösung, Portnummer anstatt Protokollname |
 | `--wide` | IPv6 Adressen werden nicht verkürzt dargestellt |
 
+## lsof
 Lsof zeigt geöffnete Dateien des Betriebssystems.  
 Die Option -i zeigt nur die Dateien, die aktuell einem Netzwerk-Socket zugewiesen sind.
 ```
