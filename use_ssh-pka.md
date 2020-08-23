@@ -6,9 +6,9 @@ Das muss aber nicht so sein, ssh bietet eine komfortable Lösung an, die SSH Pub
 
 ## RSA-Schlüsselpaar erzeugen
 
-Auf dem ssh-Client-Rechner muss ein RSA-Schlüsselpaar vorhanden sein.
-Dieses befindet sich im Regelfall in den Dateien ~/.ssh/id_rsa (privater Schlüssel aka private_key)
-und ~/.ssh/id_rsa.pub (Öffentlicher Schlüssel aka public_key).
+Auf dem **ssh-Client-Rechner** muss ein RSA-Schlüsselpaar vorhanden sein.
+Dieses befindet sich im Regelfall in den Dateien `~/.ssh/id_rsa` (privater Schlüssel / private_key)
+und `~/.ssh/id_rsa.pub` (Öffentlicher Schlüssel / public_key).
 Ein einmal erzeugtes Schlüsselpaar kann für viele verschiedene PKA-basierte ssh-Verbindungen genutzt werden,
 nicht nur für eine bestimmte.
 
@@ -24,7 +24,7 @@ Der private Schlüssel (private_key) sollte beim Erzeugen des Schlüsselpaares i
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 ```
-... mit einer geheimen Passphrase verschlüsselt werden.
+mit einer geheimen Passphrase verschlüsselt werden.
 So ist sicher gestellt,
 dass bei fremdem Zugriff auf das lokale Nutzerkonto,
 der private Schlüssel geschützt bleibt.
@@ -40,14 +40,12 @@ dann sind alle ssh-Zugänge,
 die den öffentlichen Schlüssel des gleichen Schlüsselpaares akzeptieren,
 potentiell gefährdet.
 Nun, soweit kommt es natürlich nicht;
-wir verschlüsseln unseren privaten Schlüssel wie oben empfohlen :)
+denn wir verschlüsseln unseren privaten Schlüssel wie oben empfohlen :)
 
 ### Öffentlicher Schlüssel
 
 Mit dem öffentlichen Schlüssel verhält es sich anders.
 Er kann ohne Bedenken kopiert und weitergegeben werden.
-
-## Serverseitige Voraussetzungen
 
 Die Bekanntgabe des öffentlichen Schlüssel gegenüber dem ssh-Server erfolgt mit folgendem Befehl auf dem Client:
 ```
