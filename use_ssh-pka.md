@@ -4,9 +4,7 @@ Wird ssh (sowohl Client als auch Server) in der Grundkonfiguration betrieben,
 muss bei jeder neuen ssh-Session das Passwort des Benutzers auf dem entfernten Rechner eingegeben werden.
 Das muss aber nicht so sein, ssh bietet eine komfortable Lösung an, die SSH Public Key Authentifizierung.
 
-## Clientseitige Voraussetzungen
-
-### RSA-Schlüsselpaar erzeugen
+## RSA-Schlüsselpaar erzeugen
 
 Auf dem ssh-Client-Rechner muss ein RSA-Schlüsselpaar vorhanden sein.
 Dieses befindet sich im Regelfall in den Dateien ~/.ssh/id_rsa (privater Schlüssel aka private_key)
