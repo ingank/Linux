@@ -1,15 +1,12 @@
-# Die IPv6 Privacy Extensions
+# IPv6 Privacy Extensions anpassen
 
-Hashtags: #privacy_extensions, #ipv6, #sysctl
-    
----
-
-Aufgabe:
+### Aufgabe
 Die Nutzungsdauer einer IPv6 mit Privacy Extensions soll auf dreißig Minuten
 beschränkt werden. Diese dann veraltete [deprecated] Adresse soll noch eine
 weitere Stunde für bestehende Verbindungen zur Verfügung stehen.
 
-Lösungsansatz:
+### Lösungsansatz
+```
 $ sudo nano /etc/sysctl.d/10-ipv6-privacy.conf
 # IPv6 Privacy Extensions (RFC 4941)
 # ---
@@ -31,9 +28,10 @@ net.ipv6.conf.all.use_tempaddr = 2
 net.ipv6.conf.default.use_tempaddr = 2
 net.ipv6.conf.eno1.temp_prefered_lft = 1800
 net.ipv6.conf.eno1.temp_valid_lft = 5400
+```
 
 Nach dem Neustart des Netzwerkes können die Einstellungen begutachtet werden:
-
+```
 $ ip a s
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -49,3 +47,4 @@ $ ip a s
        valid_lft 5380sec preferred_lft 1223sec
     inet6 fe80::bc4:76b:75d9:b46a/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
+```
