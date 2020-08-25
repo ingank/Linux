@@ -42,7 +42,7 @@ potentiell gefährdet.
 Nun, soweit kommt es natürlich nicht;
 denn wir verschlüsseln unseren privaten Schlüssel wie oben empfohlen :)
 
-Wie kann der private Schlüssel nachträglich mit einer neuen Passphrase verschlüsselt werder oder die Verwendung der selbigen deaktiviert werden?
+Wie kann der private Schlüssel nachträglich mit einer neuen Passphrase verschlüsselt oder die Verwendung der selbigen deaktiviert werden?
 Dies erledigt folgender Befehl:
 ```
 ssh-keygen -p
