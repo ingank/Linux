@@ -1,0 +1,5 @@
+# Git HowTo
+
+## Wichtige Einstellungen
+```
+```
