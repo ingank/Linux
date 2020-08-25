@@ -47,13 +47,6 @@ Dies erledigt folgender Befehl:
 ```
 ssh-keygen -p
 ```
-```
-Enter file in which the key is (/home/pi/.ssh/id_rsa): 
-Key has comment 'foo@bar'
-Enter new passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved with the new passphrase.
-```
 
 ### Öffentlicher Schlüssel
 
