@@ -2,7 +2,7 @@
 
 Wird ssh (sowohl Client als auch Server) in der Grundkonfiguration betrieben,
 muss bei jeder neuen ssh-Session das Passwort des Benutzers auf dem entfernten Rechner eingegeben werden.
-Das muss aber nicht so sein, ssh bietet eine komfortable Lösung an, die SSH Public Key Authentifizierung.
+Das muss aber nicht so sein, ssh bietet eine komfortable Lösung an, die *SSH Public Key Authentifizierung*.
 
 ## RSA-Schlüsselpaar erzeugen
 
@@ -12,7 +12,7 @@ und `~/.ssh/id_rsa.pub` (Öffentlicher Schlüssel / public_key).
 Ein einmal erzeugtes Schlüsselpaar kann für viele verschiedene PKA-basierte ssh-Verbindungen genutzt werden,
 nicht nur für eine bestimmte.
 
-Wenn noch kein Schlüsselpaar auf dem Clientrechner vorhanden ist, kann es einfachst erzeugt werden:
+Wenn noch kein Schlüsselpaar auf dem Clientrechner vorhanden ist, kann es folgendermaßen erzeugt werden:
 ```
 ssh-keygen -t rsa -b 4096
 ```
@@ -32,7 +32,7 @@ Wer hier eine Passphrase eingibt,
 schließt quasi seinen privaten PKA-Schlüssel in eine Kassette
 und steckt den Schlüssel für die Kassette in seinen Kopf.
 
-An dieser Sicherheitsmaßnahme kann man leidlich erkennen,
+An dieser Sicherheitsmaßnahme kann man leicht erkennen,
 dass der private Schlüssel auch privat bleiben sollte.
 Wurde er kompromitiert,
 d.h. ein unverschlüsseltes Exemplar kopiert,
@@ -41,6 +41,19 @@ die den öffentlichen Schlüssel des gleichen Schlüsselpaares akzeptieren,
 potentiell gefährdet.
 Nun, soweit kommt es natürlich nicht;
 denn wir verschlüsseln unseren privaten Schlüssel wie oben empfohlen :)
+
+Wie kann der private Schlüssel nachträglich mit einer neuen Passphrase verschlüsselt werder oder die Verwendung der selbigen deaktiviert werden?
+Dies erledigt folgender Befehl:
+```
+ssh-keygen -p
+```
+```
+Enter file in which the key is (/home/pi/.ssh/id_rsa): 
+Key has comment 'foo@bar'
+Enter new passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved with the new passphrase.
+```
 
 ### Öffentlicher Schlüssel
 
