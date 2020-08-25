@@ -10,3 +10,14 @@ git config --global user.name "foo"
 # entferntes Repository lokal klonen
 git clone foo
 ```
+Achtung:  
+Git-Befehle, die sich auf ein lokales Repository beziehen, werden im dazugehörigen Repo-Hauptverzeichnis ausgeführt. Dazu:
+```
+# Das obige Repository lokal aufsuchen
+cd foo
+```
+Danach kann mit dem geklonten Repository gearbeitet werden:
+```
+# aktuellen Status des lokalen Repos ermitteln
+git status
+```
