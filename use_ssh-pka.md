@@ -17,7 +17,7 @@ Wenn noch kein Schlüsselpaar auf dem Clientrechner vorhanden ist, kann es folge
 ssh-keygen -t rsa -b 4096
 ```
 
-### Privater Schlüssel
+#### Privater Schlüssel
 
 Der private Schlüssel (private_key) sollte beim Erzeugen des Schlüsselpaares mit einer geheimen Passphrase verschlüsselt werden.
 So ist sicher gestellt,
@@ -41,7 +41,7 @@ Dies erledigt folgender Befehl:
 ssh-keygen -p
 ```
 
-### Öffentlicher Schlüssel
+#### Öffentlicher Schlüssel
 
 Mit dem öffentlichen Schlüssel verhält es sich anders.
 Er kann ohne Bedenken kopiert und weitergegeben werden.
@@ -90,12 +90,12 @@ Die abgerufenen öffentlichen Schlüssel werden in der Datei
 im Nachhinein ausgedünnt werden. Das ist beispielweise dann angeraten, wenn
 nur von einem speziellen Rechner aus der Zugriff gewährt werden soll.
 
-### Launchpad Schlüsselverwaltung
+#### Launchpad Schlüsselverwaltung
 
 * Nutzer anlegen:      https://login.ubuntu.com/+login
 * Schlüssel verwalten: https://login.ubuntu.com/ssh-keys
 
-### GitHub Schlüsselverwaltung
+#### GitHub Schlüsselverwaltung
 
 * Nutzer anlegen:      https://github.com
 * Schlüssel verwalten: https://github.com/settings/keys
