@@ -19,12 +19,7 @@ ssh-keygen -t rsa -b 4096
 
 ### Privater Schlüssel
 
-Der private Schlüssel (private_key) sollte beim Erzeugen des Schlüsselpaares im folgenden Dialog:
-```
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-```
-mit einer geheimen Passphrase verschlüsselt werden.
+Der private Schlüssel (private_key) sollte beim Erzeugen des Schlüsselpaares mit einer geheimen Passphrase verschlüsselt werden.
 So ist sicher gestellt,
 dass bei fremdem Zugriff auf das lokale Nutzerkonto,
 der private Schlüssel geschützt bleibt.
@@ -39,8 +34,6 @@ d.h. ein unverschlüsseltes Exemplar kopiert,
 dann sind alle ssh-Zugänge,
 die den öffentlichen Schlüssel des gleichen Schlüsselpaares akzeptieren,
 potentiell gefährdet.
-Nun, soweit kommt es natürlich nicht;
-denn wir verschlüsseln unseren privaten Schlüssel wie oben empfohlen :)
 
 Wie kann der private Schlüssel nachträglich mit einer neuen Passphrase verschlüsselt oder die Verwendung der selbigen deaktiviert werden?
 Dies erledigt folgender Befehl:
@@ -55,7 +48,7 @@ Er kann ohne Bedenken kopiert und weitergegeben werden.
 
 Die Bekanntgabe des öffentlichen Schlüssel gegenüber dem ssh-Server erfolgt mit folgendem Befehl auf dem Client:
 ```
-ssh-copy-id benutzer@entfernter.rechner
+ssh-copy-id user@ssh.server
 ```
 Es wird (ein letztes Mal) das Passwort für den entfernten Benutzer-Login abgefragt.
 Nach erfolgreicher Übermittlung des Schlüssels sollte folgende Meldung ausgegeben werden:
@@ -65,7 +58,7 @@ and check to make sure that only the key(s) you wanted were added.
 ```
 Der Aufforderung kann gefolgt werden:
 ```
-ssh benutzer@entfernter.rechner
+ssh user@ssh.server
 ```
 
 ## SSH-Agent
@@ -80,7 +73,7 @@ Nach Eingabe der korrekten Passphrase übernimmt der ssh-agent die Authentifizie
 dieser und aller weiteren ssh-Sessions (auch zu anderen Servern).
 Voraussetzung ist nur, dass sie Gegensstelle den passenden öffentlichen Schlüssel kennt und akzeptiert.
 
-## Öffentliche SSH-Schlüssel zentral verwalten und nutzen
+## Öffentliche PKA-Schlüssel zentral verwalten und nutzen
 
 Die APIs der Quellcode-Hoster https://launchpad.net und https://github.com
 ermöglichen es, auf die hinterlegten öffentlichen SSH-Schlüssel von Nutzern
@@ -93,7 +86,7 @@ $ ssh-import-id-lp lp-user   # Launchpad
 $ ssh-import-id-gh gh-user   # GitHub
 ```
 Die abgerufenen öffentlichen Schlüssel werden in der Datei
-~/.ssh/autorized_keys hinerlegt und können mit einem beliebigen Texteditor
+`~/.ssh/autorized_keys` hinerlegt und können mit einem beliebigen Texteditor
 im Nachhinein ausgedünnt werden. Das ist beispielweise dann angeraten, wenn
 nur von einem speziellen Rechner aus der Zugriff gewährt werden soll.
 
@@ -106,3 +99,8 @@ nur von einem speziellen Rechner aus der Zugriff gewährt werden soll.
 
 * Nutzer anlegen:      https://github.com
 * Schlüssel verwalten: https://github.com/settings/keys
+
+## Wenn der ssh-agent nicht startet
+```
+eval `ssh-agent`
+```
