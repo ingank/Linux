@@ -8,10 +8,11 @@ SYNOPSIS
 DESCRIPTION
        dpkg-query is a tool to show information about packages listed in the dpkg database.
 ```
+# Beispiele
 
-
-# Paketmanagement/Debian
-# Paket für ein bestimmtes Programm finden
+### Paket für ein bestimmtes Programm finden
+```
 $ dpkg-query -S bin/mcomp
 mtools: /usr/bin/mcomp
-# Ergebnis: das Programm "/usr/bin/mcomp" gehört zum Debian-Paket "mtools"
+```
+Ergebnis: das Programm `/usr/bin/mcomp` gehört zum Debian-Paket "mtools"
