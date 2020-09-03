@@ -1,3 +1,4 @@
+# dpkg-query
 ```
 NAME
        dpkg-query - a tool to query the dpkg database
