@@ -29,4 +29,4 @@ sudo su
 sudo su -
 ```
 ### Quellen:
-* https://ozsoyler.blogspot.com/2016/09/how-to-gain-root-access-without_15.html
+* https://ozsoyler.blogspot.com/2018/12/what-are-differences-of-susu-sudosudo.html
