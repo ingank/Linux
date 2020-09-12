@@ -34,3 +34,8 @@ ssh -v -R [::1]:5900:[::1]:5900 vnc@virtual.server
 ```
 ssh -v -L [::1]:5900:[::1]:5900 vnc@virtual.server
 ```
+## VNC-Viewer starten und auf RPi connecten
+* Anwendungen // VNC Viewer
+* Bei Adresse `[::1]` eingeben
+* Warnmeldung für neue Verbindung bestätigen
+* Am RPi anmelden
