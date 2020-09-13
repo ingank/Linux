@@ -4,10 +4,13 @@
   * switch user oder substitute user
   * Deutsch: wechsle zum Benutzer foo
   * wenn kein foo, dann automatisch root
+  * benötigt die Zugangsdaten des Zielbenutzers
+  * wenn Ausgangsbenutzer = root, dann Zugangsdaten für Zielbenutzer nicht nötig
 * `sudo bar`
   * super user do
   * Deutsch: führe das Programm `bar` als Superuser aus
-  * der ausführende Benutzer muss in einer sudoers-Datei definiert sein
+  * der ausführende Benutzer muss per sudoers-Datei zum Ausführen des Programms `bar` berechtigt werden
+  * Berechtigungen werden wird als Superuser (root) mit `sudoedit` in die systemweite Datei `/etc/sudoers` geschrieben
 
 ```
 # Wechsle zum Benutzer root und führe die Datei /root/.bashrc aus:
