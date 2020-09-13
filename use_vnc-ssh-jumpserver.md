@@ -5,6 +5,8 @@ Setup:
 - VNC-Client auf PC mit Ubuntu hinter einer IPv6-Firewall (No-incomming-connections)
 - öffentlicher Virtual Server mit ssh-Zugang
 ```
+![Brainstorming](/pics/threema-20200913-083707-23ffc8bc6f392563.jpg "Brainstorming")
+
 ## Konfiguration RPi
 
 * VNC-Server aktivieren
