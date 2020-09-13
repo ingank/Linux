@@ -8,10 +8,9 @@
   * wenn Ausgangsbenutzer = root, dann Zugangsdaten für Zielbenutzer nicht nötig
 * `sudo bar`
   * super user do
-  * Deutsch: führe das Programm `bar` als Superuser aus
-  * der ausführende Benutzer muss per sudoers-Datei zum Ausführen des Programms `bar` berechtigt werden
+  * Deutsch: führe das Programm `bar` als Superuser (root) aus
+  * der ausführende Benutzer muss per sudoers-Datei zum Ausführen des Programms `bar` berechtigt sein
   * Berechtigungen werden als Superuser (root) mit `sudoedit` in die systemweite Datei `/etc/sudoers` geschrieben
-
 ```
 # Wechsle zum Benutzer root und führe die Datei /root/.bashrc aus:
 
