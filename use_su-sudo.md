@@ -10,7 +10,7 @@
   * super user do
   * Deutsch: führe das Programm `bar` als Superuser aus
   * der ausführende Benutzer muss per sudoers-Datei zum Ausführen des Programms `bar` berechtigt werden
-  * Berechtigungen werden wird als Superuser (root) mit `sudoedit` in die systemweite Datei `/etc/sudoers` geschrieben
+  * Berechtigungen werden als Superuser (root) mit `sudoedit` in die systemweite Datei `/etc/sudoers` geschrieben
 
 ```
 # Wechsle zum Benutzer root und führe die Datei /root/.bashrc aus:
