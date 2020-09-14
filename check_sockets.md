@@ -4,13 +4,6 @@
 ```
 $ netstat --option
 ```
-| Test | Test |
-|------|------|
-| Test | Test |
-
-# hallo
-
-
 
 | Option | Auswirkung |
 |:-------|:-----------|
