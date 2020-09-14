@@ -4,7 +4,6 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 * [check_sockets.md](check_sockets.md)
 * [manage_users.md](manage_users.md)
-* [tools/conchck.sh](tools/conchck.sh)
 * [tweak_privacy-extensions.md](tweak_privacy-extensions.md)
 * [use_AndroMouse.md](use_AndroMouse.md)
 * [use_dpkg-query.md](use_dpkg-query.md)
