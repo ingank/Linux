@@ -5,14 +5,14 @@
 $ netstat --option
 ```
 | Option | Auswirkung |
-|:-- |:-- |
-| `--inet` | IPv4 UDP/TCP Sockets zeigen |
-| `--inet6` | IPv6 UDP/TCP Sockets zeigen |
-| `--all` | Alle Statusarten ( HÖREND, VERBUNDEN, ... ) zeigen |
-| `--listening` | Nur hörende Sockets zeigen |
-| weder `--all` <br /> noch `--listening` | Nur verbundene Sockets anzeigen |
-| `--numeric` | Keine Namensauflösung, Portnummer anstatt Protokollname |
-| `--wide` | IPv6 Adressen werden nicht verkürzt dargestellt |
+|:-------|:-----------|
+|`--inet`| IPv4 UDP/TCP Sockets zeigen|
+|`--inet6`| IPv6 UDP/TCP Sockets zeigen|
+|`--all` | Alle Statusarten ( HÖREND, VERBUNDEN, ... ) zeigen|
+|`--listening` |Nur hörende Sockets zeigen|
+|weder `--all` <br /> noch `--listening`|Nur verbundene Sockets anzeigen|
+|`--numeric`|Keine Namensauflösung, Portnummer anstatt Protokollname|
+|`--wide`|IPv6 Adressen werden nicht verkürzt dargestellt|
 
 ## lsof
 Lsof zeigt geöffnete Dateien des Betriebssystems.  
