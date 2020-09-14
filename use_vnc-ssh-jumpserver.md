@@ -27,13 +27,13 @@
 ## Konfiguration Virtual Server
 
 * Benutzer "vnc" einrichten
-* RPi und Ubuntu-PC den ZUgriff per ssh ermöglichen
+* RPi und Ubuntu-PC den Zugriff per ssh ermöglichen
 
 ## Reverse-ssh-Tunnel vom RPi aus auf den Virtual Server erzeugen
 ```
 ssh -v -R [::1]:5900:[::1]:5900 vnc@virtual.server
 ```
-## Forwarding-ssh-Tunnel vom Ubuntu-PC aus auf den Virtuel Server erzeugen
+## Forwarding-ssh-Tunnel vom Ubuntu-PC aus auf den Virtual Server erzeugen
 ```
 ssh -v -L [::1]:5900:[::1]:5900 vnc@virtual.server
 ```
