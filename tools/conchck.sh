@@ -15,16 +15,17 @@
 # https?
 # ntp?
 
-if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
-  echo "PINGv4 -> Internet [JA]"
+echo "PINGv4 -> Internet ?"
+if ping -q -c 1 -W 1 8.8.8.8; then
+  echo "PINGv4 -> Internet [OK]"
 else
-  echo "PINGv4 -> Internet [NEIN]"
+  echo "PINGv4 -> Internet [NICHT-OK]"
 fi
 
 if ping -6 -q -c 1 -W 1 2001:4860:4860::8888 >/dev/null; then
-  echo "PINGv6 -> Internet [JA]"
+  echo "PINGv6 -> Internet [OK]"
 else
-  echo "PINGv6 -> Internet [NEIN]"
+  echo "PINGv6 -> Internet [NICHT-OK]"
 fi
 
 if dig +timeout=1 +retry=1 >/dev/null; then
