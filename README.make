@@ -26,7 +26,7 @@ for DIR in "${DIRS[@]}"; do
   LIST=(`ls $DIR | grep -E '*.md|*.txt|*.sh|*.pl' | grep -Ev README`)
   DIR=${DIR#./}
   for NAME in "${LIST[@]}"; do
-    echo "* [$DIR/$NAME]($DIR/$NAME)" >> $FILE
+    echo "* [$NAME]($DIR/$NAME)" >> $FILE
   done
 done
 

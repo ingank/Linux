@@ -19,8 +19,8 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ### VERZEICHNIS: tools
 
-* [tools/conchck.sh](tools/conchck.sh)
+* [conchck.sh](tools/conchck.sh)
 
 ---
 
-##### Aktualisiert am Mi 16. Sep 22:02:55 CEST 2020
+##### Aktualisiert am Mi 16. Sep 22:23:18 CEST 2020
