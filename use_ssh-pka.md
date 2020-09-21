@@ -46,24 +46,20 @@ ssh-keygen -p
 Mit dem öffentlichen Schlüssel verhält es sich anders.
 Er kann ohne Bedenken kopiert und weitergegeben werden.
 
-Die Bekanntgabe des öffentlichen Schlüssel gegenüber dem ssh-Server erfolgt mit folgendem Befehl auf dem Client:
+Die Übermittlung des öffentlichen Schlüssel auf einen ssh-Server wird am sichersten mit dem Befehl `ssh-copy-id` erledigt:
 ```
 ssh-copy-id user@ssh.server
 ```
 Es wird (ein letztes Mal) das Passwort für den entfernten Benutzer-Login abgefragt.
-Nach erfolgreicher Übermittlung des Schlüssels sollte folgende Meldung ausgegeben werden:
-```
-Now try logging into the machine, with: "ssh 'benutzer@entfernter.rechner'"
-and check to make sure that only the key(s) you wanted were added.
-```
-Der Aufforderung kann gefolgt werden:
+Nach erfolgreicher Übermittlung des Schlüssels kann sich der lokale Nutzer mit Hilfe des Befehls
 ```
 ssh user@ssh.server
 ```
+gegenüber dem SSH-Server authentifizieren und wird dort automatisch als Benutzer 'user' angemeldet.
 
 ## SSH-Agent
 
-An dieser Stelle öffnet der lokale SSH-Agent einen Dialog zur Abfrage der zur Verschlüsselung genutzten Passphrase.
+Bevor dies jedoch geschehen kann, öffnet an dieser Stelle der lokale SSH-Agent einen Dialog zur Abfrage der zur Verschlüsselung genutzten Passphrase.
 Dieser Dialog kann entweder textbasiert:
 ```
 Enter passphrase for key '/home/benutzer/.ssh/id_rsa':
@@ -79,8 +75,7 @@ Die APIs der Quellcode-Hoster https://launchpad.net und https://github.com
 ermöglichen es, auf die hinterlegten öffentlichen SSH-Schlüssel von Nutzern
 zuzugreifen.
 Mit Hilfe eines Einzeilers in einem Linux-Terminal kann einem solchen Nutzer
-der Zugriff per ssh auf den Login des aktuellen Linux-Users der aktuellen Maschine
-gewährt werden:
+der Zugriff per ssh auf den Login des aktuellen Linux-Users auf einem entfernten Linux-Rechner gewährt werden:
 ```
 $ ssh-import-id-lp lp-user   # Launchpad
 $ ssh-import-id-gh gh-user   # GitHub
@@ -88,7 +83,7 @@ $ ssh-import-id-gh gh-user   # GitHub
 Die abgerufenen öffentlichen Schlüssel werden in der Datei
 `~/.ssh/autorized_keys` hinerlegt und können mit einem beliebigen Texteditor
 im Nachhinein ausgedünnt werden. Das ist beispielweise dann angeraten, wenn
-nur von einem speziellen Rechner aus der Zugriff gewährt werden soll.
+nur von einem speziellen Rechner/Benutzer aus der Zugriff gewährt werden soll.
 
 #### Launchpad Schlüsselverwaltung
 
