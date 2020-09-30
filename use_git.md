@@ -37,11 +37,12 @@ git pull
 ```
 
 ## Spezialfälle
-```
-# Sollen Änderungen an einer bestimmten Datei von git nicht registriert werden,
-# so kann diese temporär aus dem INDEX entfernt werden:
-git update-index --assume-unchanged foo
 
-# Die Datei kann nach Abschluß der gewünschten Arbeit wieder in den INDEX aufgenommen werden:
+Sollen Änderungen an einer bestimmten Datei von git nicht registriert werden, so kann diese temporär aus dem INDEX entfernt werden:
+```
+git update-index --assume-unchanged foo
+```
+Die Datei kann nach Abschluß der gewünschten Arbeit wieder in den INDEX aufgenommen werden:
+```
 git update-index --no-assume-unchanged foo
 ```
