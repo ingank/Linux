@@ -21,8 +21,9 @@ Danach kann mit dem geklonten Repository gearbeitet werden:
 # aktuellen Status des lokalen Repos ermitteln
 git status
 
-# Änderungen zusammentragen
-git add
+# Änderungen zusammentragen (to stage)
+git add foo
+git add .
 
 # Zusammengetragene Änderungen committen
 git commit
@@ -33,4 +34,14 @@ git push
 # Lokales Repo auf den Stand des entfernten Repos bringen
 git fetch
 git pull
+```
+
+## Spezialfälle
+```
+# Sollen Änderungen an einer bestimmten Datei von git nicht registriert werden,
+# so kann diese temporär aus dem INDEX entfernt werden:
+git update-index --assume-unchanged foo
+
+# Die Datei kann nach Abschluß der gewünschten Arbeit wieder in den INDEX aufgenommen werden:
+git update-index --no-assume-unchanged foo
 ```
