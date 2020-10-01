@@ -39,4 +39,4 @@ Label/Label outputfiles: 0 1 *2
 TitlePref/Prefer title from: *0 1
 LogType/Log level: 1 3 *7
 ```
-Diese Informationenann können auch in einem Browser über die Adresse ``http://localhost:631/printers/'' ermittelt werden.
+Diese Informationen können auch in einem Browser über die Adresse ``http://localhost:631/printers/'' ermittelt werden.
