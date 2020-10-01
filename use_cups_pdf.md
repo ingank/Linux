@@ -1,8 +1,8 @@
-# Den CUPS PDF-Drucker nutzen
+# Der CUPS PDF-Drucker
 
 ## Installation
 
-Die folgenden Aktionen werden als Benutzer mit Root-Rechten ausgeführt:
+Die folgenden Aktionen werden als Benutzer mit Root-Rechten in einem Terminal ausgeführt:
 
 ```
 > apt install printer-driver-cups-pdf
@@ -39,4 +39,3 @@ Label/Label outputfiles: 0 1 *2
 TitlePref/Prefer title from: *0 1
 LogType/Log level: 1 3 *7
 ```
-Diese Informationen können auch in einem Browser über die Adresse ``http://localhost:631/printers/'' ermittelt werden.
