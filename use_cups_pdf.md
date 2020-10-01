@@ -16,9 +16,10 @@ lpinfo --make-and-model "CUPS-PDF" -m
 ```
 
 Der Pfad *lsb/usr/cups-pdf/CUPS-PDF_opt.ppd* verweist auf den PDF-Drucker-Treiber.
+Dieser wird nun an einen neuen Drucker gebunden:
 
 ```
-> lpadmin -p MeinPDFDrucker -D "Ein Super PDF-Drucker" -L "foo" -m lsb/usr/cups-pdf/CUPS-PDF_opt.ppd -E
+lpadmin -p MeinPDFDrucker -D "Ein Super PDF-Drucker" -L "foo" -m lsb/usr/cups-pdf/CUPS-PDF_opt.ppd -E
 ```
 
 Wobei:
