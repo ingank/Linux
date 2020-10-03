@@ -5,7 +5,7 @@
 # https://wiki.ubuntuusers.de/Skripte/Backup_mit_RSYNC/
 
 quelle=/home/foo/
-ziel=/media/foo/BACKUP/BACKUP/
+ziel=/media/foo/Backup-Folder/
 heute=$(date +%Y-%m-%d)
 
 # abschließendes '/' beim Ziel sicherstellen
