@@ -1,18 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 # Einfachstes Sichern der persönlichen Daten.
 # Inspiriert durch:
 # https://wiki.ubuntuusers.de/Skripte/Backup_mit_RSYNC/
 
 quelle=/home/foo/
-ziel=/media/foo/MEDIUM/Ordner
+ziel=/media/foo/BACKUP/BACKUP/
 heute=$(date +%Y-%m-%d)
-
-# aktuelle selbst installierte Pakete als Liste
-comm -23 \
-  <(apt-mark showmanual | sort -u) \
-  <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u) \
-  > ${quelle}my-packages.txt
 
 # abschließendes '/' beim Ziel sicherstellen
 if [ "${ziel:${#ziel}-1:1}" != "/" ]; then
