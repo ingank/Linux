@@ -1,4 +1,5 @@
-# dpkg-query
+# Die Paketdatenbank mit dpkg-query durchsuchen
+
 ```
 NAME
        dpkg-query - a tool to query the dpkg database
@@ -9,7 +10,6 @@ SYNOPSIS
 DESCRIPTION
        dpkg-query is a tool to show information about packages listed in the dpkg database.
 ```
-# Beispiele
 
 ### Paket für ein bestimmtes Programm finden
 ```

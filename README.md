@@ -4,23 +4,25 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ### HAUPTVERZEICHNIS
 
-* [check_sockets.md](check_sockets.md)
-* [manage_users.md](manage_users.md)
-* [tweak_privacy-extensions.md](tweak_privacy-extensions.md)
-* [tweak_terminal-io.md](tweak_terminal-io.md)
-* [use_AndroMouse.md](use_AndroMouse.md)
-* [use_dpkg-query.md](use_dpkg-query.md)
-* [use_git.md](use_git.md)
-* [use_ssh-pka.md](use_ssh-pka.md)
-* [use_ssmtp.md](use_ssmtp.md)
-* [use_startup-scripts.md](use_startup-scripts.md)
-* [use_su-sudo.md](use_su-sudo.md)
-* [use_vnc-ssh-jumpserver.md](use_vnc-ssh-jumpserver.md)
+* [Netzwerk-Sockets inspizieren](check_sockets.md)
+* [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
+* [Grundlagen der Linux-Benutzerverwaltung](manage_users.md)
+* [IPv6 Privacy Extensions anpassen](tweak_privacy-extensions.md)
+* [Terminal Input/Output optimieren](tweak_terminal-io.md)
+* [Der CUPS PDF-Drucker](use_cups_pdf.md)
+* [Die Paketdatenbank mit dpkg-query durchsuchen](use_dpkg-query.md)
+* [Kleines Git HowTo](use_git.md)
+* [SSH Public Key Authentifizierung](use_ssh-pka.md)
+* [Mails mit ssmtp versenden](use_ssmtp.md)
+* [Linux Boot- und Startscripte anwenden](use_startup-scripts.md)
+* [su und sudo - eine kleine Einführung](use_su-sudo.md)
+* [VNC über SSH-Jumpserver](use_vnc-ssh-jumpserver.md)
 
 ### VERZEICHNIS: tools
 
+* [backup.sh](tools/backup.sh)
 * [conchck.sh](tools/conchck.sh)
 
 ---
 
-##### Aktualisiert am Mi 16. Sep 22:23:18 CEST 2020
+##### Aktualisiert am So 4. Okt 02:02:09 CEST 2020

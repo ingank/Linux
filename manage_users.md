@@ -1,4 +1,3 @@
-
 # Grundlagen der Linux-Benutzerverwaltung
 
 Für ein Multiuser-Betriebssystem wie Linux ist eine transparente Benutzerverwaltung essenziell wichtig für die exakte und sichere Steuerung von erlaubten und verbotenen Aktionen bestimmter Benutzer oder Benutzergruppen.

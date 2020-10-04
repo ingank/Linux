@@ -1,4 +1,4 @@
-# su und sudo
+# su und sudo - eine kleine Einführung
 
 * `su foo`
   * switch user oder substitute user
@@ -6,6 +6,7 @@
   * wenn kein foo, dann automatisch root
   * benötigt die Zugangsdaten des Zielbenutzers
   * wenn Ausgangsbenutzer = root, dann Zugangsdaten für Zielbenutzer nicht nötig
+
 * `sudo bar`
   * super user do
   * Deutsch: führe das Programm `bar` als Superuser (root) aus

@@ -1,4 +1,4 @@
-# Netzwerk-Sockets
+# Netzwerk-Sockets inspizieren
 
 ## netstat
 ```

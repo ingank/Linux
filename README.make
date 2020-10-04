@@ -14,7 +14,8 @@ echo -e "### HAUPTVERZEICHNIS\n" >> $FILE
 LIST=(`ls | grep -E '*.md|*.txt|*.sh|*.pl' | grep -Ev README`)
 
 for NAME in "${LIST[@]}"; do
-  echo "* [$DIR$NAME]($NAME)" >> $FILE
+  TRAILER=$(head -1 ./$NAME | sed 's/# //g')
+  echo "* [$TRAILER]($NAME)" >> $FILE
 done
 
 DIRS=(`tree -fid --noreport`)
@@ -23,8 +24,13 @@ unset DIRS[0]
 for DIR in "${DIRS[@]}"; do
   DIR=${DIR#./}
   echo -e "\n### VERZEICHNIS: $DIR\n" >> $FILE
-  LIST=(`ls $DIR | grep -E '*.md|*.txt|*.sh|*.pl' | grep -Ev README`)
+  LIST=(`ls $DIR | grep -E '*.md' | grep -Ev README`)
   DIR=${DIR#./}
+  for NAME in "${LIST[@]}"; do
+    TRAILER=$(head -1 ./$DIR/$NAME | sed 's/# //g')
+    echo "* [$TRAILER]($DIR/$NAME)" >> $FILE
+  done
+  LIST=(`ls $DIR | grep -E '*.txt|*.sh|*.pl' | grep -Ev README`)
   for NAME in "${LIST[@]}"; do
     echo "* [$NAME]($DIR/$NAME)" >> $FILE
   done
