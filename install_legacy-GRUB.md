@@ -1,9 +1,12 @@
 # Ubuntu mit Legacy GRUB als Bootloader
 
 Aktuelle Distributionen setzen als Bootloader vorrangig auf GRUB 2.
-Wer sein Praxiswissen über den in die Jahre gekommenen Legacy GRUB (v0.97) auffrischen möchte, kann dies in einer VM gefahrlos tun.
+Wer sein Praxiswissen über den in die Jahre gekommenen Legacy GRUB (v0.97) auffrischen möchte,
+kann dies in einer VM gefahrlos tun.
+Diese Anleitung beschreibt die Erzeugung einer solchen virtuellen Maschine.
+Gleichzeitig kann sie auch als Blaupause für eine Installation auf echter Hardware dienen.
 
-## Testumgebung
+## Plattform
 
 - Oracle VM Virtual Box 6.1
 - Ubuntu 18.04 Server Installationsmedium
