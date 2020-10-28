@@ -6,6 +6,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 * [Netzwerk-Sockets inspizieren](check_sockets.md)
 * [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
+* [Ubuntu mit Legacy GRUB als Bootloader](install_legacy-GRUB.md)
 * [Grundlagen der Linux-Benutzerverwaltung](manage_users.md)
 * [IPv6 Privacy Extensions anpassen](tweak_privacy-extensions.md)
 * [Terminal Input/Output optimieren](tweak_terminal-io.md)
@@ -25,4 +26,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am So 4. Okt 02:02:09 CEST 2020
+##### Aktualisiert am Mi 28. Okt 20:40:04 CET 2020
