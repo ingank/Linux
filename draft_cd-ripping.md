@@ -6,7 +6,7 @@ Eine kleine Linksammlung zum Thema CD-Audio in mp3 wandeln mit Linux.
 
 ### schnelles Ergebnis:
 
-* https://wiki.ubuntuusers.de/Asunder/](https://wiki.ubuntuusers.de/Asunder/
+* https://wiki.ubuntuusers.de/Asunder/
 
 ### viele Optionen per cli:
 
