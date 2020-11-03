@@ -14,9 +14,11 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Die Paketdatenbank mit dpkg-query durchsuchen](use_dpkg-query.md)
 * [Kleines Git HowTo](use_git.md)
 * [SSH Public Key Authentifizierung](use_ssh-pka.md)
+* [Terminal-Befehle per SSH unmittelbar auf dem Zielhost ausführen](use_ssh-t.md)
 * [Mails mit ssmtp versenden](use_ssmtp.md)
 * [Linux Boot- und Startscripte anwenden](use_startup-scripts.md)
 * [su und sudo - eine kleine Einführung](use_su-sudo.md)
+* [tty-clock als Terminal-Uhr](use_tty-clock.md)
 * [VNC über SSH-Jumpserver](use_vnc-ssh-jumpserver.md)
 
 ### VERZEICHNIS: tools
@@ -26,4 +28,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Mi 28. Okt 20:40:04 CET 2020
+##### Aktualisiert am Di 3. Nov 19:41:18 CET 2020
