@@ -60,7 +60,6 @@ sudo dd if=$BLKDEV bs=1 count=512 status=none of=~/mbr.bin.bak
 ## MBR lesen
 
 MBR hexadezimal ausgeben:
-
 ```
 sudo dd if=$BLKDEV bs=1 count=512 status=none | od -A x -t x1z -v --endian=big | sed '$d'
 ```
@@ -90,7 +89,7 @@ sudo dd if=$BLKDEV bs=1 count=512 status=none | od -j444 -N2 -v -h -Ax --endian=
 Partitionstabelle:
 ```
 sudo dd if=$BLKDEV bs=1 count=512 status=none | od -j446 -N64 -v -h -Ax --endian=big | sed '$d'
-``
+```
 
 Magic Word:
 ```
