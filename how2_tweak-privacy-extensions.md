@@ -1,11 +1,11 @@
 # IPv6 Privacy Extensions anpassen
 
-### Aufgabe
+## Aufgabe
 Die Nutzungsdauer einer IPv6 mit Privacy Extensions soll auf dreißig Minuten
 beschränkt werden. Diese dann veraltete [deprecated] Adresse soll noch eine
 weitere Stunde für bestehende Verbindungen zur Verfügung stehen.
 
-### Lösungsansatz
+## Lösungsansatz
 ```
 $ sudo nano /etc/sysctl.d/10-ipv6-privacy.conf
 # IPv6 Privacy Extensions (RFC 4941)
