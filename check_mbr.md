@@ -98,8 +98,9 @@ sudo dd if=$BLKDEV bs=1 count=512 status=none | od -j510 -N2 -v -h -Ax --endian=
 
 ## MBR schreiben
 
-**Achtung:** Folgende Tätigkeiten können den Totalverlust von wichtigen Daten zur Folge haben.
-Es wird deshalb eindringlich geraten, ein vorheriges Komplettbackup des Systems durchzuführen.
+**Achtung:** Nach dem Löschen des MBR und einem Reboot, ist kein Zugriff auf die Partitionen mehr möglich.
+Folgende Tätigkeiten können deshalb den Totalverlust von wichtigen Daten zur Folge haben.
+Es wird eindringlich geraten, vorher ein Komplettbackup des Systems durchzuführen.
 
 MBR komplett löschen (Inhalt auf NULL setzen):
 ```
