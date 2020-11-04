@@ -1,4 +1,4 @@
-# Linux: Skripte automatisch ausführen
+# Skripte automatisch ausführen
 
 Dieser Artikel beschreibt verschiedene Möglichkeiten,
 eigene Skripte automatisiert ausführen zu lassen.
