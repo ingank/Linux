@@ -1,6 +1,6 @@
 # Der CUPS PDF-Drucker
 
-#### Installation und Konfiguration
+## Installation und Konfiguration
 
 Die folgenden Aktionen werden als Benutzer mit Root-Rechten in einem Terminal ausgeführt:
 
@@ -36,7 +36,7 @@ Option -m => Ort der zu verknüpfenden ppd-Datei
 Option -E => diesen Drucker in den Bereitschaftsmodus bringen
 ```
 
-#### Überprüfung der Installation
+## Überprüfung der Installation
 
 Mit den folgenden Befehlen können aktuelle Informationen zum installierten PDF-Drucker ermittelt werden.
 
