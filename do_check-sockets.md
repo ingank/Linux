@@ -2,7 +2,7 @@
 
 ## netstat
 ```
-$ netstat --option
+netstat --option
 ```
 
 | Option | Auswirkung |
@@ -19,6 +19,5 @@ $ netstat --option
 Lsof zeigt geöffnete Dateien des Betriebssystems.  
 Die Option -i zeigt nur die Dateien, die aktuell einem Netzwerk-Socket zugewiesen sind.
 ```
-$ sudo apt install lsof
-$ sudo lsof -i
+lsof -i
 ```
