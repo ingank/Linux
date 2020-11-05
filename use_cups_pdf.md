@@ -15,7 +15,7 @@ lpinfo --make-and-model "CUPS-PDF" -m
 >> everywhere IPP Everywhere
 ```
 
-Der Pfad **`lsb/usr/cups-pdf/CUPS-PDF_opt.ppd`** verweist auf den PDF-Drucker-Treiber.
+Der Pfad *lsb/usr/cups-pdf/CUPS-PDF_opt.ppd* verweist auf den PDF-Drucker-Treiber.
 Dieser wird nun an einen neuen Drucker gebunden:
 
 ```
