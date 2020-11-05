@@ -87,8 +87,6 @@ ip a s
        valid_lft forever preferred_lft forever
     inet6 2a02::::e1e7:56db:c0fd:16c3/64 scope global temporary dynamic 
        valid_lft 5398sec preferred_lft 1454sec
-    inet6 2a02::::abcd:abcd:abcd:abcd/64 scope global dynamic mngtmpaddr noprefixroute 
-       valid_lft 131348sec preferred_lft 44948sec
     inet6 fe80::bc4:76b:75d9:b46a/64 scope link noprefixroute 
        valid_lft forever preferred_lft forever
 ```
