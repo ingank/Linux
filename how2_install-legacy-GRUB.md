@@ -201,15 +201,14 @@ echo | sudo tee /var/log/btmp | sudo tee /var/log/wtmp | sudo tee /var/log/lastl
 
 ## Quellen
 
-```
-https://www.gnu.org/software/grub/manual/legacy/grub.html
-https://www.gnu.org/software/grub/manual/grub/grub.html
-https://wiki.ubuntuusers.de/Grub_2_durch_Grub_ersetzen/
-https://manpages.ubuntu.com/manpages/trusty/en/man5/fs.5.html
-https://wiki.ubuntuusers.de/fdisk/
-https://www.cyberciti.biz/faq/howto-display-clear-last-login-information/
-http://www.system-rescue-cd.org/disk-partitioning/Introduction-to-disk-partitioning/
-http://www.system-rescue-cd.org/disk-partitioning/The-new-GPT-disk-layout/
-https://wiki.archlinux.org/index.php/GRUB_Legacy#GRUB_boot_disk
-https://wiki.archlinux.org/index.php/GRUB#GUID_Partition_Table_.28GPT.29_specific_instructions
-```
+* https://www.gnu.org/software/grub/manual/legacy/grub.html
+* https://www.gnu.org/software/grub/manual/grub/grub.html
+* https://wiki.ubuntuusers.de/Grub_2_durch_Grub_ersetzen/
+* https://manpages.ubuntu.com/manpages/trusty/en/man5/fs.5.html
+* https://wiki.ubuntuusers.de/fdisk/
+* https://www.cyberciti.biz/faq/howto-display-clear-last-login-information/
+* http://www.system-rescue-cd.org/disk-partitioning/Introduction-to-disk-partitioning/
+* http://www.system-rescue-cd.org/disk-partitioning/The-new-GPT-disk-layout/
+* https://wiki.archlinux.org/index.php/GRUB_Legacy#GRUB_boot_disk
+* https://wiki.archlinux.org/index.php/GRUB#GUID_Partition_Table_.28GPT.29_specific_instructions
+
