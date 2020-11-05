@@ -38,10 +38,18 @@ ffmpeg -f x11grab \
   -map 0:0 \
   -threads 8 \
   -aspect 16:9 -y \
-  -f mp4 -bf 0 -qp 19 -quality 2 \
+  -g 30 \
+  -f mp4 \
+  -bf 0 \
+  -qp 19 \
+  -quality 2 \
   -vcodec h264_vaapi \
   test-vaapi.mp4
 ```
+Erwähnenswert ist in diesem Zusammenhang die Option *-g 30*.
+Sie ist für das Setzen der KeyFrames zuständig.
+Im obigen Beispiel wird bei einer Framerate vom 60/s alle 1/2 Sekunde ein KeyFrame eingefügt.
+Videos können ohne hohen Rechenaufwand an Keyframes geschnitten werden - im Gegensatz zu Schnitten dazwischen.
 
 ## Quellen
 
