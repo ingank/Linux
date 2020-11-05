@@ -38,4 +38,4 @@ update-initramfs -c -k all
 
 ## Siehe auch:
 
-* [fix_rebind-grub.md](fix_rebind-grub.md)
+* [fix_frozen-bootstrap.md](fix_frozen-bootstrap.md)
