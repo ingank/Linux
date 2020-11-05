@@ -35,3 +35,7 @@ Folgender Befehl erzeugt neue initiale Ramdisks für jeden der installierten Ker
 ```
 update-initramfs -c -k all
 ```
+
+## Siehe auch:
+
+* [fix_rebind-grub.md](fix_rebind-grub.md)
