@@ -23,4 +23,4 @@ Dort tragen wir folgendes ein:
 
 Ergebnis:
 
-![]()
+![images/vscode-ruler.png](images/vscode-ruler.png)
