@@ -1,3 +1,5 @@
+# GRUB 2 - Hoheit zurückholen
+
 Das Testen von Linux-Distributionen ist das Butter- und Brotgeschäft von Freunden Freier Software.
 Nun, natürlich kann es vorkommen, dass nach der Installation eines solchen Linux'es der Bootvorgang,
 respektive der Bootloader,
@@ -8,7 +10,7 @@ Alle der folgenden Befehle werden als Benutzer mit root-Rechten ausgeführt.
 
 ## update-grub
 
-Dieser Befehl erstellt eine neue Datei **`/boot/grub/grub.cfg`** aus den systemweit gesammelten Informationen und Konfigurationsdateien:
+Dieser Befehl erstellt eine neue Datei */boot/grub/grub.cfg* aus den systemweit gesammelten Informationen und Konfigurationsdateien:
 
 ```
 update-grub
