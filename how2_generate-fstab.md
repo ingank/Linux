@@ -106,31 +106,16 @@ UUID=b0617ce8-7772-490c-ba8a-a6d5708ff3d8 none swap defaults,pri=-2 0 0
 
 Wobei:
 
-| Atom | Funktion |
-| ---------------------------- | - |
-| `genfstab -U / \| sed`       | Erzeuge den Text einer fstab-Datei aus den zur Zeit gemounteten Geräten und übergib diesen Text an den Befehl sed. |
-| `s/[[:space:][:blank:]]/ /g` |  Wandle alle vertikalen und horizontalen Whitespaces in jeweils ein Leerzeichen um. |
-| `s/ \{2,\}/ /g`              | Viele Leerzeichen in Folge durch eines ersetzen. |
-| `/#/d;/^$/d`                 | Lösche alle Kommentar- und Leerzeilen. |
-| `/UUID=/!d`                  |  Zeige nur Zeilen mit UUID anstattdes Gerätepfades. Es werden dadurch jene Geräte ausgeblendet, die für den Bootvorgang keine Relevanz haben. |
-
-
-
-
-+-------------------------------------+-------------------------------------+-------------------------------------+
-|Spalte links                         |Spalte rechts                        |Spalte mittig                        | 
-+:====================================+====================================:+:===================================:+
-|Normaler Inhalt                      |Normaler Inhalt                      |Ein Text, der sich                   | 
-|                                     |                                     |sich über mehrere Zeilen erstreckt   | 
-+-------------------------------------+-------------------------------------+-------------------------------------+
-|Normaler Inhalt                      |Ein Text, der sich\                  |Normaler Inhalt                      | 
-|                                     |sich umbricht                        |                                     | 
-+-------------------------------------+-------------------------------------+-------------------------------------+
-|Normaler Inhalt                      |Normaler Inhalt                      |Normaler Inhalt                      | 
-+-------------------------------------+-------------------------------------+-------------------------------------+
-
-
-
+* `genfstab -U / | sed`
+  * Erzeuge den Text einer fstab-Datei aus den zur Zeit gemounteten Geräten und übergib diesen Text an den Befehl sed.
+* `s/[[:space:][:blank:]]/ /g`
+  * Wandle alle vertikalen und horizontalen Whitespaces in jeweils ein Leerzeichen um.
+* `s/ \{2,\}/ /g`
+  * Viele Leerzeichen in Folge durch eines ersetzen.
+* `/#/d;/^$/d`
+  * Lösche alle Kommentar- und Leerzeilen.
+* `/UUID=/!d`
+  * Zeige nur Zeilen mit UUID anstattdes Gerätepfades. Es werden dadurch jene Geräte ausgeblendet, die für den Bootvorgang keine Relevanz haben.
 
 ## Quellen:
 
