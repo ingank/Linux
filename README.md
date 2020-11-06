@@ -12,14 +12,17 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [GRUB 2 - Hoheit zurückholen](fix_rebind-grub.md)
 * [Skripte automatisch ausführen](how2_autostart-scripts.md)
 * [MBR (Master Boot Record) inspizieren](how2_check-mbr.md)
+* [Nutzerbasierte crontab](how2_crontab-userbased.md)
 * [DS-Lite: Portforwarding über SSH-Jumpserver](how2_dslite-ssh-jumpserver.md)
 * [Schneller Screencast mit ffmpeg](how2_ffmpeg-screencast.md)
+* [/etc/fstab automatisch generieren und formatieren](how2_generate-fstab.md)
 * [Ubuntu mit Legacy GRUB als Bootloader](how2_install-legacy-GRUB.md)
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
 * [IPv6 Privacy Extensions anpassen](how2_tweak-privacy-extensions.md)
 * [VNC über SSH-Jumpserver](how2_vnc-ssh-jumpserver.md)
 * [VSCode: Senkrechte Lineale anzeigen](how2_vscode-rulers.md)
 * [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
+* [Tastaturlayout der GRUB-2-Konsole anpassen](tweak_grub2-keyboard-layout.md)
 * [Terminal Input/Output optimieren](tweak_terminal-io.md)
 * [Der CUPS PDF-Drucker](use_cups_pdf.md)
 * [Die Paketdatenbank mit dpkg-query durchsuchen](use_dpkg-query.md)
@@ -41,4 +44,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Fr 6. Nov 01:14:35 CET 2020
+##### Aktualisiert am Sa 7. Nov 00:39:48 CET 2020
