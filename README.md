@@ -7,6 +7,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Audio-CD-Ripping unter Linux](do_cd-ripping.md)
 * [Netzwerk-Sockets inspizieren](do_check-sockets.md)
 * [Grundlagen der Linux-Benutzerverwaltung](do_manage-users.md)
+* [Verzögerter ssh-Login auf GNU/Linux](fix_delayed-ssh-login.md)
 * [Fix: initrd und swap unterbrechen Bootvorgang](fix_frozen-bootstrap.md)
 * [GRUB 2 - GPT - EF02](fix_gpt-for-grub2.md)
 * [GRUB 2 - Hoheit zurückholen](fix_rebind-grub.md)
@@ -16,6 +17,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [DS-Lite: Portforwarding über SSH-Jumpserver](how2_dslite-ssh-jumpserver.md)
 * [Schneller Screencast mit ffmpeg](how2_ffmpeg-screencast.md)
 * [/etc/fstab automatisch generieren und formatieren](how2_generate-fstab.md)
+* [Live-ISO's mit GRUB-2 direkt starten](how2_grub2-start-iso's.md)
 * [Ubuntu mit Legacy GRUB als Bootloader](how2_install-legacy-GRUB.md)
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
 * [IPv6 Privacy Extensions anpassen](how2_tweak-privacy-extensions.md)
@@ -44,4 +46,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Sa 7. Nov 00:39:48 CET 2020
+##### Aktualisiert am Sa 7. Nov 09:34:50 CET 2020
