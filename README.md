@@ -19,6 +19,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [/etc/fstab automatisch generieren und formatieren](how2_generate-fstab.md)
 * [Live-ISO's mit GRUB-2 direkt starten](how2_grub2-start-iso's.md)
 * [Ubuntu mit Legacy GRUB als Bootloader](how2_install-legacy-GRUB.md)
+* [Spracheinstellungen im Terminal](how2_locale-settings.md)
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
 * [IPv6 Privacy Extensions anpassen](how2_tweak-privacy-extensions.md)
 * [VNC über SSH-Jumpserver](how2_vnc-ssh-jumpserver.md)
@@ -46,4 +47,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Sa 7. Nov 09:34:50 CET 2020
+##### Aktualisiert am Sa 7. Nov 09:45:21 CET 2020
