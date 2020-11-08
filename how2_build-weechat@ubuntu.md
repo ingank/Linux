@@ -1,4 +1,7 @@
-Der beliebte Chat-Client WeeChat kann in seiner Entwicklerversion tagesaktuell aus den Quellen installiert werden.
+# WeeChat aus den Quellen installieren
+
+Der beliebte Chat-Client WeeChat kann in seiner Entwicklerversion
+tagesaktuell aus den Quellen installiert werden.
 Das Online-Benutzerhandbuch beschreibt detailliert den Build-Prozess.
 
 Leider kann es aktuell noch vorkommen,
