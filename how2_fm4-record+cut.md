@@ -87,6 +87,6 @@ ffmpeg -i lied.mp3 -acodec copy lied_neu.mp3
 ```
 
 ## Quellen
-```
+
 * https://askubuntu.com/questions/248811/how-can-i-fix-incorrect-mp3-duration
-```
+
