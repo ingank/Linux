@@ -19,13 +19,17 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Nutzerbasierte crontab](how2_crontab-userbased.md)
 * [DS-Lite: Portforwarding über SSH-Jumpserver](how2_dslite-ssh-jumpserver.md)
 * [Schneller Screencast mit ffmpeg](how2_ffmpeg-screencast.md)
+* [FM4 Audiostream als mp3 speichern und schneiden](how2_fm4-record+cut.md)
 * [FreeBSD in Hypervisoren ausführen](how2_freeBSD-hypervision.md)
 * [/etc/fstab automatisch generieren und formatieren](how2_generate-fstab.md)
 * [Live-ISO's mit GRUB-2 direkt starten](how2_grub2-start-iso's.md)
 * [Ubuntu mit Legacy GRUB als Bootloader](how2_install-legacy-GRUB.md)
 * [Spracheinstellungen im Terminal](how2_locale-settings.md)
+* [Homeverzeichnis auf separate Partition verlagern](how2_move-home.md)
+* [TP-Link Powerline Adapter per VM administrieren](how2_powerline-on-linux.md)
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
 * [eml-Dateien in Thunderbird importieren](how2_thunderbird-import-eml.md)
+* [Das Logging von cron-Jobs steuern](how2_tweak-cron-logging.md)
 * [VNC über SSH-Jumpserver](how2_vnc-ssh-jumpserver.md)
 * [VSCode: Senkrechte Lineale anzeigen](how2_vscode-rulers.md)
 * [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
@@ -55,4 +59,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am So 8. Nov 23:19:29 CET 2020
+##### Aktualisiert am So 15. Nov 20:05:49 CET 2020
