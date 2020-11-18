@@ -51,6 +51,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ### VERZEICHNIS: images
 
+* [vscode-ruler.png](images/vscode-ruler.png)
 
 ### VERZEICHNIS: tools
 
@@ -59,4 +60,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am So 15. Nov 20:05:49 CET 2020
+##### Aktualisiert am Do 19. Nov 00:26:53 CET 2020
