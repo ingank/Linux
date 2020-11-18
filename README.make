@@ -2,7 +2,7 @@
 
 # README.make
 # Dieses Skript erzeugt automatisch eine aktuelle README.md-Datei
-# aus den Dateien im Hauptverzeichnis
+# aus den Dateien im Haupt- und den Unterverzeichnissen
 
 FILE='./README.md'
 DATE=`date`
