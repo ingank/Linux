@@ -30,7 +30,9 @@ schreibender Zugriff birgt potenziell hohe Risiken für einen Totalverlust von w
 Folgende Vorsichtsmaßnahme wird deshalb getroffen:
 das anzusprechende Block-Device der Festplatte wird in einer Variable zwischengespeichert.
 Die aufgeführten Kommandozeilenbefehle wiederum verwenden dann diese Variable für den Zugriff auf den MBR.
-So ist sicher gestellt, dass einfaches copy&paste aus dem Artikel heraus auch auf vom Referenzsystem unterschiedlichen Plattformen sicher ausgeführt werden kann.
+Auf diese Weise ist sicher gestellt,
+dass einfaches Copy&Paste aus dem Artikel heraus auch auf vom
+Referenzsystem unterschiedlichen Plattformen sicher ausgeführt werden kann.
 
 Mit Hilfe der folgenden Tools kann das richtige Block-Device ermittelt werden:
 
@@ -40,8 +42,11 @@ sudo lsblk
 sudo blkid
 ```
 
-Das Block-Device von Hot-Swap-Wechsellaufwerken (beispielweise USB-Memory-Sticks) kann durchaus auch mit Hilfe der Log-Datei `/var/log/syslog` ermittelt werden.
-Sobald das Medium mit dem Rechner verbunden wird, erscheint im Terminal das entsprechende Block-Device:
+Das Block-Device von Hot-Swap-Wechsellaufwerken
+(beispielweise USB-Memory-Sticks)
+kann durchaus auch mit Hilfe der Log-Datei `/var/log/syslog` ermittelt werden.
+Sobald das Medium mit dem Rechner verbunden wird,
+erscheint im Terminal das entsprechende Block-Device:
 ```
 sudo tail -fc0 /var/log/syslog | grep -e '[sd.]|[[:blank:]]sd.:'
 ```
@@ -52,7 +57,6 @@ BLKDEV=/dev/sdX
 ```
 
 Desweiteren ist es durchaus angebracht, den aktuellen MBR explizit in einer Binär-Datei zu sichern:
-
 ```
 sudo dd if=$BLKDEV bs=1 count=512 status=none of=~/mbr.bin.bak
 ```
@@ -64,7 +68,9 @@ MBR hexadezimal ausgeben:
 sudo dd if=$BLKDEV bs=1 count=512 status=none | od -A x -t x1z -v --endian=big | sed '$d'
 ```
 
-Die Einzelteile des MBR können zur *Inspektion ohne Ablenkung*, wie im Folgenden aufgeführt, auch einzeln adressiert werden.
+Die Einzelteile des MBR können zur *Inspektion ohne Ablenkung*,
+wie im Folgenden aufgeführt,
+auch einzeln adressiert werden.
 
 Bootloader hexadezimal:
 ```
@@ -106,6 +112,10 @@ MBR komplett löschen (Inhalt auf NULL setzen):
 ```
 sudo dd if=/dev/zero of=$BLKDEV bs=1 count=512 conv=notrunc
 ```
+
+**Info:** Das Löschen des MBR kann beispielsweise dann sinnvoll sein,
+wenn ein komplett neuer MBR erstellt werden soll.
+Die meisten Low-Level Utilities verweigern ein Überschreiben des MBR, solange noch 'plausible' Daten auf ihm vorhanden sind. 
 
 MBR aus einer Backup-Datei (`~/mbr.bin.bak`) wieder herstellen:
 ```
