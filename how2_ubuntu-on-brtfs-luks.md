@@ -12,7 +12,7 @@
 
 * Sowohl mit EFI oder BIOS: Bootloader durchlaufen lassen
 * Auf dem Willkommen-Bildschirm:
-  * Sprache wählen
+  * Sprache *Deutsch* wählen
   * Klicken: *Ubuntu ausprobieren*
 * Gehe zu:
   * Einstellungen
@@ -43,7 +43,8 @@ sudo -i
 
 Installationsgerät ermitteln:
 ```
-lsblk
+lsblk | egrep '/dev/|nvme' 
+nvme0n1 259:0    0    20G  0 disk
 ```
 
 
