@@ -1,52 +1,56 @@
 # Ubuntu auf Btrfs mit LUKS verschlüsseln
 
 ## Systembeschreibung
-* VirtualBox 6.1.16
-* Ubuntu 20.04.1 LTS (ISO)
+
+Die Anleitung bezieht sich auf folgende Testumgebung:
+
+* Rechnerarchitektur: x86-64
+* Hypervisor: VirtualBox 6.1.16
+* Host: Ubuntu 18.04.5 LTS
+* Gast: Ubuntu 20.04.1 LTS
+* Firmware-Schnittstelle: EFI
+* Festplatten-Controller: SATA
+* Partitionierungsschema: GPT
+* Boot-Lader: GRUB 2
+
+Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
+
+* Firmware-Schnittstelle: BIOS
+* Festplatten-Controller: NVMe
+* Partitionierungsschema: MBR
 
 ## Installation
 
 **Achtung:** folgende Schritte müssen nacheinander **ohne Reboot** ausgeführt werden.
 
----
+##### Boot-Lader des Installationsmediums:
+*keine Interaktion*
 
-* Sowohl mit EFI oder BIOS: Bootloader durchlaufen lassen
-* Auf dem Willkommen-Bildschirm:
-  * Sprache *Deutsch* wählen
-  * Klicken: *Ubuntu ausprobieren*
-* Gehe zu:
-  * Einstellungen
-  * Region und Sprache
-  * Eingabequellen
-  * Tastatur hinzufügen: Deutsch (ohne Akzenttasten)
-  * Tastatur entfernen: English (USA)
-  * Einstellungen schließen
-* Terminal öffnen: [STRG]+[ALT]+[T]
+##### Auf dem Willkommen-Bildschirm:
+* Sprache *Deutsch* wählen
+* Klicken: *Ubuntu ausprobieren*
 
----
+##### Tastaturlayout auf Deutsch umstellen:
+* Gehe zu: Einstellungen
+* Gehe zu: Region und Sprache
+* Gehe zu: Eingabequellen
+* Aktion: Tastatur hinzufügen
+* Wähle: *Deutsch (ohne Akzenttasten)*
+* Aktion: Tastatur entfernen für *English (USA)*
+* Schließe: Einstellungen
 
-Nochmals prüfen, ob EFI oder BIOS:
+##### Terminal öffnen:
+* Tastenkombination: *[STRG]+[ALT]+[T]*
+
+##### Interaktive ROOT-Shell öffnen:
+`sudo -i`
+
+##### Installationsgerät ermitteln:
 ```
-mount | grep efivarfs
+lsblk -p | grep disk
+> /dev/sda     8:0     0     20G     0     disk
 ```
-* Wenn keine Ausgabe: BIOS
-* Wenn Ausgabe: EFI
-
----
-
-Interaktive ROOT-Shell öffnen:
-```
-sudo -i
-```
-
----
-
-Installationsgerät ermitteln:
-```
-lsblk | egrep '/dev/|nvme' 
-nvme0n1 259:0    0    20G  0 disk
-```
-
+Ergebnis: Das Gerät hat die Bezeichnung */dev/sda*
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
