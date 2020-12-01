@@ -99,7 +99,7 @@ Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): 8200
 Changed type of partition to 'Linux swap'
 ```
-Partition für root-Filesystem (/) anlegen:
+Linux Systempartition anlegen:
 ```
 Command (? for help): n
 Partition number (4-128, default 4): 
@@ -140,19 +140,18 @@ OK; writing new GUID partition table (GPT) to /dev/sda.
 The operation has completed successfully.
 ```
 
-##### System-Partition verschlüsseln
+##### Linux Systempartition verschlüsseln
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda3
+cryptsetup luksFormat --type=luks1 /dev/sda4
 
 WARNING!
 ========
-Hiermit werden die Daten auf »/dev/sda3« unwiderruflich überschrieben.
+Hiermit werden die Daten auf »/dev/sda4« unwiderruflich überschrieben.
 
 Are you sure? (Type uppercase yes): YES
-Geben Sie die Passphrase für »/dev/sda3« ein:
+Geben Sie die Passphrase für »/dev/sda4« ein:
 Passphrase bestätigen:
 ```
-
 
 
 ## Quellen
