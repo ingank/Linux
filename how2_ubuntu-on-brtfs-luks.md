@@ -9,7 +9,7 @@ Die Anleitung bezieht sich auf folgende Testumgebung:
 * Host: Ubuntu 18.04.5 LTS
 * Gast: Ubuntu 20.04.1 LTS
 * Firmware-Schnittstelle: EFI
-* Festplatten-Hardware: HHD
+* Festplatten-Hardware: HDD
 * Festplatten-Controller: SATA
 * Partitionierungsschema: GPT
 * Boot-Lader: GRUB 2
@@ -26,20 +26,20 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 **Achtung:** folgende Schritte müssen nacheinander **ohne Reboot** ausgeführt werden.
 
 ##### Boot-Lader des Installationsmediums:
-*keine Interaktion*
+* keine Interaktion
 
 ##### Auf dem Willkommen-Bildschirm:
-* Sprache *Deutsch* wählen
+* Sprache wählen: *Deutsch*
 * Klicken: *Ubuntu ausprobieren*
 
 ##### Tastaturlayout auf Deutsch umstellen:
-* Gehe zu: Einstellungen
-* Gehe zu: Region und Sprache
-* Gehe zu: Eingabequellen
-* Aktion: Tastatur hinzufügen
+* Gehe zu: *Einstellungen*
+* Gehe zu: *Region und Sprache*
+* Gehe zu: *Eingabequellen*
+* Aktion: *Tastatur hinzufügen (+)*
 * Wähle: *Deutsch (ohne Akzenttasten)*
-* Aktion: Tastatur entfernen für *English (USA)*
-* Schließe: Einstellungen
+* Aktion: *Tastatur entfernen* für *English (USA)*
+* Schließe: *Einstellungen*
 
 ##### Terminal öffnen:
 * Tastenkombination: *[STRG]+[ALT]+[T]*
