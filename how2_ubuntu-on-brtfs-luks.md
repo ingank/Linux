@@ -53,7 +53,10 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 ##### Installationsziel ermitteln:
 ```
 lsblk -p | grep disk
-> /dev/sda     8:0     0     20G     0     disk
+```
+Ausgabe:
+```
+/dev/sda     8:0     0     20G     0     disk
 ```
 
 ##### Installationsziel partitionieren:
@@ -151,6 +154,25 @@ Hiermit werden die Daten auf »/dev/sda4« unwiderruflich überschrieben.
 Are you sure? (Type uppercase yes): YES
 Geben Sie die Passphrase für »/dev/sda4« ein:
 Passphrase bestätigen:
+```
+
+##### Volume für das Wurzelverzeichnis erstellen
+```
+cryptsetup luksOpen /dev/sda4 rootfs
+Geben Sie die Passphrase für »/dev/sda4« ein:
+```
+Prüfen:
+```
+ls /dev/mapper/
+```
+Korrekte Ausgabe:
+```
+control rootfs
+```
+
+##### Btr File System erzeugen
+```
+mkfs.btrfs /dev/mapper/rootfs
 ```
 
 
