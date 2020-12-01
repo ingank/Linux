@@ -143,6 +143,9 @@ OK; writing new GUID partition table (GPT) to /dev/sda.
 The operation has completed successfully.
 ```
 
+##### EFI System Partition formatieren
+* FAT16
+
 ##### Linux Systempartition verschlüsseln
 ```
 cryptsetup luksFormat --type=luks1 /dev/sda4
@@ -156,7 +159,7 @@ Geben Sie die Passphrase für »/dev/sda4« ein:
 Passphrase bestätigen:
 ```
 
-##### Volume für das Wurzelverzeichnis erstellen
+##### Linux Systempartition ins aktuelle System mappen
 ```
 cryptsetup luksOpen /dev/sda4 rootfs
 Geben Sie die Passphrase für »/dev/sda4« ein:
@@ -170,10 +173,15 @@ Korrekte Ausgabe:
 control rootfs
 ```
 
-##### Btr File System erzeugen
+##### Btrfs in der Linux Systempartition erzeugen
 ```
 mkfs.btrfs /dev/mapper/rootfs
 ```
+
+##### Mount-Optionen an SSD-Spezifikation anpassen
+* https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/#step-3-optional-optimize-mount-options-for-ssd-or-nvme-drives
+
+##### Ubuntu installieren
 
 
 ## Quellen
