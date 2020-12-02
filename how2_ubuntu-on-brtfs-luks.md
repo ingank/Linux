@@ -179,10 +179,18 @@ mkfs.btrfs /dev/mapper/rootfs
 ```
 
 ##### Mount-Optionen an SSD-Spezifikation anpassen
-* https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/#step-3-optional-optimize-mount-options-for-ssd-or-nvme-drives
+
+* https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1
+* https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509
 
 ##### Ubuntu installieren
 
+Das Tool *Ubiquity* kann nun zur Installation des Betriebssystems gestartet werden.
+Die Installation des GRUB 2 Bootladers wird später von Hand erledigt und wird
+deshalb vorerst unterdrückt:
+```
+ubiquity --no-bootloader
+```
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
