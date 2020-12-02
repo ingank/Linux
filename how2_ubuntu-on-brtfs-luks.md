@@ -173,7 +173,7 @@ Korrekte Ausgabe:
 control rootfs
 ```
 
-##### Btrfs in der Linux Systempartition erzeugen
+##### Btrfs in der (gemappten) Linux Systempartition erzeugen
 ```
 mkfs.btrfs /dev/mapper/rootfs
 ```
