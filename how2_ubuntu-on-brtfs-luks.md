@@ -183,14 +183,14 @@ mkfs.btrfs /dev/mapper/rootfs
 Zwei Konfigurationsdateien anpassen:
 
 * /usr/lib/partman/mount.d/70btrfs
-  * Original: https://github.com/ingank/Linux/blob/875642283fccee8b8dfd9832af427216b8584a30/files/usr%3Dlib%3Dpartman%3Dmount.d%3D70btrfs
-  * Editiert: https://github.com/ingank/Linux/blob/master/files/usr%3Dlib%3Dpartman%3Dmount.d%3D70btrfs
-  * Patch: https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1
+  * [Original](https://github.com/ingank/Linux/blob/875642283fccee8b8dfd9832af427216b8584a30/files/usr%3Dlib%3Dpartman%3Dmount.d%3D70btrfs)
+  * [Editiert](https://github.com/ingank/Linux/blob/master/files/usr%3Dlib%3Dpartman%3Dmount.d%3D70btrfs)
+  * [Diff](https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1)
 
 * /usr/lib/partman/fstab.d/btrfs
-  * Original: https://github.com/ingank/Linux/blob/f57240cd7ccaf787401624a018f62c1aea461f79/files/usr%3Dlib%3Dpartman%3Dfstab.d%3Dbtrfs
-  * Editiert: https://github.com/ingank/Linux/blob/master/files/usr%3Dlib%3Dpartman%3Dfstab.d%3Dbtrfs
-  * Patch: https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509
+  * [Original](https://github.com/ingank/Linux/blob/f57240cd7ccaf787401624a018f62c1aea461f79/files/usr%3Dlib%3Dpartman%3Dfstab.d%3Dbtrfs)
+  * [Editiert](https://github.com/ingank/Linux/blob/master/files/usr%3Dlib%3Dpartman%3Dfstab.d%3Dbtrfs)
+  * [Diff](https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509)
 
 ##### Ubuntu installieren
 
