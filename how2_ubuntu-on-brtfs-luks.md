@@ -223,8 +223,8 @@ ubiquity --no-bootloader
 
 ##### chroot ins neue Betriebssystem
 ```
-mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/cryptdata /mnt
-mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/cryptdata /mnt/home
+mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt
+mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt/home
 ```
 
 ## Quellen
