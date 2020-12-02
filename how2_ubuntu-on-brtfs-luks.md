@@ -155,14 +155,14 @@ WARNING!
 Hiermit werden die Daten auf »/dev/sda4« unwiderruflich überschrieben.
 
 Are you sure? (Type uppercase yes): YES
-Geben Sie die Passphrase für »/dev/sda4« ein:
-Passphrase bestätigen:
+Geben Sie die Passphrase für »/dev/sda4« ein: *****
+Passphrase bestätigen: *****
 ```
 
 ##### Linux Systempartition ins aktuelle System mappen
 ```
 cryptsetup luksOpen /dev/sda4 rootfs
-Geben Sie die Passphrase für »/dev/sda4« ein:
+Geben Sie die Passphrase für »/dev/sda4« ein: *****
 ```
 Prüfen:
 ```
