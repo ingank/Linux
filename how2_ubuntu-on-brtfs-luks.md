@@ -202,6 +202,24 @@ deshalb vorerst unterdrückt:
 ```
 ubiquity --no-bootloader
 ```
+* Willkommen: *Deutsch* auswählen // *Weiter*
+* Tastaturbelegung: *German* | *German - German (no dead keys)* // *Weiter*
+* Aktualisierungen und andere Software: nach den eigenen Vorstellungen // *Weiter*
+* Installationsart: *Etwas Anderes* // *Weiter*
+  * Laufwerk */dev/mapper/rootfs* | Zweite Zeile | *Ändern ...*
+    * Benutzen als: *Btrfs-Journaling-Dateisystem*
+    * Partition formatieren: [x]
+    * Einbindungspunkt: */*
+    * *OK*
+  * Laufwerk */dev/sda3* | *Ändern ...*
+    * Benutzen als: *Auslagerungsspeicher (Swap)*
+  * *Jetzt Installieren*
+  * *Weiter*
+* Wo befinden Sie sich?: Standort Auswählen // *Weiter*
+* Wer sind Sie?: Nutzerdaten und Passwort vergeben // *Weiter*
+* **Installation wird durchgeführt**
+* Dialogbox *Installation abgeschlossen*: *Ausprobieren fortsetzen*
+* Wenn alles glatt lief, befinden wir uns wieder als root im Terminal
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
