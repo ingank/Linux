@@ -143,8 +143,10 @@ OK; writing new GUID partition table (GPT) to /dev/sda.
 The operation has completed successfully.
 ```
 
-##### EFI System Partition formatieren
-* FAT16
+##### EFI system partition formatieren
+```
+mkfs.fat -F32 /dev/sda2
+```
 
 ##### Linux Systempartition verschlüsseln
 ```
