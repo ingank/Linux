@@ -221,6 +221,12 @@ ubiquity --no-bootloader
 * Dialogbox *Installation abgeschlossen*: *Ausprobieren fortsetzen*
 * Wenn alles glatt lief, befinden wir uns wieder als root im Terminal
 
+##### chroot ins neue Betriebssystem
+```
+mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/cryptdata /mnt
+mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/cryptdata /mnt/home
+```
+
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
 * https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/
