@@ -21,14 +21,14 @@ case $type in
 		btrfs subvolume create /target$mp/@
 		chmod 755 /target$mp/@
 		umount /target$mp
-		options="${options:+$options,}subvol=@"
+		options="${options:+$options,}subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd"
 		mount -t btrfs -o $options $fs /target$mp
 		;;
 	    /home)
 		btrfs subvolume create /target$mp/@home
 		chmod 755 /target$mp/@home
 		umount /target$mp
-		options="${options:+$options,}subvol=@home"
+		options="${options:+$options,}subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd"
 		mount -t btrfs -o $options $fs /target$mp
 		;;
 	esac
