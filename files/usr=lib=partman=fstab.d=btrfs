@@ -27,17 +27,17 @@ for dev in $DEVICES/*; do
 				if [ "$home_found" = "unknown" ]; then
 					home_found="false"
 				fi
-				pass=1
-				home_options="${options:+$options,}subvol=@home"
-				options="${options:+$options,}subvol=@"
+				pass=0
+				home_options="${options:+$options,}subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd"
+				options="${options:+$options,}subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd"
 				home_path="$path"
 				home_mp="$mountpoint"home
 			elif [ "$mountpoint" = /home ]; then
-				pass=2
-				options="${options:+$options,}subvol=@home"
+				pass=0
+				options="${options:+$options,}subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd"
 				home_found=true
 			else
-				pass=2
+				pass=0
 			fi
 			echo "$path" "$mountpoint" btrfs $options 0 $pass
 			;;
@@ -52,6 +52,6 @@ for dev in $DEVICES/*; do
 done
 
 if [ "$home_found" = "false" ]; then
-	echo "$home_path" "$home_mp" btrfs "$home_options" 0 2
+	echo "$home_path" "$home_mp" btrfs "$home_options" 0 0
 	home_found="true"
 fi	
