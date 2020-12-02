@@ -182,11 +182,10 @@ mkfs.btrfs /dev/mapper/rootfs
 
 Zwei Konfigurationsdateien anpassen:
 
-| Datei | Patch |
-| - | - |
-| /usr/lib/partman/mount.d/70btrfs | [Diff](https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1) |
-| /usr/lib/partman/fstab.d/btrfs | [Diff](https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509) |
-
+|Datei|Patch|
+|:-|:-|
+|/usr/lib/partman/mount.d/70btrfs|[Diff](https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1)|
+|/usr/lib/partman/fstab.d/btrfs|[Diff](https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509)|
 
 ##### Ubuntu installieren
 
