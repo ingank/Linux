@@ -407,3 +407,4 @@ cat /etc/crypttab
 * https://wiki.ubuntuusers.de/GRUB_2/
 * https://help-grub.gnu.narkive.com/tYopC4mg/grub2-possible-to-change-keyboard-layout-in-stage-1-5
 * https://wiki.archlinux.org/index.php/EFI_system_partition#GPT_partitioned_disks
+* https://blog.seibert-media.net/blog/2020/09/30/grub-2-0-ablauf-des-bootvorgangs/
