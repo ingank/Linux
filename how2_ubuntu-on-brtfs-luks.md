@@ -244,17 +244,11 @@ btrfs subvolume list /
 # ID 257 gen 20 top level 5 path @home
 ```
 
-### root-Dateisystem in /etc/cryptab aufnehmen
+### Blockgerät des root-Dateisystems in /etc/cryptab aufnehmen
 
-Ermitteln der UUID des Blockgerätes /dev/sda4:
+Eintrag in /etc/cryptab:
 ```
-lkid -s UUID -o value /dev/sda4
-# 08b46b30-4d14-44d2-be97-8c021f172d29
-```
-
-Eintrag der UUID in /etc/cryptab:
-```
-echo "rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks" >> /etc/crypttab
+echo "rootfs UUID=$(blkid -s UUID -o value /dev/sda4) none luks" >> /etc/cryptab
 ```
 
 Kontrolle:
@@ -263,8 +257,56 @@ cat /etc/crypttab
 # rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
 ```
 
-### swap-Partition verschlüsseln
+### swap-Auslagerungsspeicher deaktivieren
+```
+swapoff /dev/sda3
+```
 
+### swap-Partition verschlüsseln
+```
+cryptsetup luksFormat --type=luks1 /dev/sda3
+# WARNUNG: Gerät /dev/sda3 enthält bereits eine 'swap'-Superblock-Signatur.
+#
+# WARNING!
+# ========
+# Hiermit werden die Daten auf »/dev/sda3« unwiderruflich überschrieben.
+#
+# Are you sure? (Type uppercase yes): YES
+# Geben Sie die Passphrase für »/dev/sda3« ein: *****
+# Passphrase bestätigen: *****
+```
+
+### swap-Partition ins aktuelle System mappen
+```
+cryptsetup luksOpen /dev/sda3 swap
+# Geben Sie die Passphrase für »/dev/sda3« ein: *****
+```
+Inspektion:
+```
+ls /dev/mapper
+# control  rootfs  swap
+```
+
+### swap-Speicher neu formatieren
+```
+mkswap /dev/mapper/swap
+# Auslagerungsbereich Version 1 wird angelegt, Größe = 8 GiB (8587833344 Bytes)
+# keine Bezeichnung, UUID=6172916d-5d2e-4130-a964-5c6694aeccfb
+```
+
+### swap-Blockgerät in /etc/cryptab aufnehmen
+
+Eintrag in /etc/cryptab:
+```
+echo "swap UUID=$(blkid -s UUID -o value /dev/sda3) none luks" >> /etc/cryptab
+```
+
+Kontrolle:
+```
+cat /etc/cryptab
+# rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
+# swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 none luks
+```
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
