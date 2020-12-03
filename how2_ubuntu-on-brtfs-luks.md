@@ -229,11 +229,15 @@ mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapp
 **Beachte:** Wenn wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
 die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt wurde,
 so muss dies auch an dieser Stelle ebenfalls erfolgen.
-
 ```
 for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
 cp /etc/resolv.conf /mnt/etc/
 chroot /mnt
+```
+Inspektion der chroot-Umgebung:
+```
+mount -av
+btrfs subvolume list /
 ```
 
 ## Quellen
