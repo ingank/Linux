@@ -320,13 +320,12 @@ sed -i "s|UUID=${SWAP_UUID}|/dev/mapper/swap|" /etc/fstab
 
 Kontrolle:
 ```
-</etc/fstab sed '/^#/d'|sed '/^$/d'
-# /dev/mapper/rootfs /               btrfs   defaults,subvol=@,ssd,noatime,space_cache,commit=120 0       0
-# UUID=51DC-D19B  /boot/efi       vfat    umask=0077      0       1
-# /dev/mapper/rootfs /home           btrfs   defaults,subvol=@home,ssd,noatime,space_cache,commit=120 0       0
-# /dev/mapper/swap none            swap    sw              0       0
+cat /etc/fstab | sed 's/[[:space:][:blank:]]/ /g;s/ \{2,\}/ /g;/^#/d;/^$/d'
+# /dev/mapper/rootfs / btrfs defaults,subvol=@,ssd,noatime,space_cache,commit=120 0 0
+# UUID=51DC-D19B /boot/efi vfat umask=0077 0 1
+# /dev/mapper/rootfs /home btrfs defaults,subvol=@home,ssd,noatime,space_cache,commit=120 0 0
+# /dev/mapper/swap none swap sw 0 0
 ```
-**Hinweis:** Das Zeichen '<' am anfang der Zeile gehört zum Kommando!
 
 ### Schlüsseldatei erzeugen
 ```
