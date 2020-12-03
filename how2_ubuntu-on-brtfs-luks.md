@@ -382,6 +382,21 @@ cryptsetup luksDump /dev/sda3 | grep "Key Slot"
 echo "KEYFILE_PATTERN=/etc/luks/*.keyfile" >> /etc/cryptsetup-initramfs/conf-hook
 echo "UMASK=0077" >> /etc/initramfs-tools/initramfs.conf
 ```
+Siehe hierzu im Speziellen: [Direktlink](https://cryptsetup-team.pages.debian.net/cryptsetup/README.initramfs.html#storing-keyfiles-directly-in-the-initrd)
+
+### Schlüsseldatei in /etc/crypttab aufnehmen
+
+Alle Zeichenfolgen *none* durch */etc/luks/boot_os.keyfile* ersetzen:
+```
+sed -i "s|none|/etc/luks/boot_os.keyfile|" /etc/crypttab
+```
+
+Kontrolle:
+```
+cat /etc/crypttab
+# rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 /etc/luks/boot_os.keyfile luks
+# swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 /etc/luks/boot_os.keyfile luks
+```
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
