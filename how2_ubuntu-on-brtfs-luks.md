@@ -53,15 +53,15 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 ### Installationsziel ermitteln:
 ```
 lsblk -p | grep disk
-```
-Ausgabe:
-```
-/dev/sda     8:0     0     20G     0     disk
+# /dev/sda     8:0     0     20G     0     disk
 ```
 
 ### Installationsziel partitionieren:
 ```
-root@ubuntu:~# gdisk /dev/sda
+gdisk /dev/sda
+```
+Programm *gdisk* wird gestartet:
+```
 GPT fdisk (gdisk) version 1.0.5
 
 Partition table scan:
@@ -152,27 +152,24 @@ mkfs.fat -F32 /dev/sda2
 ```
 cryptsetup luksFormat --type=luks1 /dev/sda4
 
-WARNING!
-========
-Hiermit werden die Daten auf »/dev/sda4« unwiderruflich überschrieben.
-
-Are you sure? (Type uppercase yes): YES
-Geben Sie die Passphrase für »/dev/sda4« ein: *****
-Passphrase bestätigen: *****
+# WARNING!
+# ========
+# Hiermit werden die Daten auf »/dev/sda4« unwiderruflich überschrieben.
+# 
+# Are you sure? (Type uppercase yes): YES
+# Geben Sie die Passphrase für »/dev/sda4« ein: *****
+# Passphrase bestätigen: *****
 ```
 
 ### Linux Systempartition ins aktuelle System mappen
 ```
 cryptsetup luksOpen /dev/sda4 rootfs
-Geben Sie die Passphrase für »/dev/sda4« ein: *****
+# Geben Sie die Passphrase für »/dev/sda4« ein: *****
 ```
 Prüfen:
 ```
 ls /dev/mapper/
-```
-Korrekte Ausgabe:
-```
-control rootfs
+# control rootfs
 ```
 
 ### Btrfs in der (gemappten) Linux Systempartition erzeugen
@@ -226,7 +223,7 @@ ubiquity --no-bootloader
 mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt
 mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt/home
 ```
-**Beachte:** Wenn wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
+**Beachte:** Wenn, wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
 die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt wurde,
 so muss dies auch an dieser Stelle ebenfalls erfolgen.
 ```
