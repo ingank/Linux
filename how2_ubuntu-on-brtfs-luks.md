@@ -308,6 +308,15 @@ cat /etc/cryptab
 # swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 none luks
 ```
 
+### swap-Volume in /etc/fstab aufnehmen
+
+Datei öffnen:
+```
+nano /etc/fstab
+```
+... und folgenden [Patch](https://github.com/ingank/Linux/commit/e4b10badc1b31965dd325a1d16560f8ce561261e)
+anwenden.
+
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
 * https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/
