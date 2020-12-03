@@ -237,7 +237,14 @@ chroot /mnt
 Inspektion der chroot-Umgebung:
 ```
 mount -av
+# /                        : ignoriert
+# /boot/efi                : successfully mounted
+# /home                    : bereits eingehängt
+# none                     : ignoriert
+
 btrfs subvolume list /
+# ID 256 gen 146 top level 5 path @
+# ID 257 gen 20 top level 5 path @home
 ```
 
 ## Quellen
