@@ -244,16 +244,27 @@ btrfs subvolume list /
 # ID 257 gen 20 top level 5 path @home
 ```
 
-### Eintrag des root-Dateisystems in /etc/cryptab
+### root-Dateisystem in /etc/cryptab aufnehmen
+
+Ermitteln der UUID des Blockgerätes /dev/sda4:
 ```
-export UUIDVDA3=$(blkid -s UUID -o value /dev/sda2) #this is an environmental variable
-echo "cryptdata UUID=${UUIDVDA3} none luks" >> /etc/crypttab
+lkid -s UUID -o value /dev/sda4
+# 08b46b30-4d14-44d2-be97-8c021f172d29
 ```
 
+Eintrag der UUID in /etc/cryptab:
+```
+echo "rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks" >> /etc/crypttab
+```
+
+Kontrolle:
 ```
 cat /etc/crypttab
-# cryptdata UUID=8a06f062-cd19-4b53-917e-65461f5e27c7 none luks
+# rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
 ```
+
+### swap-Partition verschlüsseln
+
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
