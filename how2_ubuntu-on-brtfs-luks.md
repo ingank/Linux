@@ -244,11 +244,11 @@ btrfs subvolume list /
 # ID 257 gen 20 top level 5 path @home
 ```
 
-### Blockgerät des root-Dateisystems in /etc/cryptab aufnehmen
+### Blockgerät des root-Dateisystems in /etc/crypttab aufnehmen
 
-Eintrag in /etc/cryptab:
+Eintrag in /etc/crypttab:
 ```
-echo "rootfs UUID=$(blkid -s UUID -o value /dev/sda4) none luks" >> /etc/cryptab
+echo "rootfs UUID=$(blkid -s UUID -o value /dev/sda4) none luks" >> /etc/crypttab
 ```
 
 Kontrolle:
@@ -294,28 +294,95 @@ mkswap /dev/mapper/swap
 # keine Bezeichnung, UUID=6172916d-5d2e-4130-a964-5c6694aeccfb
 ```
 
-### swap-Blockgerät in /etc/cryptab aufnehmen
+### swap-Speicher in /etc/crypttab und /etc/fstab aufnehmen
 
-Eintrag in /etc/cryptab:
+UUID des swap-Blockgerätes ermitteln und der Variable *SWAP_UUID* zuweisen:
 ```
-echo "swap UUID=$(blkid -s UUID -o value /dev/sda3) none luks" >> /etc/cryptab
+export SWAP_UUID=$(blkid -s UUID -o value /dev/sda3)
+```
+
+Eintrag in /etc/crypttab:
+```
+echo "swap ${SWAP_UUID} none luks" >> /etc/crypttab
 ```
 
 Kontrolle:
 ```
-cat /etc/cryptab
+cat /etc/crypttab
 # rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
 # swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 none luks
 ```
 
-### swap-Volume in /etc/fstab aufnehmen
+Eintrag in /etc/fstab:
+```
+sed -i "s|UUID=${SWAP_UUID}|/dev/mapper/swap|" /etc/fstab
+```
 
-Datei öffnen:
+Kontrolle:
 ```
-nano /etc/fstab
+</etc/fstab sed '/^#/d'|sed '/^$/d'
+# /dev/mapper/rootfs /               btrfs   defaults,subvol=@,ssd,noatime,space_cache,commit=120 0       0
+# UUID=51DC-D19B  /boot/efi       vfat    umask=0077      0       1
+# /dev/mapper/rootfs /home           btrfs   defaults,subvol=@home,ssd,noatime,space_cache,commit=120 0       0
+# /dev/mapper/swap none            swap    sw              0       0
 ```
-... und folgenden [Patch](https://github.com/ingank/Linux/commit/e4b10badc1b31965dd325a1d16560f8ce561261e)
-anwenden.
+**Hinweis:** Das Zeichen '<' am anfang der Zeile gehört zum Kommando!
+
+### Schlüsseldatei erzeugen
+```
+mkdir /etc/luks
+dd if=/dev/urandom of=/etc/luks/boot_os.keyfile bs=4096 count=1
+chmod u=rx,go-rwx /etc/luks
+chmod u=r,go-rwx /etc/luks/boot_os.keyfile
+```
+
+### Schlüsseldatei in Key-Slots einfügen
+
+Für root-Dateisystem:
+```
+cryptsetup luksAddKey /dev/sda4 /etc/luks/boot_os.keyfile
+# Geben Sie irgendeine bestehende Passphrase ein: *****
+```
+
+Für swap-Speicher:
+```
+cryptsetup luksAddKey /dev/sda3 /etc/luks/boot_os.keyfile
+# Geben Sie irgendeine bestehende Passphrase ein: *****
+```
+
+### Key-Slots inspizieren
+
+Für root-Dateisystem
+```
+cryptsetup luksDump /dev/sda4 | grep "Key Slot"
+# Key Slot 0: ENABLED
+# Key Slot 1: ENABLED
+# Key Slot 2: DISABLED
+# Key Slot 3: DISABLED
+# Key Slot 4: DISABLED
+# Key Slot 5: DISABLED
+# Key Slot 6: DISABLED
+# Key Slot 7: DISABLED
+```
+
+Für swap-Speicher:
+```
+cryptsetup luksDump /dev/sda3 | grep "Key Slot"
+# Key Slot 0: ENABLED
+# Key Slot 1: ENABLED
+# Key Slot 2: DISABLED
+# Key Slot 3: DISABLED
+# Key Slot 4: DISABLED
+# Key Slot 5: DISABLED
+# Key Slot 6: DISABLED
+# Key Slot 7: DISABLED
+```
+
+### Schlüsseldatei für initramfs zugänglich machen
+```
+echo "KEYFILE_PATTERN=/etc/luks/*.keyfile" >> /etc/cryptsetup-initramfs/conf-hook
+echo "UMASK=0077" >> /etc/initramfs-tools/initramfs.conf
+```
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
