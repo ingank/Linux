@@ -24,18 +24,18 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 * Modern:
   * Festplatten-Controller: NVMe
 
-## Installation
+## Schritt für Schritt
 
 **Achtung:** folgende Schritte müssen nacheinander **ohne Reboot** ausgeführt werden.
 
-##### Boot-Lader des Installationsmediums:
+### Boot-Lader des Installationsmediums:
 * keine Interaktion
 
-##### Auf dem Willkommen-Bildschirm:
+### Auf dem Willkommen-Bildschirm:
 * Sprache wählen: *Deutsch*
 * Klicken: *Ubuntu ausprobieren*
 
-##### Tastaturlayout auf Deutsch umstellen:
+### Tastaturlayout auf Deutsch umstellen:
 * Gehe zu: *Einstellungen*
 * Gehe zu: *Region und Sprache*
 * Gehe zu: *Eingabequellen*
@@ -44,13 +44,13 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 * Aktion: *Tastatur entfernen* für *English (USA)*
 * Schließe: *Einstellungen*
 
-##### Terminal öffnen:
+### Terminal öffnen:
 * Tastenkombination: *[STRG]+[ALT]+[T]*
 
-##### Interaktive ROOT-Shell öffnen:
+### Interaktive ROOT-Shell öffnen:
 `sudo -i`
 
-##### Installationsziel ermitteln:
+### Installationsziel ermitteln:
 ```
 lsblk -p | grep disk
 ```
@@ -59,7 +59,7 @@ Ausgabe:
 /dev/sda     8:0     0     20G     0     disk
 ```
 
-##### Installationsziel partitionieren:
+### Installationsziel partitionieren:
 ```
 root@ubuntu:~# gdisk /dev/sda
 GPT fdisk (gdisk) version 1.0.5
@@ -143,12 +143,12 @@ OK; writing new GUID partition table (GPT) to /dev/sda.
 The operation has completed successfully.
 ```
 
-##### EFI system partition formatieren
+### EFI system partition formatieren
 ```
 mkfs.fat -F32 /dev/sda2
 ```
 
-##### Linux Systempartition verschlüsseln
+### Linux Systempartition verschlüsseln
 ```
 cryptsetup luksFormat --type=luks1 /dev/sda4
 
@@ -161,7 +161,7 @@ Geben Sie die Passphrase für »/dev/sda4« ein: *****
 Passphrase bestätigen: *****
 ```
 
-##### Linux Systempartition ins aktuelle System mappen
+### Linux Systempartition ins aktuelle System mappen
 ```
 cryptsetup luksOpen /dev/sda4 rootfs
 Geben Sie die Passphrase für »/dev/sda4« ein: *****
@@ -175,12 +175,12 @@ Korrekte Ausgabe:
 control rootfs
 ```
 
-##### Btrfs in der (gemappten) Linux Systempartition erzeugen
+### Btrfs in der (gemappten) Linux Systempartition erzeugen
 ```
 mkfs.btrfs /dev/mapper/rootfs
 ```
 
-##### Mount-Optionen an SSD-Spezifikation anpassen
+### Mount-Optionen an SSD-Spezifikation anpassen
 
 Zwei Konfigurationsdateien mit Hilfe eines Texteditors anpassen:
 
@@ -194,7 +194,7 @@ die etwas älter ist,
 hilft eventuell das Weglassen der Option |*,compress=zstd*|
 die Performanz positiv zu beeinflussen.
 
-##### Ubuntu installieren
+### Ubuntu installieren
 
 Das Tool *Ubiquity* kann nun zur Installation des Betriebssystems gestartet werden.
 Die Installation des GRUB 2 Bootladers wird später von Hand erledigt und wird
@@ -221,7 +221,7 @@ ubiquity --no-bootloader
 * Dialogbox *Installation abgeschlossen*: *Ausprobieren fortsetzen*
 * Wenn alles glatt lief, befinden wir uns wieder als root im Terminal
 
-##### chroot ins neue Betriebssystem
+### chroot ins neue Betriebssystem
 ```
 mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt
 mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt/home
