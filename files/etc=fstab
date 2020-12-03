@@ -10,4 +10,4 @@
 UUID=51DC-D19B  /boot/efi       vfat    umask=0077      0       1
 /dev/mapper/rootfs /home           btrfs   defaults,subvol=@home,ssd,noatime,space_cache,commit=120 0       0
 # swap was on /dev/sda3 during installation
-UUID=5ace0968-444d-4161-9eaf-1b4d74e6f997 none            swap    sw              0       0
+/dev/mapper/cryptswap none            swap    sw              0       0
