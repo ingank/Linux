@@ -244,6 +244,17 @@ btrfs subvolume list /
 # ID 257 gen 20 top level 5 path @home
 ```
 
+### Eintrag des root-Dateisystems in /etc/cryptab
+```
+export UUIDVDA3=$(blkid -s UUID -o value /dev/sda2) #this is an environmental variable
+echo "cryptdata UUID=${UUIDVDA3} none luks" >> /etc/crypttab
+```
+
+```
+cat /etc/crypttab
+# cryptdata UUID=8a06f062-cd19-4b53-917e-65461f5e27c7 none luks
+```
+
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
 * https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/
