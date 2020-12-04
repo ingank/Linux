@@ -398,6 +398,20 @@ cat /etc/crypttab
 # swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 /etc/luks/boot_os.keyfile luks
 ```
 
+### GRUB installieren
+
+GRUB soll auf verschlüsselte Festplatten zugreifen können:
+```
+echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
+```
+
+signierten EFI-GRUB installieren:
+```
+apt install -y --reinstall grub-efi-amd64-signed
+```
+
+
+
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
 * https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/
