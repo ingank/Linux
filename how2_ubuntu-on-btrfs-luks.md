@@ -482,3 +482,11 @@ sudo apt upgrade
 * https://wiki.archlinux.org/index.php/EFI_system_partition#GPT_partitioned_disks
 * https://blog.seibert-media.net/blog/2020/09/30/grub-2-0-ablauf-des-bootvorgangs/
 * https://github.com/ingank/Linux/blob/master/tweak_grub2-keyboard-layout.md
+* https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Manual_configuration_of_core_image_for_early_boot
+* https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Speeding_up_LUKS_decryption_in_GRUB
+
+
+## TODO
+* BIOS boot partition ist nicht notwendig für EFI-Systeme.
+  Das GRUB *core.img* landet als *grubx64.efi* auf der EFI-Partition.
+  Also kann die zusätzliche Partition in der Standard-Testumgebung wegfallen.
