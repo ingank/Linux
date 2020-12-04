@@ -400,17 +400,48 @@ cat /etc/crypttab
 
 ### GRUB installieren
 
-GRUB soll auf verschlüsselte Festplatten zugreifen können:
-```
-echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
-```
-
 signierten EFI-GRUB installieren:
 ```
 apt install -y --reinstall grub-efi-amd64-signed
 ```
 
+GRUB soll auf verschlüsselte Festplatten zugreifen können:
+```
+echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
+```
 
+GRUB konfigurieren und als Bootmanager installieren:
+```
+update-initramfs -c -k all
+grub-install /dev/sda
+update-grub
+```
+
+### Initial Ramdisk inspizieren
+
+Zugriffsrechte für Initial Ramdisk prüfen:
+```
+stat -L -c "%A  %n" /boot/initrd.img
+# -rw-------  /boot/initrd.img
+```
+
+Prüfen, ob Schlüsseldatei in der Ramdisk vorhanden ist:
+```
+lsinitramfs /boot/initrd.img | grep "^cryptroot/keyfiles/"
+# cryptroot/keyfiles/rootfs.key
+```
+
+### Erster Reboot
+
+Chroot-Umgebung verlassen:
+```
+exit
+```
+
+Reboot:
+```
+reboot now
+```
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
