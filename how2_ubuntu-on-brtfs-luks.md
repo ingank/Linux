@@ -446,12 +446,22 @@ reboot now
 ### GRUB Cryptodisk Modul
 
 Die Passphrase zum Entschlüsseln der LUKS-Partition auf /dev/sda4 wird vor dem Starten des GRUB-Bootmanagers abgefragt:
+
+![Bild](images/cryptodisk_prompt.png)
+
+Wenn die Passphrase zu keinem der Schlüssel in den Schlüsselfächern (Key-Slots) passt, dann startet GRUB in eine leichtgewichtige Konsole. Der Grund: GRUB hat keinen Zugriff auf die Partition */boot*:
+
+![Bild](images/grub_cmd_prompt.png)
+
+Hier kann mit
 ```
-BdsDxe: loading Boot0004 "ubuntu" from HD(2,GPT,AF1E638C-8AE7-49DE-AED2-0745154A2964,0x000,0x100000)AEFI\ubuntu\grubx64.efi
-BdsDxe: starting Boot0004 "ubuntu" from HD(2,GPT,AF1E638C-8AE7-49DE-AED2-0745154A2964,0x1300,0x100000)AEFI\ubuntu\grubx64.efi
-Attempting to decrypt master key...
-Enter passphrase for hd0,gpt4 (08b46b304d1444d2be978c021f172d29): *****
+grub> reboot
 ```
+der Rechner neu gestartet werden. Wenn die Systempartition entschlüsselt werden konnte, dann startet GRUB in den Bootmanager:
+
+![Bild](images/grub_menu.png)
+
+Hinweis: Die Prozesse der Verifizierung des richtigen Schlüssels bzw. der Entschlüsselung der Systempartition kann eine Weile dauern.
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
