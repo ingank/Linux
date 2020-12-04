@@ -443,6 +443,16 @@ Reboot:
 reboot now
 ```
 
+### GRUB Cryptodisk Modul
+
+Die Passphrase zum Entschlüsseln der LUKS-Partition auf /dev/sda4 wird vor dem Starten des GRUB-Bootmanagers abgefragt:
+```
+BdsDxe: loading Boot0004 "ubuntu" from HD(2,GPT,AF1E638C-8AE7-49DE-AED2-0745154A2964,0x000,0x100000)AEFI\ubuntu\grubx64.efi
+BdsDxe: starting Boot0004 "ubuntu" from HD(2,GPT,AF1E638C-8AE7-49DE-AED2-0745154A2964,0x1300,0x100000)AEFI\ubuntu\grubx64.efi
+Attempting to decrypt master key...
+Enter passphrase for hd0,gpt4 (08b46b304d1444d2be978c021f172d29): *****
+```
+
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
 * https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/
