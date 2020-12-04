@@ -463,6 +463,14 @@ der Rechner neu gestartet werden. Wenn die Systempartition entschlüsselt werden
 
 Hinweis: Die Prozesse der Verifizierung des richtigen Schlüssels bzw. der Entschlüsselung der Systempartition kann eine Weile dauern.
 
+### Systemupdate
+
+Nach dem ersten Reboot kann das System geupdatet werden:
+```
+sudo apt update
+sudo apt upgrade
+```
+
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
 * https://www.mutschler.eu/linux/install-guides/ubuntu-btrfs/
