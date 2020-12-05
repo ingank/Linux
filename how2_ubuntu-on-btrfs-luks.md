@@ -484,6 +484,7 @@ sudo apt upgrade
 * https://github.com/ingank/Linux/blob/master/tweak_grub2-keyboard-layout.md
 * https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Manual_configuration_of_core_image_for_early_boot
 * https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Speeding_up_LUKS_decryption_in_GRUB
+* https://wiki.ubuntuusers.de/EFI_Nachbearbeitung/
 
 
 ## TODO
