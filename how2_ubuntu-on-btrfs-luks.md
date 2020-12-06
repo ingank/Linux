@@ -117,18 +117,17 @@ Command (? for help): p
 Disk /dev/sda: 41943040 sectors, 20.0 GiB
 Model: VBOX HARDDISK   
 Sector size (logical/physical): 512/512 bytes
-Disk identifier (GUID): 3366BB62-51B3-4DE3-B9A3-4B779476FDA6
+Disk identifier (GUID): C1D893B1-DC2A-4B44-B6AE-DF5DE9B4B071
 Partition table holds up to 128 entries
 Main partition table begins at sector 2 and ends at sector 33
 First usable sector is 34, last usable sector is 41943006
 Partitions will be aligned on 2048-sector boundaries
-Total free space is 990 sectors (495.0 KiB)
+Total free space is 2014 sectors (1007.0 KiB)
 
 Number  Start (sector)    End (sector)  Size       Code  Name
-   1            1024            2047   512.0 KiB   EF02  BIOS boot partition
-   2            2048         1050623   512.0 MiB   EF00  EFI system partition
-   3         1050624        17827839   8.0 GiB     8200  Linux swap
-   4        17827840        41943006   11.5 GiB    8300  Linux filesystem
+   1            2048         1050623   512.0 MiB   EF00  EFI system partition
+   2         1050624        17827839   8.0 GiB     8200  Linux swap
+   3        17827840        41943006   11.5 GiB    8300  Linux filesystem
 ```
 GPT schreiben:
 ```
