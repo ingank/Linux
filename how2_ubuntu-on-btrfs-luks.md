@@ -141,38 +141,59 @@ OK; writing new GUID partition table (GPT) to /dev/sda.
 The operation has completed successfully.
 ```
 
-### EFI system partition formatieren
+### EFI System Partition formatieren
 ```
-mkfs.fat -F32 /dev/sda2
+mkfs.fat -F32 /dev/sda1
+# mkfs.fat 4.1 (2017-01-24)
 ```
 
-### Linux Systempartition verschlüsseln
+### Linux Systempartition mit LUKS1 verschlüsseln
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda4
+cryptsetup luksFormat --type=luks1 /dev/sda3
 
-# WARNING!
-# ========
-# Hiermit werden die Daten auf »/dev/sda4« unwiderruflich überschrieben.
-# 
-# Are you sure? (Type uppercase yes): YES
-# Geben Sie die Passphrase für »/dev/sda4« ein: *****
-# Passphrase bestätigen: *****
+WARNING!
+========
+This will overwrite data on /dev/sda3 irrevocably.
+
+Are you sure? (Type uppercase yes): YES
+Enter passphrase for /dev/sda3: *****
+Verify passphrase: *****
 ```
 
 ### Linux Systempartition ins aktuelle System mappen
 ```
-cryptsetup luksOpen /dev/sda4 rootfs
-# Geben Sie die Passphrase für »/dev/sda4« ein: *****
+cryptsetup open /dev/sda3 crypt_rootfs
+Enter passphrase for /dev/sda3: *****
 ```
 Prüfen:
 ```
 ls /dev/mapper/
-# control rootfs
+# control  crypt_rootfs
 ```
 
 ### Btrfs in der (gemappten) Linux Systempartition erzeugen
 ```
-mkfs.btrfs /dev/mapper/rootfs
+mkfs.btrfs /dev/mapper/crypt_rootfs
+# btrfs-progs v5.4.1 
+# See http://btrfs.wiki.kernel.org for more information.
+#
+# Detected a SSD, turning off metadata duplication.  Mkfs with -m dup if you want to force metadata duplication.
+# Label:              (null)
+# UUID:               29b43765-115b-4b5c-8017-7b0ac015c5b5
+# Node size:          16384
+# Sector size:        4096
+# Filesystem size:    11.50GiB
+# Block group profiles:
+#   Data:             single            8.00MiB
+#   Metadata:         single            8.00MiB
+#   System:           single            4.00MiB
+# SSD detected:       yes
+# Incompat features:  extref, skinny-metadata
+# Checksum:           crc32c
+# Number of devices:  1
+# Devices:
+#    ID        SIZE  PATH
+#     1    11.50GiB  /dev/mapper/crypt_rootfs
 ```
 
 ### Mount-Optionen an SSD-Spezifikation anpassen
@@ -184,6 +205,7 @@ Zwei Konfigurationsdateien mit Hilfe eines Texteditors anpassen:
 |/usr/lib/partman/mount.d/70btrfs|[Diff](https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1)|
 |/usr/lib/partman/fstab.d/btrfs|[Diff](https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509)|
 
+**Hinweis:**
 Auf Hardware,
 die etwas älter ist,
 hilft eventuell das Weglassen der Option |*,compress=zstd*|
