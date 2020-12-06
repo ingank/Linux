@@ -67,6 +67,9 @@ grub-kbdcomp -o de.gkb de
 tar cf memdisk.tar de.gkb
 ```
 
+**Hinweis:** Warnungen und andere Meldungen können ignoriert werden,
+solange eine Datei *de.gkb* kompiliert wird.
+
 ### early-grub.cfg aus grub.cfg generieren
 ```
 cp grub.cfg early-grub.cfg
