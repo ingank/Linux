@@ -206,13 +206,21 @@ mkfs.btrfs /dev/mapper/crypt_rootfs
 
 Zwei Konfigurationsdateien patchen:
 ```
-wget https://gist.github.com/ingank/291a09fd63124808a7ef9a955705ba82/archive/c336dca48b9a99aee20cd2bb8f0b05299e73a50d.zip -o 001.patch.zip
+wget https://gist.github.com/ingank/7aece893d9dd62dbda50394c9c2cc604/archive/6c4219adda2092322754b168e10b303cefe28b81.zip -O0001.zip
+wget https://gist.github.com/ingank/f172815d0df44b532772706e072fa2c5/archive/1d68b650c64ae4b699d09a117b0305ad57042d7f.zip -O0002.zip
+unzip -j 0001.zip && unzip -j 0002.zip
+patch /usr/lib/partman/mount.d/70btrfs 0001.patch
+patch /usr/lib/partman/fstab.d/btrfs 0002.patch
 ```
-
-|Datei|Patch|
-|:-|:-|
-|/usr/lib/partman/mount.d/70btrfs|[Diff](https://github.com/ingank/Linux/commit/81933004f6569f6afe7e1d60f145084b08f919e1)|
-|/usr/lib/partman/fstab.d/btrfs|[Diff](https://github.com/ingank/Linux/commit/23a8349800f7cf8754fcf014652980668b15e509)|
+Kontrolle:
+* Datei /usr/lib/partman/mount.d/70btrfs
+  * [Original](https://gist.github.com/ingank/4eaf95cfaa0a318e9fa5c213dae37da5)
+  * [Patch](https://gist.github.com/ingank/7aece893d9dd62dbda50394c9c2cc604)
+  * [Patched](https://gist.github.com/ingank/16755e02fcf69725cdbdd90226b6bb58)
+* Datei /usr/lib/partman/fstab.d/btrfs
+  * [Original](https://gist.github.com/ingank/4e13da74ec5007b98abad9dcc18cf528)
+  * [Patch](https://gist.github.com/ingank/f172815d0df44b532772706e072fa2c5)
+  * [Patched](https://gist.github.com/ingank/5cacc58152495b9cfa59c3f545950743)
 
 **Hinweis:**
 Auf Hardware,
