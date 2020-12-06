@@ -30,6 +30,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
 * [eml-Dateien in Thunderbird importieren](how2_thunderbird-import-eml.md)
 * [Das Logging von cron-Jobs steuern](how2_tweak-cron-logging.md)
+* [Ubuntu auf Btrfs mit LUKS verschlüsseln](how2_ubuntu-on-btrfs-luks.md)
 * [VNC über SSH-Jumpserver](how2_vnc-ssh-jumpserver.md)
 * [VSCode: Senkrechte Lineale anzeigen](how2_vscode-rulers.md)
 * [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
@@ -43,14 +44,21 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Kleines Git HowTo](use_git.md)
 * [Mit host, dig und nslookup Namenauflösung untersuchen](use_host-dig-nslookup.md)
 * [Die Linux Benutzerverwaltung](use_linux-user-management.md)
+* [Passwörter erstellen und benutzen](use_passwords.md)
 * [SSH Public Key Authentifizierung](use_ssh-pka.md)
 * [Terminal-Befehle per SSH unmittelbar auf dem Zielhost ausführen](use_ssh-t.md)
 * [Mails mit ssmtp versenden](use_ssmtp.md)
 * [su und sudo - eine kleine Einführung](use_su-sudo.md)
 * [tty-clock als Terminal-Uhr](use_tty-clock.md)
 
+### VERZEICHNIS: files
+
+
 ### VERZEICHNIS: images
 
+* [cryptodisk_prompt.png](images/cryptodisk_prompt.png)
+* [grub_cmd_prompt.png](images/grub_cmd_prompt.png)
+* [grub_menu.png](images/grub_menu.png)
 * [vscode-ruler.png](images/vscode-ruler.png)
 
 ### VERZEICHNIS: tools
@@ -60,4 +68,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Do 19. Nov 00:26:53 CET 2020
+##### Aktualisiert am So 6. Dez 22:14:01 CET 2020
