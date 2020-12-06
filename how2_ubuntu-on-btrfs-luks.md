@@ -35,7 +35,7 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 
 ### Auf dem Willkommen-Bildschirm:
 * Sprache wählen: *Deutsch*
-* Klicken: *Ubuntu ausprobieren*
+* Aktion: *Ubuntu ausprobieren*
 
 ### Tastaturlayout auf Deutsch umstellen:
 * Gehe zu: *Einstellungen*
