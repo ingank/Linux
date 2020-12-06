@@ -160,6 +160,12 @@ Enter passphrase for /dev/sda3: *****
 Verify passphrase: *****
 ```
 
+**Achtung:** Festplattenver- und Entschlüsselung
+sind unter Umständen betriebssystemunabhängige Vorgänge.
+Damit die angeschlossene Tastatur in unterschiedlichen
+Laufzeitumgebungen nicht zum **Sündenbock** wird,
+ist es ratsam, folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes) zu beachten.
+
 ### Linux Systempartition ins aktuelle System mappen
 ```
 cryptsetup open /dev/sda3 crypt_rootfs
@@ -295,12 +301,6 @@ cryptsetup luksFormat --type=luks1 /dev/sda3
 # Geben Sie die Passphrase für »/dev/sda3« ein: *****
 # Passphrase bestätigen: *****
 ```
-
-**Achtung:** Festplattenver- und Entschlüsselung
-sind unter Umständen betriebssystemunabhängige Vorgänge.
-Damit die angeschlossene Tastatur in unterschiedlichen
-Laufzeitumgebungen nicht zum **Sündenbock** wird,
-ist es ratsam, folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes) zu beachten.
 
 ### swap-Partition ins aktuelle System mappen
 ```
