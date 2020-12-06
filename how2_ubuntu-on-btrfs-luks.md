@@ -84,27 +84,17 @@ Creating new GPT entries in memory.
 EFI System Partition anlegen:
 ```
 Command (? for help): n
-Partition number (1-128, default 1): 2
+Partition number (1-128, default 1): 
 First sector (34-41943006, default = 2048) or {+-}size{KMGTP}: 
 Last sector (2048-41943006, default = 41943006) or {+-}size{KMGTP}: +512M
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): ef00
 Changed type of partition to 'EFI system partition'
 ```
-Partition für GRUB 2 coreimage anlegen:
-```
-Command (? for help): n
-Partition number (1-128, default 1):  
-First sector (34-41943006, default = 1050624) or {+-}size{KMGTP}: 1024
-Last sector (1024-2047, default = 2047) or {+-}size{KMGTP}: 
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): ef02
-Changed type of partition to 'BIOS boot partition'
-```
 Swap-Partition anlegen:
 ```
 Command (? for help): n
-Partition number (3-128, default 3): 
+Partition number (2-128, default 2): 
 First sector (34-41943006, default = 1050624) or {+-}size{KMGTP}: 
 Last sector (1050624-41943006, default = 41943006) or {+-}size{KMGTP}: +8G
 Current type is 8300 (Linux filesystem)
@@ -114,7 +104,7 @@ Changed type of partition to 'Linux swap'
 Linux Systempartition anlegen:
 ```
 Command (? for help): n
-Partition number (4-128, default 4): 
+Partition number (3-128, default 3): 
 First sector (34-41943006, default = 17827840) or {+-}size{KMGTP}: 
 Last sector (17827840-41943006, default = 41943006) or {+-}size{KMGTP}: 
 Current type is 8300 (Linux filesystem)
