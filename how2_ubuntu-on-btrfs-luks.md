@@ -296,6 +296,12 @@ cryptsetup luksFormat --type=luks1 /dev/sda3
 # Passphrase bestätigen: *****
 ```
 
+**Achtung:** Festplattenver- und Entschlüsselung
+sind unter Umständen betriebssystemunabhängige Vorgänge.
+Damit die angeschlossene Tastatur in unterschiedlichen
+Laufzeitumgebungen nicht zum **Sündenbock** wird,
+ist es ratsam, folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes) zu beachten.
+
 ### swap-Partition ins aktuelle System mappen
 ```
 cryptsetup luksOpen /dev/sda3 swap
