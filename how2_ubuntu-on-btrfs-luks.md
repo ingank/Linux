@@ -67,9 +67,6 @@ lsblk -p | grep disk
 ### Installationsziel partitionieren:
 ```
 gdisk /dev/sda
-```
-Programm *gdisk* wird gestartet:
-```
 GPT fdisk (gdisk) version 1.0.5
 
 Partition table scan:
@@ -79,57 +76,56 @@ Partition table scan:
   GPT: not present
 
 Creating new GPT entries in memory.
-```
-EFI System Partition anlegen:
-```
+
 Command (? for help): n
-Partition number (1-128, default 1): 
+Partition number (1-128, default 1): 2
 First sector (34-41943006, default = 2048) or {+-}size{KMGTP}: 
 Last sector (2048-41943006, default = 41943006) or {+-}size{KMGTP}: +512M
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): ef00
 Changed type of partition to 'EFI system partition'
-```
-Swap-Partition anlegen:
-```
+
 Command (? for help): n
-Partition number (2-128, default 2): 
+Partition number (1-128, default 1): 
+First sector (34-41943006, default = 1050624) or {+-}size{KMGTP}: 1024
+Last sector (1024-2047, default = 2047) or {+-}size{KMGTP}: 
+Current type is 8300 (Linux filesystem)
+Hex code or GUID (L to show codes, Enter = 8300): ef02
+Changed type of partition to 'BIOS boot partition'
+
+Command (? for help): n
+Partition number (3-128, default 3): 
 First sector (34-41943006, default = 1050624) or {+-}size{KMGTP}: 
 Last sector (1050624-41943006, default = 41943006) or {+-}size{KMGTP}: +8G
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): 8200
 Changed type of partition to 'Linux swap'
-```
-LUKS-Partition anlegen:
-```
+
 Command (? for help): n
-Partition number (3-128, default 3): 
+Partition number (4-128, default 4): 
 First sector (34-41943006, default = 17827840) or {+-}size{KMGTP}: 
 Last sector (17827840-41943006, default = 41943006) or {+-}size{KMGTP}: 
 Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): 8309
 Changed type of partition to 'Linux LUKS'
-```
-GPT prüfen:
-```
+
 Command (? for help): p
 Disk /dev/sda: 41943040 sectors, 20.0 GiB
 Model: VBOX HARDDISK   
 Sector size (logical/physical): 512/512 bytes
-Disk identifier (GUID): DCDD6F9A-F350-4E5A-8646-61C19390B68E
+Disk identifier (GUID): 5F0628CC-C27F-4167-9EEF-9B7E654829C5
 Partition table holds up to 128 entries
 Main partition table begins at sector 2 and ends at sector 33
 First usable sector is 34, last usable sector is 41943006
 Partitions will be aligned on 2048-sector boundaries
-Total free space is 2014 sectors (1007.0 KiB)
+Total free space is 990 sectors (495.0 KiB)
 
 Number  Start (sector)    End (sector)  Size       Code  Name
-   1            2048         1050623   512.0 MiB   EF00  EFI system partition
-   2         1050624        17827839   8.0 GiB     8200  Linux swap
-   3        17827840        41943006   11.5 GiB    8309  Linux LUKS
-```
-GPT schreiben:
-```
+   1            1024            2047   512.0 KiB   EF02  BIOS boot partition
+   2            2048         1050623   512.0 MiB   EF00  EFI system partition
+   3         1050624        17827839   8.0 GiB     8200  Linux swap
+   4        17827840        41943006   11.5 GiB    8309  Linux LUKS
+
 Command (? for help): w
 
 Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
@@ -142,21 +138,21 @@ The operation has completed successfully.
 
 ### EFI System Partition formatieren
 ```
-mkfs.fat -F32 /dev/sda1
+mkfs.fat -F32 /dev/sda2
 # mkfs.fat 4.1 (2017-01-24)
 ```
 
-### LUKS-Partition mit LUKS1 verschlüsseln
+### LUKS-Partition für System mit LUKS1 verschlüsseln
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda3
-
-WARNING!
-========
-This will overwrite data on /dev/sda3 irrevocably.
-
-Are you sure? (Type uppercase yes): YES
-Enter passphrase for /dev/sda3: *****
-Verify passphrase: *****
+cryptsetup luksFormat --type=luks1 /dev/sda4
+#
+# WARNING!
+# ========
+# This will overwrite data on /dev/sda4 irrevocably.
+#
+# Are you sure? (Type uppercase yes): YES
+# Enter passphrase for /dev/sda4: *****
+# Verify passphrase: *****
 ```
 
 **Hinweis:** GRUB 2 kann derzeit nur mit LUKS Version 1 verschlüsselte Partitionen entschlüsseln.
@@ -174,8 +170,8 @@ ist es ratsam, folgende [Hinweise](https://github.com/ingank/Linux/blob/master/u
 
 ### Linux Systempartition ins aktuelle System mappen
 ```
-cryptsetup open /dev/sda3 crypt_rootfs
-Enter passphrase for /dev/sda3: *****
+cryptsetup open /dev/sda4 crypt_rootfs
+Enter passphrase for /dev/sda4: *****
 ```
 Prüfen:
 ```
@@ -191,7 +187,7 @@ mkfs.btrfs /dev/mapper/crypt_rootfs
 #
 # Detected a SSD, turning off metadata duplication.  Mkfs with -m dup if you want to force metadata duplication.
 # Label:              (null)
-# UUID:               29b43765-115b-4b5c-8017-7b0ac015c5b5
+# UUID:               be756d4c-2d66-4481-baac-eaa55bf2d987
 # Node size:          16384
 # Sector size:        4096
 # Filesystem size:    11.50GiB
@@ -300,7 +296,7 @@ btrfs subvolume list /
 
 Eintrag in /etc/crypttab:
 ```
-echo "crypt_rootfs UUID=$(blkid -s UUID -o value /dev/sda3) none luks" >> /etc/crypttab
+echo "crypt_rootfs UUID=$(blkid -s UUID -o value /dev/sda4) none luks" >> /etc/crypttab
 ```
 
 Kontrolle:
@@ -309,75 +305,51 @@ cat /etc/crypttab
 # crypt_rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
 ```
 
-### swap-Auslagerungsspeicher deaktivieren
+### swap-Auslagerungsspeicher in LUKS-Partition einbetten
+
+Über die aktuelle Blockgeräte-UUID der swap-Partition den Eintrag in /etc/fstab vorsorglich auf LUKS-Mapper ändern:
 ```
-swapoff /dev/sda2
+sed -i "s|UUID=$(blkid -s UUID -o value /dev/sda3)|/dev/mapper/crypt_swap|" /etc/fstab
 ```
 
-### swap-Auslagerungsspeicher in LUKS-Partition wandeln
+Swap-Speicher deaktivieren:
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda2
-WARNING: Device /dev/sda2 already contains a 'swap' superblock signature.
-
-WARNING!
-========
-This will overwrite data on /dev/sda2 irrevocably.
-
-Are you sure? (Type uppercase yes): YES
-Enter passphrase for /dev/sda2: *****
-Verify passphrase: *****
+swapoff /dev/sda3
 ```
-
-### LUKS-Partition (swap) ins aktuelle System mappen
+Swap-Partition in LUKS-Partition wandeln:
 ```
-cryptsetup luksOpen /dev/sda2 crypt_swap
-# Enter passphrase for /dev/sda2: *****
+cryptsetup luksFormat --type=luks1 /dev/sda3
+# WARNING: Device /dev/sda3 already contains a 'swap' superblock signature.
+#
+# WARNING!
+# ========
+# This will overwrite data on /dev/sda3 irrevocably.
+#
+# Are you sure? (Type uppercase yes): YES
+# Enter passphrase for /dev/sda3: *****
+# Verify passphrase: *****
+```
+LUKS-Partition (swap) ins aktuelle System mappen:
+```
+cryptsetup luksOpen /dev/sda3 crypt_swap
+# Enter passphrase for /dev/sda3: *****
 ```
 Inspektion:
 ```
 ls /dev/mapper
-# control  rootfs  swap
+# control  crypt_rootfs  crypt_swap
 ```
 
-### swap-Speicher innerhalb LUKS neu formatieren
+Swap-Speicher innerhalb LUKS-Partition neu formatieren
 ```
 mkswap /dev/mapper/crypt_swap
-Setting up swapspace version 1, size = 8 GiB (8587833344 bytes)
-no label, UUID=de39282c-ccc4-49e8-969b-dd5823868dba
-```
-
-### swap-Speicher in /etc/crypttab und /etc/fstab aufnehmen
-
-UUID des swap-Blockgerätes ermitteln und der Variable *SWAP_UUID* zuweisen:
-```
-SWAP_UUID=$(blkid -s UUID -o value /dev/sda2)
+# Setting up swapspace version 1, size = 8 GiB (8587833344 bytes)
+# no label, UUID=d319462f-01d3-4163-9126-bc02ba70975d
 ```
 
 Eintrag in /etc/crypttab:
 ```
-echo "crypt_swap UUID=${SWAP_UUID} none luks" >> /etc/crypttab
-```
-
-Kontrolle:
-```
-cat /etc/crypttab
-# crypt_rootfs UUID=4b1f0df6-8649-4b01-b1b4-bdf8d8f55708 none luks
-# crypt_swap UUID=d7fc9f08-897b-439b-94f9-3b029499d6dd none luks
-
-```
-
-Eintrag in /etc/fstab:
-```
-sed -i "s|^UUID=.*swap.*0$|/dev/mapper/crypt_swap none swap sw 0 0|" /etc/fstab
-```
-
-Kontrolle:
-```
-cat /etc/fstab | sed 's/[[:space:][:blank:]]/ /g;s/ \{2,\}/ /g;/^#/d;/^$/d'
-# /dev/mapper/crypt_rootfs / btrfs defaults,subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
-# UUID=3A4C-89B7 /boot/efi vfat umask=0077 0 1
-# /dev/mapper/crypt_rootfs /home btrfs defaults,subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
-# /dev/mapper/crypt_swap none swap sw 0 0
+echo "crypt_swap UUID=$(blkid -s UUID -o value /dev/sda3) none luks" >> /etc/crypttab
 ```
 
 ### Schlüsseldatei erzeugen
@@ -392,13 +364,13 @@ chmod u=r,go-rwx /etc/luks/boot_os.keyfile
 
 Für Systempartition:
 ```
-cryptsetup luksAddKey /dev/sda3 /etc/luks/boot_os.keyfile
+cryptsetup luksAddKey /dev/sda4 /etc/luks/boot_os.keyfile
 Enter any existing passphrase: *****
 ```
 
 Für swap-Speicher:
 ```
-cryptsetup luksAddKey /dev/sda2 /etc/luks/boot_os.keyfile
+cryptsetup luksAddKey /dev/sda3 /etc/luks/boot_os.keyfile
 Enter any existing passphrase: *****
 ```
 
@@ -406,7 +378,7 @@ Enter any existing passphrase: *****
 
 Für Systempartition:
 ```
-cryptsetup luksDump /dev/sda3 | grep "Key Slot"
+cryptsetup luksDump /dev/sda4 | grep "Key Slot"
 # Key Slot 0: ENABLED
 # Key Slot 1: ENABLED
 # Key Slot 2: DISABLED
@@ -419,7 +391,7 @@ cryptsetup luksDump /dev/sda3 | grep "Key Slot"
 
 Für swap-Speicher:
 ```
-cryptsetup luksDump /dev/sda2 | grep "Key Slot"
+cryptsetup luksDump /dev/sda3 | grep "Key Slot"
 # Key Slot 0: ENABLED
 # Key Slot 1: ENABLED
 # Key Slot 2: DISABLED
@@ -444,11 +416,17 @@ Alle Zeichenfolgen *none* durch */etc/luks/boot_os.keyfile* ersetzen:
 sed -i "s|none|/etc/luks/boot_os.keyfile|" /etc/crypttab
 ```
 
-Kontrolle:
+### Abschließende Inspektion von /etc/fstab und /etc/crypttab
 ```
+cat /etc/fstab | sed 's/[[:space:][:blank:]]/ /g;s/ \{2,\}/ /g;/^#/d;/^$/d'
+# /dev/mapper/crypt_rootfs / btrfs defaults,subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
+# UUID=3F6B-190F /boot/efi vfat umask=0077 0 1
+# /dev/mapper/crypt_rootfs /home btrfs defaults,subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
+# /dev/mapper/crypt_swap none swap sw 0 0
+
 cat /etc/crypttab
-# rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 /etc/luks/boot_os.keyfile luks
-# swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 /etc/luks/boot_os.keyfile luks
+# crypt_rootfs UUID=c6ba4ab6-6830-48b1-81c8-ef70cb108b96 /etc/luks/boot_os.keyfile luks
+# crypt_swap UUID=aa5ae86f-7c93-43df-81b8-7ea5d48db172 /etc/luks/boot_os.keyfile luks
 ```
 
 ### GRUB konfigurieren
@@ -461,8 +439,23 @@ echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 ### GRUB als Bootmanager installieren
 ```
 update-initramfs -c -k all
+# update-initramfs: Generating /boot/initrd.img-5.4.0-42-generic
+# update-initramfs: Generating /boot/initrd.img-5.4.0-56-generic
+
 grub-install /dev/sda
+# Installing for i386-pc platform.
+# Installation finished. No error reported.
+
 update-grub
+# Sourcing file `/etc/default/grub'
+# Sourcing file `/etc/default/grub.d/init-select.cfg'
+# Generating grub configuration file ...
+# Found linux image: /boot/vmlinuz-5.4.0-56-generic
+# Found initrd image: /boot/initrd.img-5.4.0-56-generic
+# Found linux image: /boot/vmlinuz-5.4.0-42-generic
+# Found initrd image: /boot/initrd.img-5.4.0-42-generic
+# Adding boot menu entry for UEFI Firmware Settings
+# done
 ```
 
 ### Initial Ramdisk inspizieren
@@ -533,9 +526,3 @@ sudo apt upgrade
 * https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Manual_configuration_of_core_image_for_early_boot
 * https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks#Speeding_up_LUKS_decryption_in_GRUB
 * https://wiki.ubuntuusers.de/EFI_Nachbearbeitung/
-
-
-## TODO
-* BIOS boot partition ist nicht notwendig für EFI-Systeme.
-  Das GRUB *core.img* landet als *grubx64.efi* auf der EFI-Partition.
-  Also kann die zusätzliche Partition in der Standard-Testumgebung wegfallen.
