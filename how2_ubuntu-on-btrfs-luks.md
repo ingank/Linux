@@ -431,6 +431,12 @@ cat /etc/crypttab
 
 ### GRUB konfigurieren
 
+GRUB soll EFI sprechen:
+```
+apt update
+apt install -y --reinstall grub-efi-amd64
+```
+
 GRUB soll auf verschlüsselte Festplatten zugreifen können:
 ```
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
