@@ -34,17 +34,24 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 * keine Interaktion
 
 ### Auf dem Willkommen-Bildschirm:
-* Sprache wählen: *Deutsch*
-* Aktion: *Ubuntu ausprobieren*
+* Sprache belassen: *English*
+* Aktion: *Try Ubuntu*
+
+**Hinweis:** Die Sprache *English* wird hier ausgewählt,
+um in dieser Dokumentation gemischtsprachigen Konsolen-/Fehlerausgaben
+von vornherein aus dem Weg zu gehen.
 
 ### Tastaturlayout auf Deutsch umstellen:
-* Gehe zu: *Einstellungen*
-* Gehe zu: *Region und Sprache*
-* Gehe zu: *Eingabequellen*
-* Aktion: *Tastatur hinzufügen (+)*
-* Wähle: *Deutsch (ohne Akzenttasten)*
-* Aktion: *Tastatur entfernen* für *English (USA)*
+* Klicke: *ON/OFF Button oben/rechts*
+* Klicke: *Settings*
+* Klicke: *Region & Language*
+* Klicke: *Input Sources*
+* Klicke: *Add an Input Source: '+'*
+* Wähle: *German (Germany)*
+* Wähle: *German (no dead keys)*
+* Klicke: *Add*
 * Schließe: *Einstellungen*
+* Wähle: *'de' bei 'en' oben/rechts*
 
 ### Terminal öffnen:
 * Tastenkombination: *[STRG]+[ALT]+[T]*
