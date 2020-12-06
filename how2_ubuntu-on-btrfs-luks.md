@@ -18,13 +18,12 @@ Die Anleitung bezieht sich auf folgende Testumgebung:
 
 Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
 
-* Veraltet:
-  * Firmware-Schnittstelle: BIOS
-  * Festplatten-Hardware: HDD
-  * Partitionierungsschema: MBR
-* Modern:
-  * Festplatten-Controller: NVMe
-  * UEFI Secure Boot: JA
+* Boot-Lader: GRUB 2 mit deutscher Tastatur
+* Festplatten-Controller: NVMe
+* UEFI Secure Boot: JA
+* Firmware-Schnittstelle: BIOS
+* Festplatten-Hardware: HDD
+* Partitionierungsschema: MBR
 
 ## Schritt für Schritt
 
