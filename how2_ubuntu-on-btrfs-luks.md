@@ -233,9 +233,11 @@ die Performanz positiv zu beeinflussen.
 
 ### Ubuntu installieren
 
-Das Tool *Ubiquity* kann nun zur Installation des Betriebssystems gestartet werden.
-Die Installation des GRUB 2 Bootladers wird später von Hand erledigt und wird
-deshalb vorerst unterdrückt:
+Das Tool *Ubiquity* kann
+zur Installation des Betriebssystems gestartet werden.
+Die Installation des GRUB 2 Bootladers
+wird später von Hand erledigt und
+deshalb an dieser Stelle unterdrückt:
 ```
 ubiquity --no-bootloader
 ```
