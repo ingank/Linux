@@ -500,23 +500,18 @@ Wenn die Passphrase zu keinem der Schlüssel in den Schlüsselfächern (Key-Slot
 
 ![Bild](images/grub_cmd_prompt.png)
 
-Hier kann mit
-```
-grub> reboot
-```
-der Rechner neu gestartet werden. Wenn die Systempartition entschlüsselt werden konnte, dann startet GRUB in den Bootmanager:
+Wenn die Systempartition entschlüsselt werden konnte, dann startet GRUB in den Bootmanager:
 
 ![Bild](images/grub_menu.png)
 
 Hinweis: Die Prozesse der Verifizierung des richtigen Schlüssels bzw. der Entschlüsselung der Systempartition kann eine Weile dauern.
 
-### Systemupdate
+## Anhang
 
-Nach dem ersten Reboot kann das System geupdatet werden:
-```
-sudo apt update
-sudo apt upgrade
-```
+### Sonderfall: deutsche Tastaturbelegung in GRUB 2
+
+siehe hierzu:
+[Tastaturlayout der GRUB-2-Konsole anpassen](tweak_grub2-keyboard-layout.md)
 
 ## Quellen
 * https://wiki.thoschworks.de/thoschwiki/linux/ubuntumatebtrfsencrypted
