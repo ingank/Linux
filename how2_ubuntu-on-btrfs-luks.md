@@ -248,23 +248,27 @@ deshalb an dieser Stelle unterdrückt:
 ```
 ubiquity --no-bootloader
 ```
-* Willkommen: *Deutsch* auswählen // *Weiter*
-* Tastaturbelegung: *German* | *German - German (no dead keys)* // *Weiter*
-* Aktualisierungen und andere Software: nach den eigenen Vorstellungen // *Weiter*
-* Installationsart: *Etwas Anderes* // *Weiter*
-  * Laufwerk */dev/mapper/rootfs* | Zweite Zeile | *Ändern ...*
-    * Benutzen als: *Btrfs-Journaling-Dateisystem*
-    * Partition formatieren: [x]
-    * Einbindungspunkt: */*
+* Welcome: *English* belassen // *Continue*
+* Keyboard layout: *German* // *German - German (no dead keys)* // *Continue*
+* Updates and other software: *eigene Präferenzen wählen* // *Continue*
+* Installation type: *Something else* // *Continue*
+  * Device */dev/mapper/crypt_rootfs*
+  * Zweite Zeile markieren
+  * *Change...*
+    * Use as: *btrfs journaling file system*
+    * Format the partition: [x]
+    * Mount point: */*
     * *OK*
-  * Laufwerk */dev/sda3* | *Ändern ...*
-    * Benutzen als: *Auslagerungsspeicher (Swap)*
-  * *Jetzt Installieren*
-  * *Weiter*
+  * Device */dev/sda2* markieren
+  * *Change...*
+    * Use as: *swap area*
+    * *OK*
+  * *Install Now*
+  * *Continue*
 * Wo befinden Sie sich?: Standort Auswählen // *Weiter*
 * Wer sind Sie?: Nutzerdaten und Passwort vergeben // *Weiter*
 * **Installation wird durchgeführt**
-* Dialogbox *Installation abgeschlossen*: *Ausprobieren fortsetzen*
+* Dialogbox *Installation complete*: *Continue Testing*
 * Wenn alles glatt lief, befinden wir uns wieder als root im Terminal
 
 ### chroot ins neue Betriebssystem
