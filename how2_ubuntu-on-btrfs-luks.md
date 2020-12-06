@@ -265,21 +265,22 @@ ubiquity --no-bootloader
     * *OK*
   * *Install Now*
   * *Continue*
-* Wo befinden Sie sich?: Standort Auswählen // *Weiter*
-* Wer sind Sie?: Nutzerdaten und Passwort vergeben // *Weiter*
+* Where are you?: *Standort Auswählen* // *Continue*
+* Who are you?: *Nutzerdaten und Passwort vergeben* // *Continue*
 * **Installation wird durchgeführt**
 * Dialogbox *Installation complete*: *Continue Testing*
-* Wenn alles glatt lief, befinden wir uns wieder als root im Terminal
+* Wenn alles glatt lief, befinden wir uns wieder als
+  Benutzer *root* im Terminal
 
 ### chroot ins neue Betriebssystem
+
+**Beachte:** Wenn, wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
+die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt wurde,
+so muss dies auch an dieser Stelle erfolgen.
+
 ```
 mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt
 mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt/home
-```
-**Beachte:** Wenn, wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
-die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt wurde,
-so muss dies auch an dieser Stelle ebenfalls erfolgen.
-```
 for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
 cp /etc/resolv.conf /mnt/etc/
 chroot /mnt
