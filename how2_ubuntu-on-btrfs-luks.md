@@ -204,7 +204,10 @@ mkfs.btrfs /dev/mapper/crypt_rootfs
 
 ### Mount-Optionen an SSD-Spezifikation anpassen
 
-Zwei Konfigurationsdateien mit Hilfe eines Texteditors anpassen:
+Zwei Konfigurationsdateien patchen:
+```
+wget https://gist.github.com/ingank/291a09fd63124808a7ef9a955705ba82/archive/c336dca48b9a99aee20cd2bb8f0b05299e73a50d.zip -o 001.patch.zip
+```
 
 |Datei|Patch|
 |:-|:-|
