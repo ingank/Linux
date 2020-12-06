@@ -279,61 +279,60 @@ die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt
 so muss dies auch an dieser Stelle erfolgen.
 
 ```
-mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt
-mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/rootfs /mnt/home
+mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/crypt_rootfs /mnt
+mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/crypt_rootfs /mnt/home
 for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
-cp /etc/resolv.conf /mnt/etc/
 chroot /mnt
 ```
 Inspektion der chroot-Umgebung:
 ```
 mount -av
-# /                        : ignoriert
+# /                        : ignored
 # /boot/efi                : successfully mounted
-# /home                    : bereits eingehängt
-# none                     : ignoriert
+# /home                    : already mounted
+# none                     : ignored
 
 btrfs subvolume list /
-# ID 256 gen 146 top level 5 path @
-# ID 257 gen 20 top level 5 path @home
+# ID 256 gen 174 top level 5 path @
+# ID 257 gen 26 top level 5 path @home
 ```
 
-### Blockgerät des root-Dateisystems in /etc/crypttab aufnehmen
+### Blockgerät der Systempartition in /etc/crypttab aufnehmen
 
 Eintrag in /etc/crypttab:
 ```
-echo "rootfs UUID=$(blkid -s UUID -o value /dev/sda4) none luks" >> /etc/crypttab
+echo "crypt_rootfs UUID=$(blkid -s UUID -o value /dev/sda3) none luks" >> /etc/crypttab
 ```
 
 Kontrolle:
 ```
 cat /etc/crypttab
-# rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
+# crypt_rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
 ```
 
 ### swap-Auslagerungsspeicher deaktivieren
 ```
-swapoff /dev/sda3
+swapoff /dev/sda2
 ```
 
-### swap-Partition verschlüsseln
+### swap-Auslagerungsspeicher in LUKS-Partition wandeln
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda3
-# WARNUNG: Gerät /dev/sda3 enthält bereits eine 'swap'-Superblock-Signatur.
-#
-# WARNING!
-# ========
-# Hiermit werden die Daten auf »/dev/sda3« unwiderruflich überschrieben.
-#
-# Are you sure? (Type uppercase yes): YES
-# Geben Sie die Passphrase für »/dev/sda3« ein: *****
-# Passphrase bestätigen: *****
+cryptsetup luksFormat --type=luks1 /dev/sda2
+WARNING: Device /dev/sda2 already contains a 'swap' superblock signature.
+
+WARNING!
+========
+This will overwrite data on /dev/sda2 irrevocably.
+
+Are you sure? (Type uppercase yes): YES
+Enter passphrase for /dev/sda2: *****
+Verify passphrase: *****
 ```
 
-### swap-Partition ins aktuelle System mappen
+### LUKS-Partition (swap) ins aktuelle System mappen
 ```
-cryptsetup luksOpen /dev/sda3 swap
-# Geben Sie die Passphrase für »/dev/sda3« ein: *****
+cryptsetup luksOpen /dev/sda2 crypt_swap
+# Enter passphrase for /dev/sda2: *****
 ```
 Inspektion:
 ```
@@ -341,44 +340,45 @@ ls /dev/mapper
 # control  rootfs  swap
 ```
 
-### swap-Speicher neu formatieren
+### swap-Speicher innerhalb LUKS neu formatieren
 ```
-mkswap /dev/mapper/swap
-# Auslagerungsbereich Version 1 wird angelegt, Größe = 8 GiB (8587833344 Bytes)
-# keine Bezeichnung, UUID=6172916d-5d2e-4130-a964-5c6694aeccfb
+mkswap /dev/mapper/crypt_swap
+Setting up swapspace version 1, size = 8 GiB (8587833344 bytes)
+no label, UUID=de39282c-ccc4-49e8-969b-dd5823868dba
 ```
 
 ### swap-Speicher in /etc/crypttab und /etc/fstab aufnehmen
 
 UUID des swap-Blockgerätes ermitteln und der Variable *SWAP_UUID* zuweisen:
 ```
-export SWAP_UUID=$(blkid -s UUID -o value /dev/sda3)
+SWAP_UUID=$(blkid -s UUID -o value /dev/sda2)
 ```
 
 Eintrag in /etc/crypttab:
 ```
-echo "swap ${SWAP_UUID} none luks" >> /etc/crypttab
+echo "crypt_swap UUID=${SWAP_UUID} none luks" >> /etc/crypttab
 ```
 
 Kontrolle:
 ```
 cat /etc/crypttab
-# rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
-# swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 none luks
+# crypt_rootfs UUID=4b1f0df6-8649-4b01-b1b4-bdf8d8f55708 none luks
+# crypt_swap UUID=d7fc9f08-897b-439b-94f9-3b029499d6dd none luks
+
 ```
 
 Eintrag in /etc/fstab:
 ```
-sed -i "s|UUID=${SWAP_UUID}|/dev/mapper/swap|" /etc/fstab
+sed -i "s|^UUID=.*swap.*0$|/dev/mapper/crypt_swap none swap sw 0 0|" /etc/fstab
 ```
 
 Kontrolle:
 ```
 cat /etc/fstab | sed 's/[[:space:][:blank:]]/ /g;s/ \{2,\}/ /g;/^#/d;/^$/d'
-# /dev/mapper/rootfs / btrfs defaults,subvol=@,ssd,noatime,space_cache,commit=120 0 0
-# UUID=51DC-D19B /boot/efi vfat umask=0077 0 1
-# /dev/mapper/rootfs /home btrfs defaults,subvol=@home,ssd,noatime,space_cache,commit=120 0 0
-# /dev/mapper/swap none swap sw 0 0
+# /dev/mapper/crypt_rootfs / btrfs defaults,subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
+# UUID=3A4C-89B7 /boot/efi vfat umask=0077 0 1
+# /dev/mapper/crypt_rootfs /home btrfs defaults,subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
+# /dev/mapper/crypt_swap none swap sw 0 0
 ```
 
 ### Schlüsseldatei erzeugen
@@ -391,23 +391,23 @@ chmod u=r,go-rwx /etc/luks/boot_os.keyfile
 
 ### Schlüsseldatei in Key-Slots einfügen
 
-Für root-Dateisystem:
+Für Systempartition:
 ```
-cryptsetup luksAddKey /dev/sda4 /etc/luks/boot_os.keyfile
-# Geben Sie irgendeine bestehende Passphrase ein: *****
+cryptsetup luksAddKey /dev/sda3 /etc/luks/boot_os.keyfile
+Enter any existing passphrase: *****
 ```
 
 Für swap-Speicher:
 ```
-cryptsetup luksAddKey /dev/sda3 /etc/luks/boot_os.keyfile
-# Geben Sie irgendeine bestehende Passphrase ein: *****
+cryptsetup luksAddKey /dev/sda2 /etc/luks/boot_os.keyfile
+Enter any existing passphrase: *****
 ```
 
 ### Key-Slots inspizieren
 
-Für root-Dateisystem
+Für Systempartition:
 ```
-cryptsetup luksDump /dev/sda4 | grep "Key Slot"
+cryptsetup luksDump /dev/sda3 | grep "Key Slot"
 # Key Slot 0: ENABLED
 # Key Slot 1: ENABLED
 # Key Slot 2: DISABLED
@@ -420,7 +420,7 @@ cryptsetup luksDump /dev/sda4 | grep "Key Slot"
 
 Für swap-Speicher:
 ```
-cryptsetup luksDump /dev/sda3 | grep "Key Slot"
+cryptsetup luksDump /dev/sda2 | grep "Key Slot"
 # Key Slot 0: ENABLED
 # Key Slot 1: ENABLED
 # Key Slot 2: DISABLED
@@ -452,19 +452,14 @@ cat /etc/crypttab
 # swap UUID=6a4eb9d9-7a0f-4486-a4af-bc3e75c3cb38 /etc/luks/boot_os.keyfile luks
 ```
 
-### GRUB installieren
-
-signierten EFI-GRUB installieren:
-```
-apt install -y --reinstall grub-efi-amd64-signed
-```
+### GRUB konfigurieren
 
 GRUB soll auf verschlüsselte Festplatten zugreifen können:
 ```
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 ```
 
-GRUB konfigurieren und als Bootmanager installieren:
+### GRUB als Bootmanager installieren
 ```
 update-initramfs -c -k all
 grub-install /dev/sda
