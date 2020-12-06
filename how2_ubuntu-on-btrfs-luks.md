@@ -9,6 +9,7 @@ Die Anleitung bezieht sich auf folgende Testumgebung:
 * Host: Ubuntu 18.04.5 LTS
 * Gast: Ubuntu 20.04.1 LTS
 * Firmware-Schnittstelle: EFI
+* UEFI Secure Boot: NEIN
 * Festplatten-Hardware: SSD
 * Festplattengröße: 20 GiB
 * Festplatten-Controller: SATA
@@ -23,6 +24,7 @@ Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
   * Partitionierungsschema: MBR
 * Modern:
   * Festplatten-Controller: NVMe
+  * UEFI Secure Boot: JA
 
 ## Schritt für Schritt
 
