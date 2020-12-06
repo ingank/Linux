@@ -101,15 +101,15 @@ Current type is 8300 (Linux filesystem)
 Hex code or GUID (L to show codes, Enter = 8300): 8200
 Changed type of partition to 'Linux swap'
 ```
-Linux Systempartition anlegen:
+LUKS-Partition anlegen:
 ```
 Command (? for help): n
 Partition number (3-128, default 3): 
 First sector (34-41943006, default = 17827840) or {+-}size{KMGTP}: 
 Last sector (17827840-41943006, default = 41943006) or {+-}size{KMGTP}: 
 Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 
-Changed type of partition to 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): 8309
+Changed type of partition to 'Linux LUKS'
 ```
 GPT prüfen:
 ```
@@ -117,7 +117,7 @@ Command (? for help): p
 Disk /dev/sda: 41943040 sectors, 20.0 GiB
 Model: VBOX HARDDISK   
 Sector size (logical/physical): 512/512 bytes
-Disk identifier (GUID): C1D893B1-DC2A-4B44-B6AE-DF5DE9B4B071
+Disk identifier (GUID): DCDD6F9A-F350-4E5A-8646-61C19390B68E
 Partition table holds up to 128 entries
 Main partition table begins at sector 2 and ends at sector 33
 First usable sector is 34, last usable sector is 41943006
@@ -127,7 +127,7 @@ Total free space is 2014 sectors (1007.0 KiB)
 Number  Start (sector)    End (sector)  Size       Code  Name
    1            2048         1050623   512.0 MiB   EF00  EFI system partition
    2         1050624        17827839   8.0 GiB     8200  Linux swap
-   3        17827840        41943006   11.5 GiB    8300  Linux filesystem
+   3        17827840        41943006   11.5 GiB    8309  Linux LUKS
 ```
 GPT schreiben:
 ```
@@ -147,7 +147,7 @@ mkfs.fat -F32 /dev/sda1
 # mkfs.fat 4.1 (2017-01-24)
 ```
 
-### Linux Systempartition mit LUKS1 verschlüsseln
+### LUKS-Partition mit LUKS1 verschlüsseln
 ```
 cryptsetup luksFormat --type=luks1 /dev/sda3
 
@@ -159,6 +159,13 @@ Are you sure? (Type uppercase yes): YES
 Enter passphrase for /dev/sda3: *****
 Verify passphrase: *****
 ```
+
+**Hinweis:** GRUB 2 kann derzeit nur mit LUKS Version 1 verschlüsselte Partitionen entschlüsseln.
+Dieses Tutorial verzichtet auf eine gemischte Konfiguration aus LUKS1-verschlüsselter
+Boot-Partition und LUKS2-verschlüsselter Systempartition.
+Erfolgreiche Angriffe auf die Boot-Partition mit eventuell darauf befindlichen Schlüsseln
+für die Entschlüsselung der LUKS2-verschlüsselten Partitionen
+ergibt keinen Sicherheitsvorteil gegenüber der LUKS1/LUKS1 - Variante.
 
 **Achtung:** Festplattenver- und Entschlüsselung
 sind unter Umständen betriebssystemunabhängige Vorgänge.
