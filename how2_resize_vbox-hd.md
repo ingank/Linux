@@ -28,3 +28,7 @@ VBoxManage modifyhd --resize 512000 c192491c-d2a4-42c7-a201-ca219f6c8030
 
 **Hinweis:** Damit das installierte Betriebssystem auch mit dem Mehr an Kapazität etwas anfangen kann,
 müssen die letzte Partition vergrößert oder zusätzliche Partitionen hinzugefügt werden.
+
+Weiterführende Informationen:
+
+* [Das Root-Dateisystem (/) zur Laufzeit vergrößern](how2_resize_rootfs-partition.md)
