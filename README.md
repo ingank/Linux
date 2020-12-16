@@ -28,6 +28,8 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Homeverzeichnis auf separate Partition verlagern](how2_move-home.md)
 * [TP-Link Powerline Adapter per VM administrieren](how2_powerline-on-linux.md)
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
+* [Das Root-Dateisystem (/) zur Laufzeit vergrößern](how2_resize_rootfs-partition.md)
+* [Virtuelle Festplatten (Virtual Box) nachträglich vergrößern](how2_resize_vbox-hd.md)
 * [eml-Dateien in Thunderbird importieren](how2_thunderbird-import-eml.md)
 * [Das Logging von cron-Jobs steuern](how2_tweak-cron-logging.md)
 * [Ubuntu auf Btrfs mit LUKS verschlüsseln](how2_ubuntu-on-btrfs-luks.md)
@@ -45,6 +47,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Mit host, dig und nslookup Namenauflösung untersuchen](use_host-dig-nslookup.md)
 * [Die Linux Benutzerverwaltung](use_linux-user-management.md)
 * [Passwörter erstellen und benutzen](use_passwords.md)
+* [Der Streameditor *sed*](use_sed.md)
 * [SSH Public Key Authentifizierung](use_ssh-pka.md)
 * [Terminal-Befehle per SSH unmittelbar auf dem Zielhost ausführen](use_ssh-t.md)
 * [Mails mit ssmtp versenden](use_ssmtp.md)
@@ -68,4 +71,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am So 6. Dez 22:14:01 CET 2020
+##### Aktualisiert am Mi 16. Dez 17:13:45 CET 2020
