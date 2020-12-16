@@ -2,7 +2,7 @@
 
 Das mächtige Urgestein zum gezielten Verändern von Textströmen, *sed*, ist in seinen Anwendungsmöglichkeiten so vielfältig, dass in diesem Dokument nur auf externe Ressourcen verwiesen wird.
 
-Das Hauptaugenmerk bei der Auswahl der Links soll ist die informative Qualität sein.
+Das primäre Augenmerk bei der Auswahl der Links soll die informative Qualität sein.
 
 ---
 
