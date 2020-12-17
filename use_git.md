@@ -46,3 +46,7 @@ Die Datei kann nach Abschluß der gewünschten Arbeit wieder in den INDEX aufgen
 ```
 git update-index --no-assume-unchanged foo
 ```
+
+## Quellen
+
+* https://www.ralfebert.de/git/
