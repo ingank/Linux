@@ -8,10 +8,19 @@ Folgende kleine Helferlein werden in Nullkommanichts das Ruder wieder dem angest
 
 Alle der folgenden Befehle werden als Benutzer mit root-Rechten ausgeführt.
 
+## grub-mkconfig
+
+Bevor Änderungen am bestehenden Bootprozess vorgenommen werden,
+kann die Konfigurationsdatei,
+wie sie auf den Bootdatenträger geschrieben werden würde,
+inspiziert werden. Die testweise erzeugte grub.cfg wird direkt auf die Konsole geschrieben.
+```
+grub-mkconfig
+```
+
 ## update-grub
 
 Dieser Befehl erstellt eine neue Datei */boot/grub/grub.cfg* aus den systemweit gesammelten Informationen und Konfigurationsdateien:
-
 ```
 update-grub
 ```
@@ -21,7 +30,6 @@ update-grub
 Wenn `update-grub` nicht zum Erfolg geführt hat, dann muss Grub neu installiert werden.
 Folgender Befehl installiert den Bootloader im MBR des angegebenen Blockgeräts.
 Für */dev/foo* muss die Bezeichnung des eigenen Bootgerätes eingesetzt werden ( Beispiel: */dev/sdx* ):
-
 ```
 grub-install /dev/foo
 ```
@@ -31,11 +39,12 @@ grub-install /dev/foo
 Wenn der Bootvorgang zwar in das richtige Betriebssystem bootet, sich jedoch nach ca. 10 Sekunden deutlich verzögert,
 kann es sein, dass die Installationsroutine der Testdistribution die Swap-Partition formatiert und damit eine neue UUID vergeben hat.
 Folgender Befehl erzeugt neue initiale Ramdisks für jeden der installierten Kernel und verlinkt jeweils die Swap-Partition neu.
-
 ```
 update-initramfs -c -k all
 ```
 
-## Siehe auch:
+## Andere interne Dokumente
 
 * [fix_frozen-bootstrap.md](fix_frozen-bootstrap.md)
+
+## Quellen
