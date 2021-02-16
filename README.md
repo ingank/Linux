@@ -37,6 +37,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [VSCode: Senkrechte Lineale anzeigen](how2_vscode-rulers.md)
 * [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
 * [Deaktivierung des Bootsplash](tweak_bootsplash-off.md)
+* [Aussehen und Handling des Gnome-Docks anpassen](tweak_gnome-dock.md)
 * [Tastaturlayout der GRUB-2-Konsole anpassen](tweak_grub2-keyboard-layout.md)
 * [Zugriffsrechte auf Partitionen mit Gnome steuern](tweak_hd-access-per-gnome.md)
 * [IPv6 Privacy Extensions anpassen](tweak_privacy-extensions.md)
@@ -53,6 +54,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Mails mit ssmtp versenden](use_ssmtp.md)
 * [su und sudo - eine kleine Einführung](use_su-sudo.md)
 * [tty-clock als Terminal-Uhr](use_tty-clock.md)
+* [umask nutzen](use_umask.md)
 
 ### VERZEICHNIS: files
 
@@ -71,4 +73,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Mi 16. Dez 17:13:45 CET 2020
+##### Aktualisiert am Di 16. Feb 22:39:53 CET 2021
