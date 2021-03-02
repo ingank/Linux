@@ -26,6 +26,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Ubuntu mit Legacy GRUB als Bootloader](how2_install-legacy-GRUB.md)
 * [Spracheinstellungen im Terminal](how2_locale-settings.md)
 * [Homeverzeichnis auf separate Partition verlagern](how2_move-home.md)
+* [Microsoft OneDrive in Ubuntu nutzen](how2_onedrive_on_ubuntu.md)
 * [TP-Link Powerline Adapter per VM administrieren](how2_powerline-on-linux.md)
 * [HP Laserjet 1022: Reinigungsseite drucken](how2_print-cleansheet.md)
 * [Das Root-Dateisystem (/) zur Laufzeit vergrößern](how2_resize_rootfs-partition.md)
@@ -73,4 +74,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Di 16. Feb 22:39:53 CET 2021
+##### Aktualisiert am Mi 3. Mär 00:46:16 CET 2021
