@@ -63,7 +63,7 @@ y/n> [↵]
 Log in and authorize rclone for access
 Waiting for code...
 ```
-Im sich öffnenden Webbrowser wird der Zugriff von _rclone_ auf OneDrive per Acces Token autorisiert.
+Im sich öffnenden Webbrowser wird der App-Zugriff von _rclone_ auf OneDrive autorisiert.
 Sobald der Prozess abgeschlossen wurde, kann die Konfiguration auf der Konsole fortgesetzt werden:
 ```
 Got code
@@ -124,12 +124,16 @@ OneDrive per FUSE mounten:
 rclone mount remote: ~/OneDrive --vfs-cache-mode full
 ```
 
-## Anmerkungen
-
 * Es hat sich als vorteilhaft erwiesen, _OneDrive_ nur für die Dauer der gewünschten Bearbeitung zu mounten.
 * Während der lokalen Arbeit an den _OneDrive_ - Dateien sollte nicht anderweitig, beispielsweise über die Weboberfläche schreibend auf OneDrive zugegriffen werden.
 * Nach der Bearbeitung der Dateien wird _rclone_ mit `[Ctrl]+[C]` beendet.
 
+## App-Berechtigung bei Microsoft löschen
+
+1. Bei Microsoft anmelden.
+1. Öffnen: https://account.live.com/consent/Manage
+1. Entsprechende Zugriffsberechtigung auswählen.
+1. Klicken: _Berechtigungen entfernen_
 
 ## Quellen
 
