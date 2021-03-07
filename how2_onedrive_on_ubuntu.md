@@ -130,6 +130,18 @@ rclone mount remote: ~/OneDrive --vfs-cache-mode full
 
 ## App-Berechtigung bei Microsoft löschen
 
+Alle für den Empfang des Access-Tokens notwendigen Daten liegen auf dem lokalen Rechner.
+
+Zwei Szenarien im Hinblick auf diese Daten sind zu beachten:
+
+* lokale Löschnung
+* Zugriff Dritter (Kompromitierung)
+
+In beiden Fällen ist eine Löschung der Zugriffsberechtigung auf Seiten Microsoft's (Authorization Server) anzuraten.
+Ein Access-Token kann dann nicht mehr angefordert werden.
+
+Zugriffsberechtigung des lokalen _rclone_ auf den _Authorization Server_ entfernen:
+
 1. Bei Microsoft anmelden.
 1. Öffnen: https://account.live.com/consent/Manage
 1. Entsprechende Zugriffsberechtigung auswählen.
