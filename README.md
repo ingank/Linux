@@ -13,6 +13,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [GRUB 2 - GPT - EF02](fix_gpt-for-grub2.md)
 * [Netflix F7355 Error mit Firefox@Ubuntu](fix_netflix-F7355.md)
 * [GRUB 2 - Hoheit zurückholen](fix_rebind-grub.md)
+* [Zeitdifferenz zischen Linux und Windows auf einem Rechner auflösen](fix_timediff_linux_win.md)
 * [Skripte automatisch ausführen](how2_autostart-scripts.md)
 * [WeeChat aus den Quellen installieren](how2_build-weechat@ubuntu.md)
 * [MBR (Master Boot Record) inspizieren](how2_check-mbr.md)
@@ -33,6 +34,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Virtuelle Festplatten (Virtual Box) nachträglich vergrößern](how2_resize_vbox-hd.md)
 * [eml-Dateien in Thunderbird importieren](how2_thunderbird-import-eml.md)
 * [Das Logging von cron-Jobs steuern](how2_tweak-cron-logging.md)
+* [Passwortregeln anpassen](how2_tweak-pw-strength.md)
 * [Ubuntu auf Btrfs mit LUKS verschlüsseln](how2_ubuntu-on-btrfs-luks.md)
 * [VNC über SSH-Jumpserver](how2_vnc-ssh-jumpserver.md)
 * [VSCode: Senkrechte Lineale anzeigen](how2_vscode-rulers.md)
@@ -74,4 +76,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Mi 3. Mär 00:46:16 CET 2021
+##### Aktualisiert am Di 27. Apr 21:09:16 CEST 2021
