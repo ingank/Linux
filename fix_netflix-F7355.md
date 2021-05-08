@@ -1,11 +1,16 @@
 # Netflix F7355 Error mit Firefox@Ubuntu
 
-Wer auf einem Ubuntu 19.10 mit Firefox in der Standardkonfigurarion Netflix-Videos anschauen möchte,
-wird mit dem Fehler F7355 davon abgehalten.
+Auf einem aktuellen Ubuntu kann der Start von
+Videos der Anbieter Netflix oder Amazon im Firefox-Browser fehlschlagen.
 
-## Fix
+## Abhilfe
 
-Nach der Installation des folgenden Codecs sollten Netflix-Videos abgespielt werden können:
+Bis auf weiteres hat folgendes geholfen:
 ```
-sudo apt-get install libavcodec-dev
+sudo apt install libavcodec-dev
 ```
+
+## Weitere Voraussetzungen
+
+* Im Firefox-Browser muss die Wiedergabe von DRM-Inhalten zugelassen sein
+* Im Firefox muss das Plugin _widevine_ installiert und immer aktiviert sein
