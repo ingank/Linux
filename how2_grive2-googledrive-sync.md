@@ -10,3 +10,8 @@ sudo apt update
 ```
 
 ## Anwendung
+
+Lokalen Ordner anlegen:
+```
+mkdir ~/Google-Drive
+```
