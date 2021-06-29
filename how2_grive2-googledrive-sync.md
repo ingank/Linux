@@ -15,3 +15,29 @@ Lokalen Ordner anlegen:
 ```
 mkdir ~/Google-Drive
 ```
+
+Lokalen Ordner als Wurzelordner anwählen:
+```
+cd ~/Google-Drive
+```
+
+Authentifizierungs-Token für Google-Drive erzeugen:
+```
+grive -a --dry-run
+```
+
+Kompletten Google-Drive synchronisieren:
+```
+grive
+```
+
+Einen bestimmten Google-Drive-Ordner synchronisieren:
+```
+grive -s ORDNER
+```
+
+Weitere Optionen anzeigen:
+```
+man grive
+grive --help
+```
