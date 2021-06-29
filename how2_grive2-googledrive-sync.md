@@ -21,7 +21,7 @@ Lokalen Ordner als Wurzelordner anwählen:
 cd ~/Google-Drive
 ```
 
-Authentifizierungs-Token für Google-Drive erzeugen:
+Authentifizierungs-Token für Google-Drive im aktuellen lokalen Ordner erzeugen:
 ```
 grive -a --dry-run
 ```
