@@ -52,5 +52,5 @@ grive --help
 
 ## Authentifizierungs-Token
 * Das Token kann beliebig auf andere lokale Ordner angwandt werden - auch auf anderen Rechnern.
-* Das birgt das Risiko eines Zugriffs von fremden Personen auf die Daten des Google Drive mit Hilfe eines gestolenen Tokens.
+* Das birgt das Risiko eines Zugriffs von fremden Personen auf die Daten des Google Drive mit Hilfe eines gestohlenen Tokens.
 * Bei Verdacht einer Kompromitierung des Tokens sollte dieses Token von Google Drive entbunden werden (siehe voriges Kapitel).
