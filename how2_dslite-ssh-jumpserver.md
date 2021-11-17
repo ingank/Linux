@@ -1,50 +1,70 @@
-# DS-Lite: Portforwarding über SSH-Jumpserver
+# DS-Lite: IPv4 Income per SSH-Jumpserver
 
-Stellen Sie sich vor, Sie hätten folgende Komponenten:
+## Aufgabenstellung
 
-- Internet lokal angebunden per DS-Lite Gateway
-- Raspbian 10 auf RaspberryPi3B im lokalen Netzwerk
-- Android Smartphone in einem IPv4 basierten mobilen Netz
+Stellen Sie sich folgendes Szenario vor:
 
-... und möchten vom Smartphone aus per ssh-App auf den RaspberryPi zugreifen.
+zu Hause:
+- GNU/Linux auf einem Raspberry Pi im lokalen Netzwerk
+- Internetzugang per DS-Lite Gateway (IPv4 OUT / IPv6 IN/OUT)
 
-Kein Problem, denkt sich der Freizeitnetzwerker. Doch wie sooft: Der Teufel steckt im Detail.
+Mobil:
+- Android auf einem mobilen Gerät (Smartphone, Tablet)
+- Internetzugang per IPv4 basiertem mobilen Internet
 
-Dieses Tutorial soll die Fallstricke und Sackgassen aufzeigen und am Ende zu einer einfach zu managenden Lösung verhelfen.
-Eines sei jedoch gleich vorweg genommen: ganz für lau ist das unter Umständen nicht zu haben.
-Warum das so ist und wie der Kosten-Nutzen-Faktor trotzdem gedeihlich gestaltet werden kann,
-das ist der Kern dieses Projekts.
+Wunsch:
+- Ich möchte (im ersten Step) von meinem mobilen Gerät per ssh auf den Raspberry Pi zugreifen.
 
-## Theorie
+## Diagnose
 
-DS-Lite hat einen entscheidenden Vorteil: der interessierte Nutzer muss sich zwangsläufig mit IPv6 auseinandersetzen.
-Wer beispielsweise einen Mini-Rechner wie den RaspberryPi aus dem Internet aus erreichbar machen will,
-muss vorher einige Überlegungen anstellen.
+Welche technischen Fallstricke stehen einer schnellen Erfüllung des oben genannten Wunsches im Wege?
 
 ### DSLite und IPv4: Katz und Maus
 
-Grundsätzlich sind alle Rechner des lokalen Netzwerkes *hinter* einem DS-Lite-Gateway auch direkt aus dem Internet erreichbar.
-Noch besser: sie sind Teil des routbaren Internets.
-Einschränkung: Diese Aussage bezieht sich auf den mit IPv6 addressierten Bereich.
+Grundsätzlich sind alle Rechner im lokalen Netzwerk
+über das DS-Lite-Gateway
+direkt aus dem Internet erreichbar;
+sie sind Teil des routbaren Internets.
+Diese Aussage bezieht sich jedoch ausschließlich
+auf den mit IPv6 addressierten Bereich.
 
-Ganz anders sieht es bei IPv4 aus:
-Auf Grund der Spezifikation von DS-Lite ist ein direkter Verbindungsaufbau
-aus dem Internet auf einen IPv4-Netzwerkadapter im lokalen Netzwerk nicht möglich.
-IPv4-Portforwarding ist nicht vorgesehen.
+Ganz anders sieht es bei IPv4 aus.
+Auf Grund der Spezifikation von DS-Lite
+ist ein direkter Verbindungsaufbau
+aus dem Internet
+auf einen IPv4-Netzwerkadapter
+im lokalen Netzwerk nicht möglich,
+denn das sogenannte IPv4-Portforwarding,
+das dies möglich machen würde,
+ist schlichtweg nicht vorgesehen. [[...]](https://de.wikipedia.org/wiki/IPv6#Dual-Stack_Lite_(DS-Lite))
 
-Was erst einmal wie ein großer Nachteil aussieht,
-ist bei näherer Betrachtung durchaus auch vorteilhaft:
-ein lokales IPv4 Netzwerk ist von außen physikalisch und damit auch logisch nicht erreichbar.
-Im weiteren Verlauf dieses Dokuments wird davon ausgegangen,
-dass Kommunikation im lokalen Netzwerk per IPv4 und global per IPv6 adressiert wird.
+Was erst einmal wie ein riesiger Nachteil aussieht,
+ist bei näherer Betrachtung durchaus auch vorteilhaft.
+Ein lokales IPv4 Netzwerk ist von außen nicht erreichbar.
+Wer also ein lokales IPv4 basiertes Netzwerk betreibt,
+muss sich um dessen eingehenden Netzwerkverkehr
+im Sinne der Netzwerksicherheit keine Gedanken machen;
+es gibt ihn einfach nicht.
+Im weiteren Verlauf dieses Tutorials wird davon ausgegangen,
+dass Kommunikation im lokalen Netzwerk per IPv4
+und global (Internet) per IPv6 adressiert wird.
 
 ### Mobile Netzwerke und IPv6: Maus und Katz
 
-Der Gedanke, sich von einem Smartphone (mit günstigem Mobilfunkanbieter)
-direkt per ssh mit dem RaspPi zu verbinden scheitert in zweifacher Hinsicht:
+Bei den Anbietern des mobilen Internets steht die Welt quasi Kopf.
+Vor allem günstige Hoster bieten ausschließlich die IPv4 Adressierung an.
+Schnell wird klar:
 
-1. Per IPv4 könnte zwar das mobile Endgerät verbinden, hingegen DS-Lite schiebt hier den Riegel vor.
-2. Per IPv6 ist zwar der RaspPi direkt erreichbar - das kann jedoch unser Smartphone nicht.
+### Das passt nicht!
+
+"Guck in den Ofen" - Matrix:
+|Gerät|IPv4 IN CONN|IPv6 IN CONN|IPv4 OUT CONN|IPv6 IN CONN|
+|-|:-:|:-:|:-:|:-:|
+|mobiles Endgerät| x | - | __(x)__ | - |
+|zu Hause| __(-)__ | x | x | x |
+
+Damit die Verbindung ohne Modifikationen aufgebaut werden kann,
+müssten beide Klammern ein 'x' enthalten.
 
 ### dynDNSv6 - nur die halbe Miete
 
