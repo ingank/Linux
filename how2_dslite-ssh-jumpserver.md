@@ -95,65 +95,19 @@ Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 - globales reverse DNS für beide Adressen
 - GNU/Linux Betriebssystem
 - **Zugriff per ssh**
-- **kein** VPN per **TUN/TAP**
+- kein VPN per TUN/TAP
 
-Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben.
+Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben und sollten in jedem Fall vorhanden sein.
 
+### Mini-V-Server einrichten
 
-### ssh-Tunneling anstatt VPN
+Jeder Hoster setzt seine eigene Philosophie um,
+wie der Mini-V-Server eingerichtet werden kann.
+Unabhängig davon,
+solltest du jetzt die entsprechenden Anleitungen des Anbieters konsultieren,
+um folgende grundlegende Einstellungen vorzunehmen:
 
-In dieser Preisklasse an gehosteten V-Servern
-ist für gewöhnlich die Einrichtung eines Tunnel-Interfaces (TUN/TAP) nicht vorgesehen,
-womit der Aufbau eines VPN's,
-was wohl sehr naheliegend wäre,
-ersteinmal ausgeschlossen werden kann.
+- DNS-Namen für den Server festlegen
+- GNU/Linux installieren
+- einen privilegierten Benutzer (Gruppe sudo) einrichten
 
-Wie sooft,
-kann diese Schwäche zu einer Stärke gereichen:
-Warum sollen wir ein VPN aufbauen,
-dass (mit heißer Nadel konfiguriert) mehr Scheunentore ins lokale Netzwerk öffnet,
-als der Nutzen jemals rechtfertigen könnte.
-
-Denn was benötigen wir wirklich?
-- einen ssh-Zugriff auf den RaspPi
-- über den dann in diesem Stadium auch sftp sofort möglich wäre
-- zusätzliche Dienste sollten nach dem Baukastenprinzip hinzugefügt werden können
-
-Baukastenprinzip:
-- ein TCP-Dienst bekommt einen ssh-Tunnel zugewiesen
-
-Vorteil:
-- volle Kontrolle über den Eintrittspunkt in das lokale Netzwerk
-
-### reverse-Tunnel anstatt forward-Tunnel
-
-Wie wird im Allgemeinen mit ssh gearbeitet?
-Ich möchte lokal etwas entfernt (remote) erledigen.
-Ich logge mich mit einem ssh-Klienten auf einem ssh-Server ein und behalte diese Richtung bei meiner Arbeit bei.
-Tunnel werden **auch** in diese Richtung etabliert.
-
-Diese Logik bedeutet für die hiesige Problemstellung jedoch einen Mehraufwand für den Einrichter.
-Die globale IPv6-Adresse des RaspPi müsste dem Client bekannt sein.
-Diese kann sich laut IPv6 Spezifikation jedoch ändern und müsste dann sich jedoch in 
-Natürlich könnte diese Aufgabe ein dynDNSv6 Dienst übernehmen,
-doch es gibt eine elegantere Lösung, nämlich reverse-ssh-Tunnel.
-
-Diese werden von einem ssh-Server in Richtung ssh-Client etabliert.
-Wenn der RaspPi einen solchen Tunnel zum V-Server aufbaut,
-dann muss die dynamisch erzeugte,
-globale und bestenfalls anonymisierte IPv6 des RaspPi nicht öffentlich bekannt sein.
-Dies fördert duchaus die Sicherheit durch das Prinzip der Datensparsamkeit.
-
-## Praxisteil
-
-Wer direkt mit der praktischen Umsetzung beginnen möchte, ist hier genau richtig.
-
-### V-Server hosten
-
-Der V-Server des Hosters seiner Wahl sollte mindestens folgendes bieten:
-
-- GNU/Linux
-- feste IPv4-Adresse
-- feste IPv6-Adresse
-- globale DNS-Zone für beide Adressen
-- Zugriff per ssh (priviligierter Nutzer / Passwort)
