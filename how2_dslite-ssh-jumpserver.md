@@ -60,57 +60,55 @@ Schnell wird klar:
 "Guck in den Ofen" - Matrix:
 |Gerät|IPv4 IN CONN|IPv6 IN CONN|IPv4 OUT CONN|IPv6 IN CONN|
 |-|:-:|:-:|:-:|:-:|
-|Mobil| x | - | __(x)__ | - |
-|RasPi| __(-)__ | x | x | x |
+|Mobil| x | - | **(x)** | - |
+|RasPi| **(-)** | x | x | x |
 
 Damit die Verbindung ohne Modifikationen aufgebaut werden kann,
 müssten beide Klammern ein 'x' enthalten.
 
-### dynDNSv6 - nur die halbe Miete
+## Aufbau der Infrastruktur
 
-Eine dynamisch erzeugte globale IPv6-Adresse auf dem RaspPi könnte per dynDNSv6 einem DNS-Hoster bekannt gegeben werden.
-So wäre er von einem beliebigen Rechner im Internet mit einem Klartextnamen zu erreichen.
-Da nichtdestotrotz weiterhin das Problem der kollidierenden IP-Versionen zwischen Mobilgerät und DS-Lite besteht,
-erzeugt die Umsetzung eher zusätzlichen Aufwand als Nutzen.
+### Mini-V-Server als IPv4/6-Vermittler
 
-### Öffentlicher Virtueller Server als IPv4/6-Vermittler
-
-Es gibt Hoster, die sogenannte Mini-Server anbieten.
+Es gibt Hoster,
+die sogenannte Mini-Server anbieten.
 Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 
-- Kosten: 10-12€ / Jahr
+- 10-12€ / Jahr
 - 10 GByte Partition
 - **feste IPv4-Adresse**
 - **feste IPv6-Adresse**
 - globale **DNS-Zone für beide Adressen**
 - globales reverse DNS für beide Adressen
-- Unterschiedliche Linuxdistros zur Auswahl
+- GNU/Linux Betriebssystem
 - **Zugriff per ssh**
 
-Wichtigste Merkmale für dieses Projekt sind die beiden festen IP-Adressen in Version 4 und 6,
-sowie die jeweilige Domainnamenäuflösung und der ssh-Zugang.
-Mit diesen Komponenten können beide Geräteparks bedient werden:
-sowohl gloabe IPv6-Adressen von Geräten im lokalen Netzwerk als auch mobile Geräte im ausschließlichen IPv4-Internet.
+Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben.
 
 ### ssh-Tunneling anstatt VPN
 
-In dieser Preisklasse an gehosteten Servern wird gewöhnlich **kein** TUN/TAP-Interface angeboten,
-womit der Aufbau eines VPN's, was wohl naheliegend wäre, ersteinmal ausgeschlossen werden kann.
+In dieser Preisklasse an gehosteten V-Servern
+ist für gewöhnlich die Einrichtung eines Tunnel-Interfaces (TUN/TAP) nicht vorgesehen,
+womit der Aufbau eines VPN's,
+was wohl sehr naheliegend wäre,
+ersteinmal ausgeschlossen werden kann.
 
-Wie sooft, kann eine Schwäche aber zu einer Stärke gereichen:
-Wieso ein VPN aufbauen, dass mit heißer Nadel konfiguriert mehr Scheunentore ins lokale Netzwerk öffnet,
+Wie sooft,
+kann diese Schwäche zu einer Stärke gereichen:
+Wieso eigentlich ein VPN aufbauen,
+dass (mit heißer Nadel konfiguriert) mehr Scheunentore ins lokale Netzwerk öffnet,
 als der Nutzen jemals rechtfertigen könnte.
 
-Denn was benötigen wir für den Anfang an Konnektivität?
-Vielleicht einen ssh-Zugriff auf den RaspPi,
-über den auch sftp möglich ist.
-Zusätzliche Dienste sollten nach dem Baukastenprinzip hinzugefügt werden können.
-Diese Vorgaben können alle durch ssh mittels Port-Tunneling
-(hier vergleichbar mit sicherem Portforawarding)
-selbst erfüllt werden.
+Denn was benötigen wir wirklich?
+- einen ssh-Zugriff auf den RaspPi
+- über den dann in diesem Stadium auch sftp sofort möglich wäre
+- zusätzliche Dienste sollten nach dem Baukastenprinzip hinzugefügt werden können
 
-Neue Dienste bekommen im einfachsten Falle neue ssh-Tunnel zugewiesen.
-Vorteil: Der Einrichter des jeweiligen Tunnels hat stets die volle Kontrolle über den Eintrittspunkt in das lokale Netzwerk.
+Baukastenprinzip:
+- ein TCP-Dienst bekommt einen ssh-Tunnel zugewiesen
+
+Vorteil:
+- volle Kontrolle über den Eintrittspunkt in das lokale Netzwerk
 
 ### Oh mein Gott, da gibt's doch diese *reverse-ssh-Tunnel*, oder?
 
