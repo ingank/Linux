@@ -70,16 +70,16 @@ müssten beide Klammern ein 'x' enthalten.
 
 Ein gangbarer Weg, die Aufgabenstellung mit wenig Aufwand zu erfüllen wäre folgender:
 
-- einen Mini-V-Server als IPv4/IPv6-Vermittler nutzen
-  - ssh-Server (IPv4,IPv6)
-  - ssh-Forwarder auf RasPi
-  - TCP-Portforwarding auf RasPi
-  - DNS-Zone als 'kostenlose' Beigabe
+**einen Mini-V-Server als IPv4/IPv6-Vermittler nutzen**
+- ssh-Server (IPv4,IPv6)
+- ssh-Forwarder auf RasPi
+- TCP-Portforwarding auf RasPi
+- DNS-Zone als 'kostenlose' Beigabe
 
-- RasPi als ssh-Client
-  - IPv6 Adresse muss nicht bekannt sein
-  - jeglicher INCOMMING TRAFFIC kann geblockt werden
-  - ssh-psk: Privater Schlüssel bleibt 'zu Hause'
+**RasPi als ssh-Client nutzen**
+- IPv6 Adresse muss nicht bekannt sein
+- jeglicher INCOMMING TRAFFIC kann geblockt werden
+- ssh-psk: Privater Schlüssel bleibt 'zu Hause'
 
 ### Mini-V-Server mieten
 
@@ -91,9 +91,9 @@ Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 - 10 GByte Partition
 - **feste IPv4-Adresse**
 - **feste IPv6-Adresse**
-- globale **DNS-Zone für beide Adressen**
+- **globale DNS-Zone für beide Adressen**
 - globales reverse DNS für beide Adressen
-- GNU/Linux Betriebssystem
+- **GNU/Linux Betriebssystem**
 - **Zugriff per ssh**
 - kein VPN per TUN/TAP
 
