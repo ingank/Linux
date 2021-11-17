@@ -109,5 +109,6 @@ um folgende grundlegende Einstellungen vorzunehmen:
 
 - DNS-Namen für den Server festlegen
 - GNU/Linux installieren
-- einen privilegierten Benutzer (Gruppe sudo) einrichten
+- ein aktivierter SSH-Server sollte Standard sein, wenn nicht: installieren
+- einen privilegierten Nutzer anlegen (Gruppe sudo)
 
