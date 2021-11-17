@@ -60,8 +60,8 @@ Schnell wird klar:
 "Guck in den Ofen" - Matrix:
 |Gerät|IPv4 IN CONN|IPv6 IN CONN|IPv4 OUT CONN|IPv6 IN CONN|
 |-|:-:|:-:|:-:|:-:|
-|mobiles Endgerät| x | - | __(x)__ | - |
-|zu Hause| __(-)__ | x | x | x |
+|Mobil| x | - | __(x)__ | - |
+|RasPi| __(-)__ | x | x | x |
 
 Damit die Verbindung ohne Modifikationen aufgebaut werden kann,
 müssten beide Klammern ein 'x' enthalten.
