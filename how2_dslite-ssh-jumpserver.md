@@ -66,9 +66,22 @@ Schnell wird klar:
 Damit die Verbindung ohne Modifikationen aufgebaut werden kann,
 müssten beide Klammern ein 'x' enthalten.
 
-## Aufbau der Infrastruktur
+## Aufbau einer lösungsorientierten Infrastruktur
 
-### Mini-V-Server als IPv4/6-Vermittler
+Ein gangbarer Weg, die Aufgabenstellung mit wenig Aufwand zu erfüllen wäre folgender:
+
+- einen Mini-V-Server als IPv4/IPv6-Vermittler nutzen
+  - ssh-Server (IPv4,IPv6)
+  - ssh-Forwarder auf RasPi
+  - TCP-Portforwarding auf RasPi
+  - DNS-Zone als 'kostenlose' Beigabe
+
+- RasPi als ssh-Client
+  - IPv6 Adresse muss nicht bekannt sein
+  - jeglicher INCOMMING TRAFFIC kann geblockt werden
+  - ssh-psk: Privater Schlüssel bleibt 'zu Hause'
+
+### Mini-V-Server mieten
 
 Es gibt Hoster,
 die sogenannte Mini-Server anbieten.
@@ -82,8 +95,10 @@ Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 - globales reverse DNS für beide Adressen
 - GNU/Linux Betriebssystem
 - **Zugriff per ssh**
+- **kein** VPN per **TUN/TAP**
 
 Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben.
+
 
 ### ssh-Tunneling anstatt VPN
 
@@ -95,7 +110,7 @@ ersteinmal ausgeschlossen werden kann.
 
 Wie sooft,
 kann diese Schwäche zu einer Stärke gereichen:
-Wieso eigentlich ein VPN aufbauen,
+Warum sollen wir ein VPN aufbauen,
 dass (mit heißer Nadel konfiguriert) mehr Scheunentore ins lokale Netzwerk öffnet,
 als der Nutzen jemals rechtfertigen könnte.
 
@@ -110,14 +125,16 @@ Baukastenprinzip:
 Vorteil:
 - volle Kontrolle über den Eintrittspunkt in das lokale Netzwerk
 
-### Oh mein Gott, da gibt's doch diese *reverse-ssh-Tunnel*, oder?
+### reverse-Tunnel anstatt forward-Tunnel
 
 Wie wird im Allgemeinen mit ssh gearbeitet?
 Ich möchte lokal etwas entfernt (remote) erledigen.
 Ich logge mich mit einem ssh-Klienten auf einem ssh-Server ein und behalte diese Richtung bei meiner Arbeit bei.
+Tunnel werden **auch** in diese Richtung etabliert.
 
 Diese Logik bedeutet für die hiesige Problemstellung jedoch einen Mehraufwand für den Einrichter.
 Die globale IPv6-Adresse des RaspPi müsste dem Client bekannt sein.
+Diese kann sich laut IPv6 Spezifikation jedoch ändern und müsste dann sich jedoch in 
 Natürlich könnte diese Aufgabe ein dynDNSv6 Dienst übernehmen,
 doch es gibt eine elegantere Lösung, nämlich reverse-ssh-Tunnel.
 
