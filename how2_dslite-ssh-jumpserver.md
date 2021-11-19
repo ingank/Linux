@@ -124,3 +124,15 @@ su - ssh-tunnel
 ```
 ssh-keygen -t rsa -b 4096
 ```
+- VServer per SSH connecten und gleichen Benutzer anlegen:
+```
+ssh root@vserver
+adduser ssh-tunnel
+exit
+```
+- öffentlichen Schlüssel des ssh-psk auf den VServer kopieren und testen:
+```
+ssh-copy-id ssh-tunnel@vserver
+ssh ssh-tunnel@vserver
+exit
+```
