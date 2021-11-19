@@ -103,31 +103,8 @@ Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben
 
 Dieses Tutorial startet mit folgender Hardware und Software:
 
-- Raspberry Pi ohne Betriebssystem
+- Raspberry Pi mit Betriebssystem Raspberry Pi OS
 - Mini-V-Server beim Internethoster 'strato'
 - PC mit Betriebssystem Ubuntu Desktop
-- privates Ethernet - Netzwerk
 - Vodafon 'Connect Box' als DS-Lite Gateway
 
-### RaspiOS auf dem Raspberry Pi installieren
-
-Das Betriebssystem RaspiOS wird wie
-[hier](https://github.com/ingank/RPi/blob/master/010%20-%20Raspi%20OS%20installieren.md)
-beschrieben installiert.<br>
-Nach dem Booten und der Anmeldung erkunden wir die IPv4 des Interfaces eth0:
-```
-$ ip a sh
-```
-
-### GNU/Linux auf Mini-V-Server installieren
-
-Jeder Hoster setzt seine eigene Philosophie um,
-wie der Mini-V-Server eingerichtet werden kann.
-Deshalb solltest du die entsprechenden Anleitungen des Anbieters konsultieren,
-welche die Installation des Betriebssystems GNU/Linux beschreiben.
-
-### PC mit Ubuntu als Einrichtungszentrale
-
-Wir nutzen einen PC mit Ubuntu Desktop als Zentrale.
-So haben wir immer alles im Blick,
-auch wenn eins der 
