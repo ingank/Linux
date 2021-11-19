@@ -99,6 +99,20 @@ Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 
 Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben und sollten in jedem Fall vorhanden sein.
 
+### Hardware/Software
+
+Dieses Tutorial startet mit folgender Hardware und Software:
+
+- Raspberry Pi ohne Betriebssystem
+- Mini-V-Server beim Internethoster 'strato'
+- PC mit Betriebssystem Ubuntu Desktop
+
+### RaspiOS auf dem Raspberry Pi installieren
+
+Das Betriebssystem RaspiOS wird wie
+[hier](https://github.com/ingank/RPi/blob/master/010%20-%20Raspi%20OS%20installieren.md)
+beschrieben installiert.
+
 ### GNU/Linux auf Mini-V-Server installieren
 
 Jeder Hoster setzt seine eigene Philosophie um,
@@ -106,5 +120,4 @@ wie der Mini-V-Server eingerichtet werden kann.
 Deshalb solltest du die entsprechenden Anleitungen des Anbieters konsultieren,
 wie das Betriebssystem GNU/Linux installiert wird.
 
-### RaspiOS auf dem Raspberry Pi installieren
-
+### PC mit Ubuntu als Einrichtungszentrale
