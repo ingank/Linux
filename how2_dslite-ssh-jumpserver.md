@@ -130,9 +130,45 @@ ssh root@vserver
 adduser ssh-tunnel
 exit
 ```
-- öffentlichen Schlüssel des ssh-psk auf den VServer kopieren und testen:
+- öffentlichen Schlüssel des ssh-psk auf den VServer kopieren
 ```
 ssh-copy-id ssh-tunnel@vserver
+```
+- ssh-psk Verbindung testen
+```
 ssh ssh-tunnel@vserver
+```
+- sshd - Konfiguration aanzeigen
+su - root
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config~
+nano /etc/ssh/sshd_config
+```
+- bestehende Konfiguration durch folgende ersetzen:
+```
+GatewayPorts clientspecified
+ClientAliveInterval 180
+ClientAliveCountMax 3
+Subsystem sftp /usr/lib/openssh/sftp-server
+AcceptEnv LANG
+AcceptEnv LC_*
+PrintMotd yes
+PermitRootLogin no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+GSSAPIAuthentication no
+HostbasedAuthentication no
+KbdInteractiveAuthentication no
+KerberosAuthentication no
+PasswordAuthentication no
+PubkeyAuthentication yes
+UsePAM no
+AllowUsers ssh-tunnel
+```
+- nano verlassen mit: [Strg]+[o] dann [Enter] dann [Strg]+[x]
+- Konfiguration testen und danach neu einlesen
+```
+sudo sshd -t
+sudo service sshd restart
+```
 exit
 ```
