@@ -108,3 +108,15 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 - PC mit Betriebssystem Ubuntu Desktop
 - Vodafon 'Connect Box' als DS-Lite Gateway
 
+### Schrittweise Anleitung
+
+Alle Arbeiten werden vom 'PC' aus getätigt:
+
+per ssh auf dem RasPi als Benutzer _pi_ einloggen
+```
+$ ssh pi@raspi
+```
+per ssh auf dem V-Server als _root_ einloggen
+```
+$ ssh root@v-server
+```
