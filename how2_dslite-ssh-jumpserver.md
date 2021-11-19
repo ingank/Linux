@@ -113,7 +113,7 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 
 Das Betriebssystem RaspiOS wird wie
 [hier](https://github.com/ingank/RPi/blob/master/010%20-%20Raspi%20OS%20installieren.md)
-beschrieben installiert.
+beschrieben installiert.<br>
 Nach dem Booten und der Anmeldung erkunden wir die IPv4 des Interfaces eth0:
 ```
 $ ip a sh
@@ -124,7 +124,7 @@ $ ip a sh
 Jeder Hoster setzt seine eigene Philosophie um,
 wie der Mini-V-Server eingerichtet werden kann.
 Deshalb solltest du die entsprechenden Anleitungen des Anbieters konsultieren,
-wie das Betriebssystem GNU/Linux installiert wird.
+welche die Installation des Betriebssystems GNU/Linux beschreiben.
 
 ### PC mit Ubuntu als Einrichtungszentrale
 
