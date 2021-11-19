@@ -1,4 +1,4 @@
-# DS-Lite: Wartung per IPv4-SSH-Jumpserver
+# DS-Lite: Fernwartung per SSH-Jumpserver
 
 ## Aufgabenstellung
 
