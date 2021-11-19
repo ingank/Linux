@@ -105,29 +105,22 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 
 - Raspberry Pi mit Betriebssystem Raspberry Pi OS
 - Mini-V-Server beim Internethoster 'strato'
-- PC mit Betriebssystem Ubuntu Desktop
 - Vodafon 'Connect Box' als DS-Lite Gateway
 
 ### Schrittweise Anleitung
 
-Vom PC nehmen wir Verbindung zu den beiden beteiligten Rechnern auf:
+- RasPi = Raspberry Pi
+- VServer = Mini-V-Server
 
-per ssh auf dem RasPi als Benutzer _pi_ einloggen
-```
-$ ssh pi@raspi
-```
-per ssh auf dem V-Server als _root_ einloggen
-```
-$ ssh root@vserver
-```
-Die Platzhalter 'raspi' und 'vserver' können DNS-Namen oder IP-Adressen beinhalten.
-Im weiteren Verlauf deuten die Bezeichner '@raspi' oder '@vserver' darauf hin,
-dass Aktionen für das jeweilige Gerät bestimmt sind.
+---
 
-Einen Benutzer für den SSH-Tunnel anlegen.
-Das macht es einfacher,
-den Überblick zu wahren.
+- auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
+- einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und einloggen:
 ```
-@raspi, @vserver:
-sudo add user ssh-tunnel
+sudo adduser ssh-tunnel
+su - ssh-tunnel
+```
+- ssh-psk des RasPi erzeugen:
+```
+ssh-keygen -t rsa -b 4096
 ```
