@@ -110,7 +110,7 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 
 ### Schrittweise Anleitung
 
-Alle Arbeiten werden vom 'PC' aus getätigt:
+Vom PC nehmen wir Verbindung zu den beiden beteiligten Rechnern auf:
 
 per ssh auf dem RasPi als Benutzer _pi_ einloggen
 ```
@@ -118,5 +118,16 @@ $ ssh pi@raspi
 ```
 per ssh auf dem V-Server als _root_ einloggen
 ```
-$ ssh root@v-server
+$ ssh root@vserver
+```
+Die Platzhalter 'raspi' und 'vserver' können DNS-Namen oder IP-Adressen beinhalten.
+Im weiteren Verlauf deuten die Bezeichner '@raspi' oder '@vserver' darauf hin,
+dass Aktionen für das jeweilige Gerät bestimmt sind.
+
+Einen Benutzer für den SSH-Tunnel anlegen.
+Das macht es einfacher,
+den Überblick zu wahren.
+```
+@raspi, @vserver:
+sudo add user ssh-tunnel
 ```
