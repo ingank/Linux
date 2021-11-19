@@ -99,18 +99,12 @@ Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 
 Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben und sollten in jedem Fall vorhanden sein.
 
-### Mini-V-Server einrichten
+### GNU/Linux auf Mini-V-Server installieren
 
 Jeder Hoster setzt seine eigene Philosophie um,
 wie der Mini-V-Server eingerichtet werden kann.
 Deshalb solltest du die entsprechenden Anleitungen des Anbieters konsultieren,
-um folgende grundlegende Einstellungen vorzunehmen:
+wie das Betriebssystem GNU/Linux installiert wird.
 
-- DNS-Namen für den Server festlegen
-- GNU/Linux installieren
-
-Damit der V-Server genutzt werden kann,
-ist im Normalfall der Dienst `ssh` aktiviert.
-Wir melden uns als root an
-und legen als erstes einen Nutzer mit erweiterten Rechten (Gruppe sudo) an:
+### RaspiOS auf dem Raspberry Pi installieren
 
