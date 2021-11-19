@@ -1,4 +1,4 @@
-# DS-Lite: IPv4 Income per SSH-Jumpserver
+# DS-Lite: Wartung per IPv4-SSH-Jumpserver
 
 ## Aufgabenstellung
 
@@ -68,7 +68,7 @@ müssten beide Klammern ein 'x' enthalten.
 
 ## Aufbau einer lösungsorientierten Infrastruktur
 
-Ein gangbarer Weg, die Aufgabenstellung mit wenig Aufwand zu erfüllen wäre folgender:
+Ein gangbarer Weg, die Aufgabenstellung mit wenig Aufwand zu erfüllen, ist folgender:
 
 **einen Mini-V-Server als IPv4/IPv6-Vermittler nutzen**
 - ssh-Server (IPv4,IPv6)
@@ -103,12 +103,14 @@ Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben
 
 Jeder Hoster setzt seine eigene Philosophie um,
 wie der Mini-V-Server eingerichtet werden kann.
-Unabhängig davon,
-solltest du jetzt die entsprechenden Anleitungen des Anbieters konsultieren,
+Deshalb solltest du die entsprechenden Anleitungen des Anbieters konsultieren,
 um folgende grundlegende Einstellungen vorzunehmen:
 
 - DNS-Namen für den Server festlegen
 - GNU/Linux installieren
-- ein aktivierter SSH-Server sollte Standard sein, wenn nicht: installieren
-- einen privilegierten Nutzer anlegen (Gruppe sudo)
+
+Damit der V-Server genutzt werden kann,
+ist im Normalfall der Dienst `ssh` aktiviert.
+Wir melden uns als root an
+und legen als erstes einen Nutzer mit erweiterten Rechten (Gruppe sudo) an:
 
