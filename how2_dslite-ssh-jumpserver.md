@@ -115,6 +115,10 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 ---
 
 - auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
+- tmux installieren
+```
+sudo apt install tmux
+```
 - einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und einloggen:
 ```
 sudo adduser ssh-tunnel
@@ -139,6 +143,7 @@ ssh-copy-id ssh-tunnel@vserver
 ssh ssh-tunnel@vserver
 ```
 - sshd - Konfiguration aanzeigen
+```
 su - root
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config~
 nano /etc/ssh/sshd_config
@@ -171,4 +176,35 @@ sudo sshd -t
 sudo service sshd restart
 ```
 exit
+exit
+```
+- Datei ~/start.sh:
+```
+#!/bin/bash
+
+sleep 3
+tmux new-session -d -s ssh-tunnel-mux
+sleep 1
+tmux send-keys '/home/ssh-tunnel/keep.sh' C-m
+```
+- Datei ~/keep.sh:
+```
+#!/bin/bash
+
+# Name des V-Servers:
+server=vserver
+
+while true
+do
+    echo -e "\n\n---" | tee -a ./tunnel.log
+    date | tee -a ./tunnel.log
+    echo -e "---\n\n" | tee -a ./tunnel.log
+    ssh -6 -v \
+        -R [::1]:2222:[::1]:2222 \
+        -o ServerAliveInterval=180 \
+        -o ServerAliveCountMax=3 \
+        ssh-tunnel@${server} \
+        2>>./tunnel.log
+	sleep  180
+done
 ```
