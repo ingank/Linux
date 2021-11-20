@@ -111,9 +111,6 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 
 - RasPi = Raspberry Pi
 - VServer = Mini-V-Server
-
----
-
 - auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
 - tmux installieren
 ```
