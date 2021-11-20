@@ -170,15 +170,14 @@ UsePAM no
 AllowUsers ssh-tunnel
 ```
 - nano verlassen mit: [Strg]+[o] dann [Enter] dann [Strg]+[x]
-- Konfiguration testen und danach neu einlesen
+- Konfiguration testen, neu einlesen, Session verlassen
 ```
 sudo sshd -t
 sudo service sshd restart
-```
 exit
 exit
 ```
-- Datei ~/start.sh:
+- Datei ~/start.sh auf dem RasPi erstellen:
 ```
 #!/bin/bash
 
@@ -187,7 +186,7 @@ tmux new-session -d -s ssh-tunnel-mux
 sleep 1
 tmux send-keys '/home/ssh-tunnel/keep.sh' C-m
 ```
-- Datei ~/keep.sh:
+- Datei ~/keep.sh auf dem RasPi erstellen:
 ```
 #!/bin/bash
 
