@@ -2,41 +2,40 @@
 Die Übergabe von Parametern an Terminal-Skripte
 kann deren Flexibilität steigern.
 ## Einfache Auswertung von Argumenten
+
+__Die ersten drei Argumente der Kommandozeile ausgeben__
 ```
 #!/bin/bash
-# Die ersten drei Argumente der Kommandozeile ausgeben
 echo $1
 echo $2
 echo $3
-
----
-
+```
+```
 ./script Eins Zwei Drei
 Eins
 Zwei
 Drei
 ```
+__Die Variable $* (Argumente in Zeichenkette zusammenfassen)__
 ```
 #!/bin/bash
-# Die Variable $* (Argumente in Zeichenkette zusammenfassen)
 echo $*
-
----
-
+```
+```
 ./script Das      sind   ein   paar            Argumente
 Das sind ein paar Argumente
 ```
+__Alle Argumente in einer Zeichenkette zusammenfassen<br>
+und danach wieder in einzelne Werte splitten__
 ```
 #!/bin/bash
-# Alle Argumente in einer Zeichenkette zusammenfassen
-# und danach wieder in einzelne Werte splitten
+
 for i in $*
     do
         echo $i
     done
-
----
-
+```
+```
 ./script Das      sind   ein   paar            Argumente
 Das
 sind
@@ -44,6 +43,7 @@ ein
 paar
 Argumente
 ```
+__Mit der Variablen $# die Argumente zählen__
 ```
 #!/bin/bash
 # Mit der Variablen $# die Argumente zählen
@@ -54,9 +54,8 @@ if [ $# -lt 4 ]
     exit 1
 fi
 echo "Anzahl der Argumente ist ausreichend"
-
----
-
+```
+```
 ./script Das      paar           Argumente
 Das sind 3 Argumente
 Es sind mindestens vier Argumente erforderlich
