@@ -174,33 +174,69 @@ sudo service sshd restart
 exit
 exit
 ```
-- Datei ~/start.sh auf dem RasPi erstellen:
+- Datei ~/tunnel auf dem RasPi erstellen:
 ```
 #!/bin/bash
 
-sleep 3
-tmux new-session -d -s ssh-tunnel-mux
-sleep 1
-tmux send-keys '/home/ssh-tunnel/keep.sh' C-m
-```
-- Datei ~/keep.sh auf dem RasPi erstellen:
-```
-#!/bin/bash
+SERVER='vserver'
+LOGFILE='./tunnel.log'
+PIDSSH='./ssh.pid'
+PIDDOG='./dog.pid'
 
-# Name des V-Servers:
-server=vserver
+do_start () {
+	$0 watchdog & >/dev/null
+	echo $! > ${PIDDOG}
+}
 
-while true
-do
-    echo -e "\n\n---" | tee -a ./tunnel.log
-    date | tee -a ./tunnel.log
-    echo -e "---\n\n" | tee -a ./tunnel.log
-    ssh -6 -v \
-        -R [::1]:2222:[::1]:2222 \
-        -o ServerAliveInterval=180 \
-        -o ServerAliveCountMax=3 \
-        ssh-tunnel@${server} \
-        2>>./tunnel.log
-	sleep  180
-done
+do_stop () {
+	if [ -f ${PIDDOG} ]; then
+		cat ${PIDDOG} | xargs kill
+		rm ${PIDDOG}
+	fi
+
+	if [ -f ${PIDSSH} ]; then
+		cat ${PIDSSH} | xargs kill
+		rm ${PIDSSH}
+	fi
+}
+
+do_watchdog () {
+	while true
+	do
+		ssh -6 \
+			-vvv \
+			-N \
+			-T \
+			-R :2222:[::1]:22 \
+			-o ServerAliveInterval=3 \
+			-o ServerAliveCountMax=3 \
+			ssh-tunnel@${SERVER} \
+			2>${LOGFILE} \
+			&
+
+		pid=$!
+    		echo $pid > ${PIDSSH}
+		wait $pid
+		sleep  3
+	done
+}
+
+case "$1" in
+	start)
+		do_start
+		;;
+	stop)
+		do_stop
+		;;
+	watchdog)
+		do_watchdog
+		;;
+	*)
+		echo "Usage: $0 {start|stop}" >&2
+		exit 1
+		;;
+esac
 ```
+Anwendung:
+* Tunnel starten: `./tunnel start`
+* 
