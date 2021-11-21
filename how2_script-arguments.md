@@ -5,7 +5,7 @@ kann deren Flexibilität steigern.
 
 __Die ersten drei Argumente der Kommandozeile ausgeben__
 ```
-#!/bin/bash
+#!/bin/env bash
 echo $1
 echo $2
 echo $3
@@ -18,7 +18,7 @@ Drei
 ```
 __Mit der Variablen $* alle Argumente in einer Zeichenkette zusammenfassen__
 ```
-#!/bin/bash
+#!/bin/env bash
 echo $*
 ```
 ```
@@ -28,8 +28,7 @@ Das sind ein paar Argumente
 __Alle Argumente in einer Zeichenkette zusammenfassen<br>
 und danach wieder in einzelne Werte splitten__
 ```
-#!/bin/bash
-
+#!/bin/env bash
 for i in $*
     do
         echo $i
@@ -45,8 +44,7 @@ Argumente
 ```
 __Mit der Variablen $# die Argumente zählen__
 ```
-#!/bin/bash
-# Mit der Variablen $# die Argumente zählen
+#!/bin/env bash
 echo "Das sind $# Argumente"
 if [ $# -lt 4 ]
     then
@@ -59,7 +57,6 @@ echo "Anzahl der Argumente ist ausreichend"
 ./script Das      paar           Argumente
 Das sind 3 Argumente
 Es sind mindestens vier Argumente erforderlich
-
 ./script Das      sind   ein   paar            Argumente
 Das sind 5 Argumente
 Anzahl der Argumente ist ausreichend
