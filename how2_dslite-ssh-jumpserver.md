@@ -236,8 +236,7 @@ SSH-Tunnel kontrollieren:
 * Adresse des V-Servers in das Skript unter `SERVER=` eintragen
 * Tunnel starten: `./tunnel start`
 * Tunnel stoppen: `./tunnel stop`
+* Weitere TCP-Forwarder können mit `-R :IN-PORT:[::1]:OUT-PORT \` definiert werden
 
-SSH-Tunnel aus dem Internet auf den RasPi nutzen:
-```
-ssh pi@vserver -p 2222
-```
+SSH-Tunnel nutzen:
+* aus dem Internet per ssh auf den RasPi zugreifen: `ssh pi@vserver -p 2222`
