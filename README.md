@@ -11,18 +11,19 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [Verzögerter ssh-Login auf GNU/Linux](fix_delayed-ssh-login.md)
 * [Fix: initrd und swap unterbrechen Bootvorgang](fix_frozen-bootstrap.md)
 * [GRUB 2 - GPT - EF02](fix_gpt-for-grub2.md)
-* [Netflix F7355 Error mit Firefox@Ubuntu](fix_netflix-F7355.md)
+* [Netflix/Amazon Videowiedergabe verlangt aktuellen Codec](fix_netflix-amazon-av.md)
 * [GRUB 2 - Hoheit zurückholen](fix_rebind-grub.md)
 * [Zeitdifferenz zischen Linux und Windows auf einem Rechner auflösen](fix_timediff_linux_win.md)
 * [Skripte automatisch ausführen](how2_autostart-scripts.md)
 * [WeeChat aus den Quellen installieren](how2_build-weechat@ubuntu.md)
 * [MBR (Master Boot Record) inspizieren](how2_check-mbr.md)
 * [Nutzerbasierte crontab](how2_crontab-userbased.md)
-* [DS-Lite: Portforwarding über SSH-Jumpserver](how2_dslite-ssh-jumpserver.md)
+* [DS-Lite: Fernwartung per SSH-Jumpserver](how2_dslite-ssh-jumpserver.md)
 * [Schneller Screencast mit ffmpeg](how2_ffmpeg-screencast.md)
 * [FM4 Audiostream als mp3 speichern und schneiden](how2_fm4-record+cut.md)
 * [FreeBSD in Hypervisoren ausführen](how2_freeBSD-hypervision.md)
 * [/etc/fstab automatisch generieren und formatieren](how2_generate-fstab.md)
+* [Google Drive per grive2 synchronisieren](how2_grive2-googledrive-sync.md)
 * [Live-ISO's mit GRUB-2 direkt starten](how2_grub2-start-iso's.md)
 * [Ubuntu mit Legacy GRUB als Bootloader](how2_install-legacy-GRUB.md)
 * [Spracheinstellungen im Terminal](how2_locale-settings.md)
@@ -39,6 +40,7 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 * [VNC über SSH-Jumpserver](how2_vnc-ssh-jumpserver.md)
 * [VSCode: Senkrechte Lineale anzeigen](how2_vscode-rulers.md)
 * [k9copy-reloaded auf Ubuntu 18.04 installieren](install_k9copy-reloaded.md)
+* [Keyboardtasten und Tastenkombinationen in Textform darstellen](keyboard-key-mime.md)
 * [Deaktivierung des Bootsplash](tweak_bootsplash-off.md)
 * [Aussehen und Handling des Gnome-Docks anpassen](tweak_gnome-dock.md)
 * [Tastaturlayout der GRUB-2-Konsole anpassen](tweak_grub2-keyboard-layout.md)
@@ -76,4 +78,4 @@ Das Schweizer Taschenmesser für den Linuxalltag.
 
 ---
 
-##### Aktualisiert am Di 27. Apr 21:09:16 CEST 2021
+##### Aktualisiert am So 21. Nov 18:20:06 CET 2021
