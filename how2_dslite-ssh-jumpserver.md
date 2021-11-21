@@ -232,7 +232,12 @@ case "$1" in
 		;;
 esac
 ```
-Anwendung:
+SSH-Tunnel kontrollieren:
 * Adresse des V-Servers in das Skript unter `SERVER=` eintragen
 * Tunnel starten: `./tunnel start`
 * Tunnel stoppen: `./tunnel stop`
+
+SSH-Tunnel aus dem Internet auf den RasPi nutzen:
+```
+ssh pi@vserver -p 2222
+```
