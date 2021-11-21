@@ -1,7 +1,7 @@
 # Befehlszeilenparameter in Skripten
 Die Übergabe von Parametern an Terminal-Skripte
 kann deren Flexibilität steigern.
-## Einfache Parametrierung
+## Einfache Auswertung von Argumenten
 ```
 #!/bin/bash
 # Die ersten drei Argumente der Kommandozeile ausgeben
@@ -65,5 +65,6 @@ Es sind mindestens vier Argumente erforderlich
 Das sind 5 Argumente
 Anzahl der Argumente ist ausreichend
 ```
-## Erweiterte Parametrierung
+## Einfache Optionen auswerten
 ## Fortgeschrittene Parametrierung
+https://stackoverflow.com/questions/402377/using-getopts-to-process-long-and-short-command-line-options/7948533
