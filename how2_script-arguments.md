@@ -16,7 +16,7 @@ Eins
 Zwei
 Drei
 ```
-__Die Variable $* (Argumente in Zeichenkette zusammenfassen)__
+__Mit der Variablen $* alle Argumente in einer Zeichenkette zusammenfassen__
 ```
 #!/bin/bash
 echo $*
