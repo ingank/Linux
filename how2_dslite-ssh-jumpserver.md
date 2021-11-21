@@ -72,13 +72,11 @@ Ein gangbarer Weg, die Aufgabenstellung mit wenig Aufwand zu erfüllen, ist folg
 
 **einen Mini-V-Server als IPv4/IPv6-Vermittler nutzen**
 - ssh-Server (IPv4,IPv6)
-- ssh-Forwarder auf RasPi
-- TCP-Portforwarding auf RasPi
-- DNS-Zone als 'kostenlose' Beigabe
+- ssh-TCP-Forwarding auf RasPi
 
-**RasPi als ssh-Client nutzen**
+**RasPi als ssh-reverse-Client nutzen**
 - IPv6 Adresse muss nicht bekannt sein
-- jeglicher INCOMMING TRAFFIC kann geblockt werden
+- Kommunikation erfolgt über 'localhost'
 - ssh-psk: Privater Schlüssel bleibt 'zu Hause'
 
 ### Mini-V-Server mieten
@@ -97,7 +95,8 @@ Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 - **Zugriff per ssh**
 - kein VPN per TUN/TAP
 
-Die wichtigsten Merkmale bezogen auf dieses Tutorial sind **fett** hervorgehoben und sollten in jedem Fall vorhanden sein.
+Die wichtigsten Merkmale bezogen auf dieses Tutorial
+sind **fett** hervorgehoben und sollten in jedem Fall vorhanden sein.
 
 ### Hardware/Software
 
@@ -112,10 +111,6 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 - RasPi = Raspberry Pi
 - VServer = Mini-V-Server
 - auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
-- tmux installieren:
-```
-sudo apt install tmux
-```
 - einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und einloggen:
 ```
 sudo adduser ssh-tunnel
@@ -238,5 +233,6 @@ case "$1" in
 esac
 ```
 Anwendung:
+* Adresse des V-Servers in das Skript unter `SERVER=` eintragen
 * Tunnel starten: `./tunnel start`
-* 
+* Tunnel stoppen: `./tunnel stop`
