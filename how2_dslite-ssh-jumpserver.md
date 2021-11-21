@@ -112,7 +112,7 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 - RasPi = Raspberry Pi
 - VServer = Mini-V-Server
 - auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
-- tmux installieren
+- tmux installieren:
 ```
 sudo apt install tmux
 ```
@@ -131,15 +131,15 @@ ssh root@vserver
 adduser ssh-tunnel
 exit
 ```
-- öffentlichen Schlüssel des ssh-psk auf den VServer kopieren
+- öffentlichen Schlüssel des ssh-psk auf den VServer kopieren:
 ```
 ssh-copy-id ssh-tunnel@vserver
 ```
-- ssh-psk Verbindung testen
+- ssh-psk Verbindung testen:
 ```
 ssh ssh-tunnel@vserver
 ```
-- sshd - Konfiguration aanzeigen
+- sshd - Konfiguration sichern und editieren:
 ```
 su - root
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config~
@@ -167,7 +167,7 @@ UsePAM no
 AllowUsers ssh-tunnel
 ```
 - nano verlassen mit: [Strg]+[o] dann [Enter] dann [Strg]+[x]
-- Konfiguration testen, neu einlesen, Session verlassen
+- Konfiguration testen, neu einlesen, Session verlassen:
 ```
 sudo sshd -t
 sudo service sshd restart
