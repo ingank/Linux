@@ -172,7 +172,7 @@ exit
 - [Datei tunnel](https://github.com/ingank/Linux/blob/master/files/how2_dslite-ssh-jumpserver/tunnel) in das Verzeichnis /home/ssh-tunnel/ herunterladen
 - Datei öffnen und Quellcode erfassen
 
----
+## Anwendung des SSH-Tunnels
 
 Tunnel starten
 ```
