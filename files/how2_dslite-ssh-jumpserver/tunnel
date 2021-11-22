@@ -1,0 +1,108 @@
+#!/bin/env bash
+
+SERVER="$2"
+DOGLOG='./watchdog.log'
+SSHLOG='./ssh.log'
+
+get_pids () {
+	DOG_ON=`pgrep -f "$0 watchdog"`
+	SSH_ON=`pgrep -f "ssh -6.*-N -T -R :.*ssh-tunnel@$SERVER"`
+}
+
+do_start () {
+	typeset -i err
+	err=0
+	if [ -n "$DOG_ON" ]; then
+		err=err+1
+		echo "watchdog is running..."
+	fi
+	if [ -n "$SSH_ON" ]; then
+		err=err+1
+		echo "ssh-tunnel is running..."
+	fi
+	if [ $err -ne 0 ]; then
+		echo "leaving start-procedure before starting twice..."
+		exit 1
+	fi
+	echo "starting watchdog..."
+	$0 watchdog $SERVER & >/dev/null
+	sleep 1
+}
+
+do_stop () {
+        if [ -n "$DOG_ON" ]; then
+                echo -en "killing watchdog .. WAIT"
+		for pid in "$DOG_ON"
+		do
+			kill $pid
+			tail --pid=$pid -f /dev/null
+		done
+		echo " .. DONE"
+        fi
+        if [ -n "$SSH_ON" ]; then
+                echo -en "killing ssh-tunnel .. WAIT"
+		for pid in "$SSH_ON"
+		do
+			kill $pid
+			tail --pid=$pid -f /dev/null
+		done
+		echo " .. DONE"
+        fi
+}
+
+do_status () {
+	echo "DOG_ON = $DOG_ON"
+	echo "SSH_ON = $SSH_ON"
+}
+
+do_watchdog () {
+	echo "starting ssh-tunnel..."
+	rm ${DOGLOG}
+	while true
+	do
+		echo "`date` :: starting ssh-session" >> ${DOGLOG}
+		ssh 	-6 \
+		    	-vvv \
+			-N \
+			-T \
+			-R :2222:[::1]:22 \
+			-o ServerAliveInterval=3 \
+			-o ServerAliveCountMax=3 \
+			"ssh-tunnel@${SERVER}" \
+			2>${SSHLOG} \
+			&
+
+		pid=$!
+		echo "`date` :: ssh-session established" >> ${DOGLOG}
+		wait $pid
+		echo "`date` :: unexpected termination of ssh-session" >> ${DOGLOG}
+		echo "`date` :: waiting for new trial in ten seconds" >> ${DOGLOG}
+		sleep  10
+	done
+}
+
+get_pids
+
+case "$1" in
+	start)
+		do_start
+		;;
+	restart)
+		do_stop
+		get_pids
+		do_start
+		;;
+	stop)
+		do_stop
+		;;
+	status)
+		do_status
+		;;
+	watchdog)
+		do_watchdog
+		;;
+	*)
+		echo "Usage: $0 {start|restart|status|stop} server" >&2
+		exit 1
+		;;
+esac
