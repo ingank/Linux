@@ -171,31 +171,66 @@ exit
 ```
 - Datei ~/tunnel auf dem RasPi erstellen:
 ```
-#!/bin/bash
+#!/bin/env bash
 
 SERVER='vserver'
-LOGFILE='./tunnel.log'
-PIDSSH='./ssh.pid'
-PIDDOG='./dog.pid'
+DOGLOG='./watchdog.log'
+SSHLOG='./ssh.log'
+
+get_pids () {
+	DOG_ON=`pgrep -f "$0 watchdog"`
+	SSH_ON=`pgrep -f "ssh -6.*-N -T -R :.*ssh-tunnel@$SERVER"`
+}
 
 do_start () {
+	typeset -i err
+	err=0
+	if [ -n "$DOG_ON" ]; then
+		err=err+1
+		echo "watchdog is running..."
+	fi
+	if [ -n "$SSH_ON" ]; then
+		err=err+1
+		echo "ssh-tunnel is running..."
+	fi
+	if [ $err -ne 0 ]; then
+		echo "leaving start-procedure before starting twice..."
+		exit 1
+	fi
+	echo "starting watchdog..."
 	$0 watchdog & >/dev/null
-	echo $! > ${PIDDOG}
+	sleep 1
 }
 
 do_stop () {
-	if [ -f ${PIDDOG} ]; then
-		cat ${PIDDOG} | xargs kill
-		rm ${PIDDOG}
-	fi
+        if [ -n "$DOG_ON" ]; then
+                echo -en "killing watchdog .. WAIT"
+		for pid in "$DOG_ON"
+		do
+			kill $pid
+			tail --pid=$pid -f /dev/null
+		done
+		echo " .. DONE"
 
-	if [ -f ${PIDSSH} ]; then
-		cat ${PIDSSH} | xargs kill
-		rm ${PIDSSH}
-	fi
+        fi
+        if [ -n "$SSH_ON" ]; then
+                echo -en "killing ssh-tunnel .. WAIT"
+		for pid in "$SSH_ON"
+		do
+			kill $pid
+			tail --pid=$pid -f /dev/null
+		done
+		echo " .. DONE"
+        fi
+}
+
+do_status () {
+	echo "DOG_ON = $DOG_ON"
+	echo "SSH_ON = $SSH_ON"
 }
 
 do_watchdog () {
+	echo "starting ssh-tunnel..."
 	while true
 	do
 		ssh -6 \
@@ -206,28 +241,37 @@ do_watchdog () {
 			-o ServerAliveInterval=3 \
 			-o ServerAliveCountMax=3 \
 			ssh-tunnel@${SERVER} \
-			2>${LOGFILE} \
+			2>${SSHLOG} \
 			&
 
 		pid=$!
-    		echo $pid > ${PIDSSH}
 		wait $pid
 		sleep  3
 	done
 }
 
+get_pids
+
 case "$1" in
 	start)
+		do_start
+		;;
+	restart)
+		do_stop
+		get_pids
 		do_start
 		;;
 	stop)
 		do_stop
 		;;
+	status)
+		do_status
+		;;
 	watchdog)
 		do_watchdog
 		;;
 	*)
-		echo "Usage: $0 {start|stop}" >&2
+		echo "Usage: $0 {start|restart|status|stop}" >&2
 		exit 1
 		;;
 esac
