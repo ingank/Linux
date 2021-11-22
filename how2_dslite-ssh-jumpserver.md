@@ -173,7 +173,7 @@ exit
 ```
 #!/bin/env bash
 
-SERVER='vserver'
+SERVER="$2"
 DOGLOG='./watchdog.log'
 SSHLOG='./ssh.log'
 
@@ -198,7 +198,7 @@ do_start () {
 		exit 1
 	fi
 	echo "starting watchdog..."
-	$0 watchdog & >/dev/null
+	$0 watchdog $SERVER & >/dev/null
 	sleep 1
 }
 
@@ -231,22 +231,27 @@ do_status () {
 
 do_watchdog () {
 	echo "starting ssh-tunnel..."
+	rm ${DOGLOG}
 	while true
 	do
-		ssh -6 \
-			-vvv \
+		echo "`date` :: starting ssh-session" >> ${DOGLOG}
+		ssh 	-6 \
+		    	-vvv \
 			-N \
 			-T \
 			-R :2222:[::1]:22 \
 			-o ServerAliveInterval=3 \
 			-o ServerAliveCountMax=3 \
-			ssh-tunnel@${SERVER} \
+			"ssh-tunnel@${SERVER}" \
 			2>${SSHLOG} \
 			&
 
 		pid=$!
+		echo "`date` :: ssh-session established" >> ${DOGLOG}
 		wait $pid
-		sleep  3
+		echo "`date` :: unexpected termination of ssh-session" >> ${DOGLOG}
+		echo "`date` :: waiting for new trial in ten seconds" >> ${DOGLOG}
+		sleep  10
 	done
 }
 
@@ -271,15 +276,16 @@ case "$1" in
 		do_watchdog
 		;;
 	*)
-		echo "Usage: $0 {start|restart|status|stop}" >&2
+		echo "Usage: $0 {start|restart|status|stop} server" >&2
 		exit 1
 		;;
 esac
 ```
 SSH-Tunnel kontrollieren:
-* Adresse des V-Servers in das Skript unter `SERVER=` eintragen
-* Tunnel starten: `./tunnel start`
+* Tunnel starten: `./tunnel start server`
 * Tunnel stoppen: `./tunnel stop`
+* Tunnelstatus abrufen: `./tunnel status`
+* Tunnel neu starten: `./tunnel restart server`
 * Weitere TCP-Forwarder können mit `-R :IN-PORT:[::1]:OUT-PORT \` definiert werden
 
 SSH-Tunnel nutzen:
