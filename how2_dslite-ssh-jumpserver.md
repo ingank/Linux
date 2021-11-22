@@ -173,8 +173,13 @@ exit
 - Datei öffnen und Quellcode erfassen
 - Tunnel starten:
   - `./tunnel start server`
-- Tunnel stoppen: `./tunnel stop`
-- Tunnelstatus abrufen: `./tunnel status`
-- Tunnel neu starten: `./tunnel restart server`
-- weitere TCP-Forwarder können mit `-R :IN-PORT:[::1]:OUT-PORT \` definiert werden
-- aus dem Internet kann per ssh auf den RasPi zugegriffen werden: `ssh pi@vserver -p 2222`
+- Tunnel stoppen:
+  - `./tunnel stop`
+- Tunnelstatus abrufen:
+  - `./tunnel status`
+- Tunnel neu starten:
+  - `./tunnel restart server`
+- weitere TCP-Forwarder definieren:
+  - `-R :IN-PORT:[::1]:OUT-PORT \`
+- aus dem Internet per ssh auf den RasPi einloggen:
+  - `ssh pi@vserver -p 2222`
