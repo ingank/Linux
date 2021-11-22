@@ -1,5 +1,4 @@
 #!/bin/env bash
-# /home/user/ssh-tunnel/tunnel/tunnel
 
 SERVER="$2"
 DOGLOG='./watchdog.log'
