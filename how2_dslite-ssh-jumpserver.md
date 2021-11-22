@@ -171,15 +171,30 @@ exit
 ```
 - [Datei tunnel](https://github.com/ingank/Linux/blob/master/files/how2_dslite-ssh-jumpserver/tunnel) in das Verzeichnis /home/ssh-tunnel/ herunterladen
 - Datei öffnen und Quellcode erfassen
-- Tunnel starten:
-  - `./tunnel start server`
-- Tunnel stoppen:
-  - `./tunnel stop`
-- Tunnelstatus abrufen:
-  - `./tunnel status`
-- Tunnel neu starten:
-  - `./tunnel restart server`
-- weitere TCP-Forwarder definieren:
-  - `-R :IN-PORT:[::1]:OUT-PORT \`
-- aus dem Internet per ssh auf den RasPi einloggen:
-  - `ssh pi@vserver -p 2222`
+
+---
+
+Tunnel starten
+```
+./tunnel start server
+```
+Tunnel stoppen
+```
+./tunnel stop
+```
+Tunnelstatus anzeigen
+```
+./tunnel status
+```
+Tunnel neu starten
+```
+./tunnel restart server
+```
+weitere TCP-Forwarder definieren
+```
+-R :IN-PORT:[::1]:OUT-PORT \
+```
+aus dem Internet per ssh auf den RasPi einloggen
+```
+ssh pi@vserver -p 2222
+```
