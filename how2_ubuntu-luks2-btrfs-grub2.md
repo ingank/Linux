@@ -395,25 +395,11 @@ echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 ```
 
 ### GRUB als Bootmanager installieren
+
 ```
 update-initramfs -c -k all
-# update-initramfs: Generating /boot/initrd.img-5.4.0-42-generic
-# update-initramfs: Generating /boot/initrd.img-5.4.0-56-generic
-
 grub-install /dev/sda
-# Installing for i386-pc platform.
-# Installation finished. No error reported.
-
 update-grub
-# Sourcing file `/etc/default/grub'
-# Sourcing file `/etc/default/grub.d/init-select.cfg'
-# Generating grub configuration file ...
-# Found linux image: /boot/vmlinuz-5.4.0-56-generic
-# Found initrd image: /boot/initrd.img-5.4.0-56-generic
-# Found linux image: /boot/vmlinuz-5.4.0-42-generic
-# Found initrd image: /boot/initrd.img-5.4.0-42-generic
-# Adding boot menu entry for UEFI Firmware Settings
-# done
 ```
 
 ### Initial Ramdisk inspizieren
