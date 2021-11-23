@@ -298,7 +298,7 @@ cat /etc/crypttab
 
 ### swap-Auslagerungsspeicher in LUKS-Partition einbetten
 
-Über die aktuelle Blockgeräte-UUID der swap-Partition den Eintrag in /etc/fstab vorsorglich auf LUKS-Mapper ändern:
+Über die aktuelle UUID der swap-Partition den Eintrag in /etc/fstab vorsorglich auf LUKS-Mapper ändern:
 ```
 sed -i "s|UUID=$(blkid -s UUID -o value /dev/sda3)|/dev/mapper/crypt_swap|" /etc/fstab
 ```
