@@ -170,7 +170,7 @@ ls /dev/mapper/
 # control  crypt_rootfs
 ```
 
-### Btrfs in der (gemappten) Linux Systempartition erzeugen
+### Btrfs in der Linux Systempartition erzeugen
 ```
 mkfs.btrfs /dev/mapper/crypt_rootfs
 # btrfs-progs v5.4.1 
