@@ -1,4 +1,4 @@
-# Ubuntu/Btrfs mit LUKS2 verschlüsseln und per GRUB2 booten
+# Ubuntu auf LUKS2/Btrfs mit GRUB2
 
 Testumgebung:
 
