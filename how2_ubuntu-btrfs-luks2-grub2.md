@@ -236,7 +236,7 @@ ubiquity --no-bootloader
 ```
 * Welcome: *English* belassen // *Continue*
 * Keyboard layout: *German* // *German - German (no dead keys)* // *Continue*
-* Updates and other software: *eigene Präferenzen wählen* // *Continue*
+* Updates and other software: *nach eigenen Präferenzen wählen* // *Continue*
 * Installation type: *Something else* // *Continue*
   * Device */dev/mapper/crypt_rootfs*
   * Zweite Zeile markieren
@@ -245,7 +245,7 @@ ubiquity --no-bootloader
     * Format the partition: [x]
     * Mount point: */*
     * *OK*
-  * Device */dev/sda2* markieren
+  * Device */dev/sda3* markieren
   * *Change...*
     * Use as: *swap area*
     * *OK*
