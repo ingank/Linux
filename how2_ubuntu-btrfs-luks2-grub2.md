@@ -1,14 +1,12 @@
-# Ubuntu auf Btrfs mit LUKS verschlüsseln
+# Ubuntu/Btrfs mit LUKS2 verschlüsseln und per GRUB2 booten
 
-## Systembeschreibung
-
-Die Anleitung bezieht sich auf folgende Testumgebung:
+Testumgebung:
 
 * Rechnerarchitektur: x86-64
-* Hypervisor: VirtualBox 6.1.16
-* Host: Ubuntu 18.04.5 LTS
-* Gast: Ubuntu 20.04.1 LTS
-* Firmware-Schnittstelle: EFI
+* Hypervisor: VirtualBox 6.1.30
+* Host: Ubuntu 20.04.3 LTS
+* Gast: Ubuntu 20.04.3 LTS
+* Hypervisor-Firmware: EFI
 * UEFI Secure Boot: NEIN
 * Festplatten-Hardware: SSD
 * Festplattengröße: 20 GiB
@@ -16,21 +14,19 @@ Die Anleitung bezieht sich auf folgende Testumgebung:
 * Partitionierungsschema: GPT
 * Boot-Lader: GRUB 2
 
-Im Anhang werden (geplant) folgende Sonderfälle aufgearbeitet:
+## Anleitung
 
-* Boot-Lader: GRUB 2 mit deutscher Tastatur
-* Festplatten-Controller: NVMe
-* UEFI Secure Boot: JA
-* Firmware-Schnittstelle: BIOS
-* Festplatten-Hardware: HDD
-* Partitionierungsschema: MBR
+### Virtuelle Maschine mit folgenden Parametern erzeugen:
 
-## Schritt für Schritt
+- 4096 MB RAM
+- 20 GB Festplatte
+- EFI aktivieren
+- SSD aktivieren
+- Netzwerkadapter ans Internet
 
-**Achtung:** folgende Schritte müssen nacheinander **ohne Reboot** ausgeführt werden.
+### Ubuntu-Installationsmedium booten:
 
-### Boot-Lader des Installationsmediums:
-* keine Interaktion
+- keine Interaktion mit dem Bootloader
 
 ### Auf dem Willkommen-Bildschirm:
 * Sprache belassen: *English*
