@@ -283,7 +283,7 @@ btrfs subvolume list /
 # ID 257 gen 26 top level 5 path @home
 ```
 
-### Blockgerät der Systempartition in /etc/crypttab aufnehmen
+### Systempartition in /etc/crypttab aufnehmen:
 
 Eintrag in /etc/crypttab:
 ```
