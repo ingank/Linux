@@ -296,7 +296,7 @@ cat /etc/crypttab
 # crypt_rootfs UUID=08b46b30-4d14-44d2-be97-8c021f172d29 none luks
 ```
 
-### swap-Auslagerungsspeicher in LUKS-Partition einbetten
+### swap-Auslagerungsspeicher in LUKS-Partition einbetten:
 
 Über die aktuelle UUID der swap-Partition den Eintrag in /etc/fstab vorsorglich auf LUKS-Mapper ändern:
 ```
@@ -309,7 +309,7 @@ swapoff /dev/sda3
 ```
 Swap-Partition in LUKS-Partition wandeln:
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda3
+cryptsetup luksFormat --type=luks2 /dev/sda3
 # WARNING: Device /dev/sda3 already contains a 'swap' superblock signature.
 #
 # WARNING!
