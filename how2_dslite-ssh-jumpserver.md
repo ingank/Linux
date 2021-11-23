@@ -108,8 +108,8 @@ Dieses Tutorial startet mit folgender Hardware und Software:
 
 ### Schrittweise Anleitung
 
-- RasPi = Raspberry Pi
-- VServer = Mini-V-Server
+- Raspberry Pi = RasPi = `raspi`
+- Mini-V-Server = VServer = `vserver`
 - auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
 - einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und einloggen:
 ```
