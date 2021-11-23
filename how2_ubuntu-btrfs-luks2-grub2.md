@@ -29,12 +29,12 @@ Testumgebung:
 - keine Interaktion mit dem Bootloader
 
 ### Auf dem Willkommen-Bildschirm:
-* Sprache belassen: *English*
+* Sprache: *English*
 * Aktion: *Try Ubuntu*
 
-**Hinweis:** Die Sprache *English* wird hier ausgewählt,
-um in dieser Dokumentation gemischtsprachigen Konsolen-/Fehlerausgaben
-von vornherein aus dem Weg zu gehen.
+**Hinweis:**
+Die Sprache *English* wird hier ausgewählt,
+um gemischtsprachige Fehlerausgaben auszuschließen.
 
 ### Tastaturlayout auf Deutsch umstellen:
 * Klicke: *ON/OFF Button oben/rechts*
@@ -45,7 +45,7 @@ von vornherein aus dem Weg zu gehen.
 * Wähle: *German (Germany)*
 * Wähle: *German (no dead keys)*
 * Klicke: *Add*
-* Schließe: *Einstellungen*
+* Schließe: *Region & Language*
 * Wähle: *'de' bei 'en' oben/rechts*
 
 ### Terminal öffnen:
@@ -140,7 +140,7 @@ mkfs.fat -F32 /dev/sda2
 
 ### LUKS-Partition für System mit LUKS1 verschlüsseln
 ```
-cryptsetup luksFormat --type=luks1 /dev/sda4
+cryptsetup luksFormat --type=luks2 /dev/sda4
 #
 # WARNING!
 # ========
