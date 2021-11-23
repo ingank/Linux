@@ -196,33 +196,51 @@ mkfs.btrfs /dev/mapper/crypt_rootfs
 ```
 
 ### Mount-Optionen an SSD-Spezifikation anpassen:
-
-Vor der Installation von Ubuntu werden zwei Konfigurationsdateien gepatched.
-
-#### Datei /usr/lib/partman/mount.d/70btrfs
-* [Original](https://gist.github.com/ingank/4eaf95cfaa0a318e9fa5c213dae37da5)
-* [Patch](https://gist.github.com/ingank/7aece893d9dd62dbda50394c9c2cc604)
-* [Patched](https://gist.github.com/ingank/16755e02fcf69725cdbdd90226b6bb58)
-
-#### Datei /usr/lib/partman/fstab.d/btrfs
-* [Original](https://gist.github.com/ingank/4e13da74ec5007b98abad9dcc18cf528)
-* [Patch](https://gist.github.com/ingank/f172815d0df44b532772706e072fa2c5)
-* [Patched](https://gist.github.com/ingank/5cacc58152495b9cfa59c3f545950743)
-
-oder auf der Kommandozeile:
+/usr/lib/partman/mount.d/70btrfs patchen:
 ```
-wget https://gist.github.com/ingank/7aece893d9dd62dbda50394c9c2cc604/archive/6c4219adda2092322754b168e10b303cefe28b81.zip -O0001.zip
-wget https://gist.github.com/ingank/f172815d0df44b532772706e072fa2c5/archive/1d68b650c64ae4b699d09a117b0305ad57042d7f.zip -O0002.zip
-unzip -j 0001.zip && unzip -j 0002.zip
-patch /usr/lib/partman/mount.d/70btrfs 0001.patch
-patch /usr/lib/partman/fstab.d/btrfs 0002.patch
+patch -b /usr/lib/partman/mount.d/70btrfs -- << '_END'
+24c24
+< 		options="${options:+$options,}subvol=@"
+---
+> 		options="${options:+$options,}subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd"
+31c31
+< 		options="${options:+$options,}subvol=@home"
+---
+> 		options="${options:+$options,}subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd"
+_END
+```
+/usr/lib/partman/fstab.d/btrfs patchen:
+```
+patch -b /usr/lib/partman/fstab.d/btrfs -- << '_END'
+30,32c30,32
+< 				pass=1
+< 				home_options="${options:+$options,}subvol=@home"
+< 				options="${options:+$options,}subvol=@"
+---
+> 				pass=0
+> 				home_options="${options:+$options,}subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd"
+> 				options="${options:+$options,}subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd"
+36,37c36,37
+< 				pass=2
+< 				options="${options:+$options,}subvol=@home"
+---
+> 				pass=0
+> 				options="${options:+$options,}subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd"
+40c40
+< 				pass=2
+---
+> 				pass=0
+55c55
+< 	echo "$home_path" "$home_mp" btrfs "$home_options" 0 2
+---
+> 	echo "$home_path" "$home_mp" btrfs "$home_options" 0 0
+_END
 ```
 
 **Hinweis:**
-Auf Hardware,
-die etwas älter ist,
-hilft eventuell das Weglassen der Option *compress=zstd*
-die Performanz positiv zu beeinflussen.
+Auf älterer Hardware
+kann u.U. das Weglassen der Option *compress=zstd*
+die Performanz positiv beeinflussen.
 
 ### Ubuntu installieren:
 
