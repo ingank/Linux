@@ -1,23 +1,18 @@
-# DS-Lite: Fernwartung per SSH-Jumpserver
+# DS-Lite: SSH-Fernwartung per Jumpserver
 
-## Aufgabenstellung
-
-Stellen Sie sich folgendes Szenario vor:
-
-zu Hause:
-- GNU/Linux auf einem Raspberry Pi im lokalen Netzwerk
-- Internetzugang per DS-Lite Gateway (IPv4 OUT / IPv6 IN/OUT)
-
-Mobil:
-- Android auf einem mobilen Gerät (Smartphone, Tablet)
-- Internetzugang per IPv4 basiertem mobilen Internet
+Szenario:
+- GNU/Linux auf einem Rechner im lokalen Netzwerk im Dauerbetrieb (z.B. Raspberry Pi)
+- Internetzugang aus dem lokalen Netzwerk per DS-Lite Gateway
 
 Wunsch:
-- Ich möchte (im ersten Step) von meinem mobilen Gerät per ssh auf den Raspberry Pi zugreifen.
+- von einem mobilen Gerät (IPv4) oder
+- von einem anderen Rechner (IPv6)
+- aus dem Internet
+- per ssh auf den lokalen Rechner zugreifen
 
 ## Diagnose
 
-Welche technischen Fallstricke stehen einer schnellen Erfüllung des oben genannten Wunsches im Wege?
+Welche technischen Eigenheiten müssen bei der Verwirklichung dieses Wunsches beachtet werden?
 
 ### DSLite und IPv4: Katz und Maus
 
@@ -36,46 +31,39 @@ auf einen IPv4-Netzwerkadapter
 im lokalen Netzwerk nicht möglich,
 denn das sogenannte IPv4-Portforwarding,
 das dies möglich machen würde,
-ist schlichtweg nicht vorgesehen. [[...]](https://de.wikipedia.org/wiki/IPv6#Dual-Stack_Lite_(DS-Lite))
+ist schlichtweg nicht vorgesehen.
+[[...]](https://de.wikipedia.org/wiki/IPv6#Dual-Stack_Lite_(DS-Lite))
+Im Sinne der Datensparsamkeit ist dies unter Umständen sogar vorteilhaft.
+Eine Firewall für eingehenden Datenverkehr muss nur für den IPv6-basierten
+Teil des Internets konfiguriert werden.
 
-Was erst einmal wie ein riesiger Nachteil aussieht,
-ist bei näherer Betrachtung durchaus auch vorteilhaft.
-Ein lokales IPv4 Netzwerk ist von außen nicht erreichbar.
-Wer also ein lokales IPv4 basiertes Netzwerk betreibt,
-muss sich um dessen eingehenden Netzwerkverkehr
-im Sinne der Netzwerksicherheit keine Gedanken machen;
-es gibt ihn einfach nicht.
 Im weiteren Verlauf dieses Tutorials wird davon ausgegangen,
 dass Kommunikation im lokalen Netzwerk per IPv4
 und global (Internet) per IPv6 adressiert wird.
 
 ### Mobile Netzwerke und IPv6: Maus und Katz
 
-Bei den Anbietern des mobilen Internets steht die Welt quasi Kopf.
-Vor allem günstige Hoster bieten ausschließlich die IPv4 Adressierung an.
-Schnell wird klar:
-
-### Das passt nicht!
-
-"Guck in den Ofen" - Matrix:
-|Gerät|IPv4 IN CONN|IPv6 IN CONN|IPv4 OUT CONN|IPv6 IN CONN|
-|-|:-:|:-:|:-:|:-:|
-|Mobil| x | - | **(x)** | - |
-|RasPi| **(-)** | x | x | x |
-
-Damit die Verbindung ohne Modifikationen aufgebaut werden kann,
-müssten beide Klammern ein 'x' enthalten.
+Bei den Anbietern des mobilen Internets
+steht die Welt quasi Kopf.
+Vor allem günstige Hoster
+bieten ausschließlich die IPv4 Adressierung der mobilen Geräte an.
+Schnell wird klar,
+dass eine direkte IPv4-basierte Verbindung
+von einem mobilen Endgerät auf den lokalen Rechner
+nicht ohne Hürden zu nehmen ist.
 
 ## Aufbau einer lösungsorientierten Infrastruktur
 
-Ein gangbarer Weg, die Aufgabenstellung mit wenig Aufwand zu erfüllen, ist folgender:
+Ein gangbarer Weg,
+die Wunschvorstellung mit wenig Aufwand zu erfüllen,
+ist folgender:
 
 **einen Mini-V-Server als IPv4/IPv6-Vermittler nutzen**
 - ssh-Server (IPv4,IPv6)
 - ssh-TCP-Forwarding auf RasPi
 
-**RasPi als ssh-reverse-Client nutzen**
-- IPv6 Adresse muss nicht bekannt sein
+**lokalen Rechner als ssh-reverse-Client nutzen**
+- IPv6 Adresse muss nicht öffentlich bekannt sein (DNS)
 - Kommunikation erfolgt über 'localhost'
 - ssh-psk: Privater Schlüssel bleibt 'zu Hause'
 
@@ -85,14 +73,14 @@ Es gibt Hoster,
 die sogenannte Mini-Server anbieten.
 Das sind Virtuelle Maschinen mit durchschnittlich folgenden Rahmenbedingungen:
 
-- 10-12€ / Jahr
-- 10 GByte Partition
 - **feste IPv4-Adresse**
 - **feste IPv6-Adresse**
 - **globale DNS-Zone für beide Adressen**
-- globales reverse DNS für beide Adressen
 - **GNU/Linux Betriebssystem**
 - **Zugriff per ssh**
+- 10-12€ / Jahr
+- 10 GByte Partition
+- globales reverse DNS für beide Adressen
 - kein VPN per TUN/TAP
 
 Die wichtigsten Merkmale bezogen auf dieses Tutorial
@@ -103,15 +91,18 @@ sind **fett** hervorgehoben und sollten in jedem Fall vorhanden sein.
 Dieses Tutorial startet mit folgender Hardware und Software:
 
 - Raspberry Pi mit Betriebssystem Raspberry Pi OS
-- Mini-V-Server beim Internethoster 'strato'
-- Vodafon 'Connect Box' als DS-Lite Gateway
+- Mini-V-Server bei einem beliebigen Hoster
+- 'Connect Box' eines bekannten Internetdienstleisters als DS-Lite Gateway
 
-### Schrittweise Anleitung
+### Festlegungen
 
+Synonyme und Definitionen:
 - Raspberry Pi = RasPi = `raspi`
 - Mini-V-Server = VServer = `vserver`
-- auf der Text-Konsole des Raspberry Pi als 'pi' einloggen
-- einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und einloggen:
+
+### Schritt für Schritt Anleitung
+- auf einer Text-Konsole des RasPi als 'pi' einloggen
+- einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und anmelden:
 ```
 sudo adduser ssh-tunnel
 su - ssh-tunnel
