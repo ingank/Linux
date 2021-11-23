@@ -132,13 +132,13 @@ OK; writing new GUID partition table (GPT) to /dev/sda.
 The operation has completed successfully.
 ```
 
-### EFI System Partition formatieren
+### EFI System Partition formatieren:
 ```
 mkfs.fat -F32 /dev/sda2
 # mkfs.fat 4.1 (2017-01-24)
 ```
 
-### LUKS-Partition für System mit LUKS1 verschlüsseln
+### LUKS-Partition für System mit LUKS2 verschlüsseln:
 ```
 cryptsetup luksFormat --type=luks2 /dev/sda4
 #
@@ -151,18 +151,13 @@ cryptsetup luksFormat --type=luks2 /dev/sda4
 # Verify passphrase: *****
 ```
 
-**Hinweis:** GRUB 2 kann derzeit nur mit LUKS Version 1 verschlüsselte Partitionen entschlüsseln.
-Dieses Tutorial verzichtet auf eine gemischte Konfiguration aus LUKS1-verschlüsselter
-Boot-Partition und LUKS2-verschlüsselter Systempartition.
-Erfolgreiche Angriffe auf die Boot-Partition mit eventuell darauf befindlichen Schlüsseln
-für die Entschlüsselung der LUKS2-verschlüsselten Partitionen
-ergibt keinen Sicherheitsvorteil gegenüber der LUKS1/LUKS1 - Variante.
-
 **Achtung:** Festplattenver- und Entschlüsselung
 sind unter Umständen betriebssystemunabhängige Vorgänge.
 Damit die angeschlossene Tastatur in unterschiedlichen
 Laufzeitumgebungen nicht zum **Sündenbock** wird,
-ist es ratsam, folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes) zu beachten.
+ist es ratsam,
+folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes)
+zu beachten.
 
 ### Linux Systempartition ins aktuelle System mappen
 ```
