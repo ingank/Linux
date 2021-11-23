@@ -343,7 +343,7 @@ Eintrag in /etc/crypttab:
 echo "crypt_swap UUID=$(blkid -s UUID -o value /dev/sda3) none luks" >> /etc/crypttab
 ```
 
-### Schlüsseldatei erzeugen
+### Schlüsseldatei erzeugen:
 ```
 mkdir /etc/luks
 dd if=/dev/urandom of=/etc/luks/boot_os.keyfile bs=4096 count=1
@@ -351,63 +351,43 @@ chmod u=rx,go-rwx /etc/luks
 chmod u=r,go-rwx /etc/luks/boot_os.keyfile
 ```
 
-### Schlüsseldatei in Key-Slots einfügen
+### Schlüsseldatei in Key-Slots einfügen:
 
-Für Systempartition:
-```
-cryptsetup luksAddKey /dev/sda4 /etc/luks/boot_os.keyfile
-Enter any existing passphrase: *****
-```
-
-Für swap-Speicher:
+für swap-Speicher:
 ```
 cryptsetup luksAddKey /dev/sda3 /etc/luks/boot_os.keyfile
 Enter any existing passphrase: *****
 ```
 
-### Key-Slots inspizieren
-
-Für Systempartition:
+für Systempartition:
 ```
-cryptsetup luksDump /dev/sda4 | grep "Key Slot"
-# Key Slot 0: ENABLED
-# Key Slot 1: ENABLED
-# Key Slot 2: DISABLED
-# Key Slot 3: DISABLED
-# Key Slot 4: DISABLED
-# Key Slot 5: DISABLED
-# Key Slot 6: DISABLED
-# Key Slot 7: DISABLED
+cryptsetup luksAddKey /dev/sda4 /etc/luks/boot_os.keyfile
+Enter any existing passphrase: *****
 ```
 
-Für swap-Speicher:
-```
-cryptsetup luksDump /dev/sda3 | grep "Key Slot"
-# Key Slot 0: ENABLED
-# Key Slot 1: ENABLED
-# Key Slot 2: DISABLED
-# Key Slot 3: DISABLED
-# Key Slot 4: DISABLED
-# Key Slot 5: DISABLED
-# Key Slot 6: DISABLED
-# Key Slot 7: DISABLED
-```
+### Key-Slots inspizieren:
 
-### Schlüsseldatei für initramfs zugänglich machen
+Nach dem Einfügen der Schlüsseldatei
+müssen in jedem LUKS-Header zwei Keyslots in Benutzung sein.
+```
+cryptsetup luksDump /dev/sda3 # swap
+cryptsetup luksDump /dev/sda4 # /
+```
+### Schlüsseldatei für initramfs zugänglich machen:
 ```
 echo "KEYFILE_PATTERN=/etc/luks/*.keyfile" >> /etc/cryptsetup-initramfs/conf-hook
 echo "UMASK=0077" >> /etc/initramfs-tools/initramfs.conf
 ```
 Siehe hierzu im Speziellen: [Direktlink](https://cryptsetup-team.pages.debian.net/cryptsetup/README.initramfs.html#storing-keyfiles-directly-in-the-initrd)
 
-### Schlüsseldatei in /etc/crypttab aufnehmen
+### Schlüsseldatei in /etc/crypttab aufnehmen:
 
-Alle Zeichenfolgen *none* durch */etc/luks/boot_os.keyfile* ersetzen:
+Es werden alle Zeichenfolgen *none* durch */etc/luks/boot_os.keyfile* ersetzt:
 ```
 sed -i "s|none|/etc/luks/boot_os.keyfile|" /etc/crypttab
 ```
 
-### Abschließende Inspektion von /etc/fstab und /etc/crypttab
+### Abschließende Inspektion von /etc/fstab und /etc/crypttab:
 ```
 cat /etc/fstab | sed 's/[[:space:][:blank:]]/ /g;s/ \{2,\}/ /g;/^#/d;/^$/d'
 # /dev/mapper/crypt_rootfs / btrfs defaults,subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd 0 0
