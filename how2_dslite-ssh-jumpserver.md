@@ -101,7 +101,7 @@ Synonyme und Definitionen:
 - Mini-V-Server = VServer = `vserver`
 
 ### Schritt für Schritt Anleitung
-- auf einer Text-Konsole des RasPi als 'pi' einloggen
+- auf einer Text-Konsole des RasPi als privilegierter Benutzer (z.B. 'pi') einloggen
 - einen Benutzer 'ssh-tunnel' auf dem RasPi anlegen und anmelden:
 ```
 sudo adduser ssh-tunnel
