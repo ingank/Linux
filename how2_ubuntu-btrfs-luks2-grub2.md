@@ -159,7 +159,7 @@ ist es ratsam,
 folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes)
 zu beachten.
 
-### Linux Systempartition ins aktuelle System mappen
+### Linux Systempartition ins aktuelle System mappen:
 ```
 cryptsetup open /dev/sda4 crypt_rootfs
 Enter passphrase for /dev/sda4: *****
@@ -170,7 +170,7 @@ ls /dev/mapper/
 # control  crypt_rootfs
 ```
 
-### Btrfs in der Linux Systempartition erzeugen
+### Btrfs in der Linux Systempartition erzeugen:
 ```
 mkfs.btrfs /dev/mapper/crypt_rootfs
 # btrfs-progs v5.4.1 
@@ -195,7 +195,7 @@ mkfs.btrfs /dev/mapper/crypt_rootfs
 #     1    11.50GiB  /dev/mapper/crypt_rootfs
 ```
 
-### Mount-Optionen an SSD-Spezifikation anpassen
+### Mount-Optionen an SSD-Spezifikation anpassen:
 
 Vor der Installation von Ubuntu werden zwei Konfigurationsdateien gepatched.
 
@@ -224,7 +224,7 @@ die etwas älter ist,
 hilft eventuell das Weglassen der Option *compress=zstd*
 die Performanz positiv zu beeinflussen.
 
-### Ubuntu installieren
+### Ubuntu installieren:
 
 Das Tool *Ubiquity* kann
 zur Installation des Betriebssystems gestartet werden.
@@ -258,7 +258,7 @@ ubiquity --no-bootloader
 * Wenn alles glatt lief, befinden wir uns wieder als
   Benutzer *root* im Terminal
 
-### chroot ins neue Betriebssystem
+### chroot ins neue Betriebssystem:
 
 **Beachte:** Wenn, wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
 die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt wurde,
