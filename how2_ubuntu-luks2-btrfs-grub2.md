@@ -381,6 +381,9 @@ cat /etc/crypttab
 # crypt_swap UUID=aa5ae86f-7c93-43df-81b8-7ea5d48db172 /etc/luks/boot_os.keyfile luks
 ```
 
+# ACHTUNG: GRUB 2.04 ist in den offiziellen Paketquellen immer noch Standard.
+# GRUB 2.06 müsste zu diesem Zeitpunkt aus den Quellen kompiliert werden (Unterstützung für LUKS2)
+
 ### GRUB konfigurieren
 
 GRUB soll EFI sprechen:
