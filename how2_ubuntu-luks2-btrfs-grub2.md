@@ -33,8 +33,7 @@ Testumgebung:
 * Aktion: *Try Ubuntu*
 
 **Hinweis:**
-Die Sprache *English* wird hier ausgewählt,
-um gemischtsprachige Fehlerausgaben auszuschließen.
+Die Sprache *English* verhindert gemischtsprachige Fehlerausgaben.
 
 ### Tastaturlayout auf Deutsch umstellen:
 * Klicke: *ON/OFF Button oben/rechts*
