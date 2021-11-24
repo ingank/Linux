@@ -61,6 +61,10 @@ lsblk -p | grep disk
 
 ### Installationsziel partitionieren:
 ```
+sgdisk -n 1:1024:2047 -t EF00
+sgdisk -n 2:2048:+512M -t EF02
+sgdisk -n 3:0:0 -t 8309
+
 gdisk /dev/sda
 GPT fdisk (gdisk) version 1.0.5
 
