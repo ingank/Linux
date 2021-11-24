@@ -383,6 +383,7 @@ cat /etc/crypttab
 
 # ACHTUNG: GRUB 2.04 ist in den offiziellen Paketquellen immer noch Standard.
 # GRUB 2.06 müsste zu diesem Zeitpunkt aus den Quellen kompiliert werden (Unterstützung für LUKS2)
+* https://linuxconfig.org/grub-compile-from-source-on-linux
 
 ### GRUB konfigurieren
 
