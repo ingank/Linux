@@ -61,9 +61,8 @@ lsblk -p | grep disk
 
 ### Installationsziel partitionieren:
 ```
-sgdisk -n 2:2048:+550M -t 2:EF00 /dev/sda
-sgdisk -n 1:1024:2047 -t 1:EF02 /dev/sda
-sgdisk -n 3:0:0 -t 8309 -t 3:8309 /dev/sda
+sgdisk -n 2:2048:+550M -n 1:1024:2047 -n 3:0:0
+sgdisk -t 1:EF02 -t 2:EF00 -t 3:8309
 ```
 ### Installationsziel prüfen:
 ```
