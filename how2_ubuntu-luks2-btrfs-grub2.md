@@ -129,7 +129,7 @@ Patch herunterladen:
 ```
 wget https://raw.githubusercontent.com/ingank/Linux/master/files/how2_ubuntu-luks2-btrfs-grub2/patch1.sh
 ```
-Patch einspielen:
+Dann die Dateien `/usr/lib/partman/mount.d/70btrfs` und `/usr/lib/partman/fstab.d/btrfs` patchen:
 ```
 bash ./patch1.sh
 rm ./patch1.sh
