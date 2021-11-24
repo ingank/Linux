@@ -63,6 +63,7 @@ lsblk -p | grep disk
 ```
 sgdisk -n 2:2048:+550M -n 1:1024:2047 -n 3:0:0 /dev/sda
 sgdisk -t 1:EF02 -t 2:EF00 -t 3:8309 /dev/sda
+sgdisk -c 1:"BIOS boot partition" -c 2:"EFI system partition" -c 3:"Linux LUKS"
 ```
 ### Installationsziel prüfen:
 ```
