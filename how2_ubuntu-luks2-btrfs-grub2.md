@@ -125,6 +125,12 @@ mkfs.btrfs /dev/mapper/crypt_rootfs
 ```
 
 ### Mount-Optionen an SSD-Spezifikation anpassen:
+```
+wget https://raw.githubusercontent.com/ingank/Linux/master/files/how2_ubuntu-luks2-btrfs-grub2/patch1.sh
+wget https://raw.githubusercontent.com/ingank/Linux/master/files/how2_ubuntu-luks2-btrfs-grub2/patch2.sh
+bash ./patch1.sh
+bash ./patch2.sh
+```
 
 - [/usr/lib/partman/mount.d/70btrfs patchen](https://github.com/ingank/Linux/blob/master/files/how2_ubuntu-luks2-btrfs-grub2/patch1.sh)
 - [/usr/lib/partman/fstab.d/btrfs patchen](https://github.com/ingank/Linux/blob/master/files/how2_ubuntu-luks2-btrfs-grub2/patch2.sh)
