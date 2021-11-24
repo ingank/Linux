@@ -1,4 +1,4 @@
-# Ubuntu auf LUKS2/Btrfs mit GRUB2
+# Ubuntu auf LUKS2/Btrfs mit GRUB 2.06
 
 Testumgebung:
 
