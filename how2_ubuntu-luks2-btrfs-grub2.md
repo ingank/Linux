@@ -65,81 +65,24 @@ sgdisk -n 2:2048:+550M -n 1:1024:2047 -n 3:0:0 /dev/sda
 sgdisk -t 1:EF02 -t 2:EF00 -t 3:8309 /dev/sda
 sgdisk -c 1:"BIOS boot partition" -c 2:"EFI system partition" -c 3:"Linux LUKS"
 ```
+
 ### Installationsziel prüfen:
 ```
-gdisk -l /dev/sda
-
-```
-
-
-gdisk /dev/sda
-GPT fdisk (gdisk) version 1.0.5
-
-Partition table scan:
-  MBR: not present
-  BSD: not present
-  APM: not present
-  GPT: not present
-
-Creating new GPT entries in memory.
-
-Command (? for help): n
-Partition number (1-128, default 1): 2
-First sector (34-41943006, default = 2048) or {+-}size{KMGTP}: 
-Last sector (2048-41943006, default = 41943006) or {+-}size{KMGTP}: +512M
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): ef00
-Changed type of partition to 'EFI system partition'
-
-Command (? for help): n
-Partition number (1-128, default 1): 
-First sector (34-41943006, default = 1050624) or {+-}size{KMGTP}: 1024
-Last sector (1024-2047, default = 2047) or {+-}size{KMGTP}: 
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): ef02
-Changed type of partition to 'BIOS boot partition'
-
-Command (? for help): n
-Partition number (3-128, default 3): 
-First sector (34-41943006, default = 1050624) or {+-}size{KMGTP}: 
-Last sector (1050624-41943006, default = 41943006) or {+-}size{KMGTP}: +8G
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 8200
-Changed type of partition to 'Linux swap'
-
-Command (? for help): n
-Partition number (4-128, default 4): 
-First sector (34-41943006, default = 17827840) or {+-}size{KMGTP}: 
-Last sector (17827840-41943006, default = 41943006) or {+-}size{KMGTP}: 
-Current type is 8300 (Linux filesystem)
-Hex code or GUID (L to show codes, Enter = 8300): 8309
-Changed type of partition to 'Linux LUKS'
-
-Command (? for help): p
+sgdisk -p /dev/sda
 Disk /dev/sda: 41943040 sectors, 20.0 GiB
 Model: VBOX HARDDISK   
 Sector size (logical/physical): 512/512 bytes
-Disk identifier (GUID): 5F0628CC-C27F-4167-9EEF-9B7E654829C5
+Disk identifier (GUID): 7E11C8C0-167E-4780-9DA5-469562013E9C
 Partition table holds up to 128 entries
 Main partition table begins at sector 2 and ends at sector 33
 First usable sector is 34, last usable sector is 41943006
-Partitions will be aligned on 2048-sector boundaries
+Partitions will be aligned on 1024-sector boundaries
 Total free space is 990 sectors (495.0 KiB)
 
 Number  Start (sector)    End (sector)  Size       Code  Name
    1            1024            2047   512.0 KiB   EF02  BIOS boot partition
-   2            2048         1050623   512.0 MiB   EF00  EFI system partition
-   3         1050624        17827839   8.0 GiB     8200  Linux swap
-   4        17827840        41943006   11.5 GiB    8309  Linux LUKS
-
-Command (? for help): w
-
-Final checks complete. About to write GPT data. THIS WILL OVERWRITE EXISTING
-PARTITIONS!!
-
-Do you want to proceed? (Y/N): y
-OK; writing new GUID partition table (GPT) to /dev/sda.
-The operation has completed successfully.
+   2            2048         1128447   550.0 MiB   EF00  EFI system partition
+   3         1128448        41943006   19.5 GiB    8309  Linux LUKS
 ```
 
 ### EFI System Partition formatieren:
@@ -148,9 +91,9 @@ mkfs.fat -F32 /dev/sda2
 # mkfs.fat 4.1 (2017-01-24)
 ```
 
-### LUKS-Partition für System mit LUKS2 verschlüsseln:
+### LUKS-Partition verschlüsseln:
 ```
-cryptsetup luksFormat --type=luks2 /dev/sda4
+cryptsetup luksFormat --type=luks1 /dev/sda3
 #
 # WARNING!
 # ========
@@ -161,18 +104,14 @@ cryptsetup luksFormat --type=luks2 /dev/sda4
 # Verify passphrase: *****
 ```
 
-**Achtung:** Festplattenver- und Entschlüsselung
-sind unter Umständen betriebssystemunabhängige Vorgänge.
-Damit die angeschlossene Tastatur in unterschiedlichen
-Laufzeitumgebungen nicht zum **Sündenbock** wird,
-ist es ratsam,
-folgende [Hinweise](https://github.com/ingank/Linux/blob/master/use_passwords.md#zeichenvorrat-des-eingabeger%C3%A4tes)
-zu beachten.
+**Achtung:** Das Passwort sollte vorerst
+nur folgende Zeichen enthalten: A-X,a-x,$,%.
+Diese sind sowohl auf einer amerikanischen Tastatur als auch der deutschen gleich belegt.
 
 ### Linux Systempartition ins aktuelle System mappen:
 ```
-cryptsetup open /dev/sda4 crypt_rootfs
-Enter passphrase for /dev/sda4: *****
+cryptsetup open /dev/sda3 crypt_rootfs
+Enter passphrase for /dev/sda3: *****
 ```
 Prüfen:
 ```
@@ -183,26 +122,6 @@ ls /dev/mapper/
 ### Btrfs in der Linux Systempartition erzeugen:
 ```
 mkfs.btrfs /dev/mapper/crypt_rootfs
-# btrfs-progs v5.4.1 
-# See http://btrfs.wiki.kernel.org for more information.
-#
-# Detected a SSD, turning off metadata duplication.  Mkfs with -m dup if you want to force metadata duplication.
-# Label:              (null)
-# UUID:               be756d4c-2d66-4481-baac-eaa55bf2d987
-# Node size:          16384
-# Sector size:        4096
-# Filesystem size:    11.50GiB
-# Block group profiles:
-#   Data:             single            8.00MiB
-#   Metadata:         single            8.00MiB
-#   System:           single            4.00MiB
-# SSD detected:       yes
-# Incompat features:  extref, skinny-metadata
-# Checksum:           crc32c
-# Number of devices:  1
-# Devices:
-#    ID        SIZE  PATH
-#     1    11.50GiB  /dev/mapper/crypt_rootfs
 ```
 
 ### Mount-Optionen an SSD-Spezifikation anpassen:
