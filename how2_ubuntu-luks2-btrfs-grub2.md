@@ -97,7 +97,7 @@ cryptsetup luksFormat --type=luks1 /dev/sda3
 #
 # WARNING!
 # ========
-# This will overwrite data on /dev/sda4 irrevocably.
+# This will overwrite data on /dev/sda3 irrevocably.
 #
 # Are you sure? (Type uppercase yes): YES
 # Enter passphrase for /dev/sda4: *****
@@ -134,12 +134,6 @@ Patch einspielen:
 bash ./patch1.sh
 rm ./patch1.sh
 ```
-
-**Hinweis:**
-Auf älterer Hardware
-kann u.U. das Weglassen der Option *compress=zstd*
-die Performanz positiv beeinflussen.
-
 ### Ubuntu installieren:
 
 Das Tool *Ubiquity* kann
@@ -175,11 +169,6 @@ ubiquity --no-bootloader
   Benutzer *root* im Terminal
 
 ### chroot ins neue Betriebssystem:
-
-**Beachte:** Wenn, wie im Kapitel *Mount-Optionen an SSD-Spezifikation anpassen* beschrieben,
-die Option *compress=zstd* auf älterer Hardware aus Performanzgründen entfernt wurde,
-so muss dies auch an dieser Stelle erfolgen.
-
 ```
 mount -o subvol=@,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/crypt_rootfs /mnt
 mount -o subvol=@home,ssd,noatime,space_cache,commit=120,compress=zstd /dev/mapper/crypt_rootfs /mnt/home
