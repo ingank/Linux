@@ -4,3 +4,10 @@ Installation finished. No error reported.
 root@vbox:/home/foo/grub-2.06# /usr/local/sbin/grub-install /dev/sda
 Installing for x86_64-efi platform.
 /usr/local/sbin/grub-install: error: disk `lvm/crypt_rootfs' not found.
+
+
+Device        Start      End  Sectors  Size Type
+/dev/sda1      1024     2047     1024  512K BIOS boot
+/dev/sda2      2048  1050623  1048576  512M EFI System
+/dev/sda3   1050624 17827839 16777216    8G Linux swap
+/dev/sda4  17827840 41943006 24115167 11,5G unknown
