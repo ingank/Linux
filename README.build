@@ -11,13 +11,13 @@ OTHER='*.txt|*.sh|*.pl|*.jpg|*.png'
 
 echo -e "# \`Linux\`\n" > $FILE
 echo -e "\`Das Schweizer Taschenmesser für den Linuxalltag.\`\n" >> $FILE
-echo -e "### \`HAUPTVERZEICHNIS\`\n" >> $FILE
+echo -e "#### \`HAUPTVERZEICHNIS\`\n" >> $FILE
 
-LIST=(`ls | grep -E "${MD}|${OTHER}" | grep -Ev README`)
+LIST=(`ls | grep -E "${MD}" | grep -Ev README`)
 
 for NAME in "${LIST[@]}"; do
   TRAILER=$(head -1 ./$NAME | sed 's/# //g')
-  echo "###### [\`$TRAILER\`]($NAME)" >> $FILE
+  echo "[\`$TRAILER\`]($NAME)<br>" >> $FILE
 done
 
 DIRS=(`tree -fid --noreport`)
@@ -25,13 +25,13 @@ unset DIRS[0]
 
 for DIR in "${DIRS[@]}"; do
   DIR=${DIR#./}
-  echo -e "\n##### \`VERZEICHNIS: $DIR\`\n" >> $FILE
+  echo -e "\n#### \`VERZEICHNIS: $DIR\`\n" >> $FILE
   LIST=(`ls $DIR`)
   DIR=${DIR#./}
   for NAME in "${LIST[@]}"; do
-    echo "###### [\`$NAME\`]($DIR/$NAME)" >> $FILE
+    echo "[\`$NAME\`]($DIR/$NAME)<br>" >> $FILE
   done
 done
 
 echo -e "\n---\n" >> $FILE
-echo "###### \`Aktualisiert am $DATE\`" >> $FILE
+echo "\`Aktualisiert am $DATE\`" >> $FILE
