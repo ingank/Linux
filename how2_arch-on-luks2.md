@@ -3,10 +3,11 @@ Anleitung in einfacher Sprache ohne Ablenkung.
 
 ### Kurzbeschreibung des Systems
 * die Rechner-Firmware ist EFI
-* Secure Boot ist ausgeschaltet
+* EFI Secure Boot ist ausgeschaltet
 * die EFI-Systempartition ist unverschlüsselt
+* Kernel und initramfs sind auf der EFI-Systempartition gespeichert
 * bootctl oder GRUB ist der Bootloader
-* Systempartitionen sind in einem dm-crypt/LUKS2-Container verschlüsselt
+* rootfs und /home sind in einem dm-crypt/LUKS2-Container verschlüsselt
 * als Dateisystem kommt ext4 zum Einsatz
 * das Betriebssystem ist Arch-Linux
 
