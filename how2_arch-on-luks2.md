@@ -5,7 +5,7 @@ Anleitung in einfacher Sprache ohne Ablenkung.
 * die Rechner-Firmware ist EFI
 * Secure Boot ist ausgeschaltet
 * die EFI-Systempartition ist unverschlüsselt
-* bootctl ist der Bootloader.
+* bootctl oder GRUB ist der Bootloader
 * Systempartitionen sind in einem dm-crypt/LUKS2-Container verschlüsselt
 * als Dateisystem kommt ext4 zum Einsatz
 * das Betriebssystem ist Arch-Linux
