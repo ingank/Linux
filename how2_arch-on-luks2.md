@@ -198,12 +198,15 @@ mkinitcpio -p linux
 passwd
 ```
 
-### Bootloader 'bootctl' installieren
+### bootctl als Bootloader
+Vier Punkte.
+
+#### Bootloader schreiben
 ```
 bootctl install
 ```
 
-### Bootloader: Menüeintrag 'Arch Linux'
+#### Menüeintrag 'Arch Linux'
 ```
 cat << EOT > /boot/loader/entries/arch.conf
 title    Arch Linux
@@ -212,7 +215,7 @@ initrd   /initramfs-linux.img
 options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw init=/usr/lib/systemd/systemd
 EOT
 ```
-### Bootloader: Menüeintrag 'Arch Linux Fallback'
+#### Menüeintrag 'Arch Linux Fallback'
 ```
 cat << EOT > /boot/loader/entries/arch-fallback.conf
 title    Arch Linux Fallback
@@ -222,12 +225,26 @@ options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw init=/usr/lib/sy
 EOT
 ```
 
-### Datei /boot/loader/loader.conf erzeugen
+#### bootctl - Grundeinstellungen
 ```
 cat << EOT > /boot/loader/loader.conf
 timeout 1
 default arch.conf
 EOT
+```
+
+### GRUB als Bootloader
+Zwei Punkte.
+
+#### GRUB - Grundeinstellungen
+```
+# /etc/default/grub
+GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:main init=/usr/lib/systemd/systemd"
+```
+#### Bootloader und Konfiguration schreiben 
+```
+grub-install --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### System verlassen und neu starten
