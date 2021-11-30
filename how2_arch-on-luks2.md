@@ -209,7 +209,7 @@ cat << EOT > /boot/loader/entries/arch.conf
 title    Arch Linux
 linux    /vmlinuz-linux
 initrd   /initramfs-linux.img
-options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw lang=de init=/usr/lib/systemd/systemd locale=de_DE.UTF-8
+options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw init=/usr/lib/systemd/systemd
 EOT
 ```
 ### Bootloader: Menüeintrag 'Arch Linux Fallback'
@@ -218,7 +218,7 @@ cat << EOT > /boot/loader/entries/arch-fallback.conf
 title    Arch Linux Fallback
 linux    /vmlinuz-linux
 initrd   /initramfs-linux-fallback.img
-options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw lang=de init=/usr/lib/systemd/systemd locale=de_DE.UTF-8
+options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw init=/usr/lib/systemd/systemd
 EOT
 ```
 
