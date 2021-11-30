@@ -254,3 +254,12 @@ exit
 umount /mnt/{boot,home,}
 reboot
 ```
+
+### Quellen
+* https://wiki.archlinux.de/title/Installation_mit_UEFI_und_Verschl%C3%BCsselung
+* https://kofler.info/arch-linux-installieren/
+* https://bbs.archlinux.org/viewtopic.php?id=268460
+* https://wiki.archlinux.org/title/GRUB#LUKS2
+* https://cryptsetup-team.pages.debian.net/cryptsetup/encrypted-boot.html#avoiding-the-extra-password-prompt
+* https://wiki.archlinux.org/title/Dm-crypt/Device_encryption
+* https://nwildner.com/posts/2020-07-04-secure-your-boot-process/
