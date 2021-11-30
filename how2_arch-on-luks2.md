@@ -263,3 +263,4 @@ reboot
 * https://cryptsetup-team.pages.debian.net/cryptsetup/encrypted-boot.html#avoiding-the-extra-password-prompt
 * https://wiki.archlinux.org/title/Dm-crypt/Device_encryption
 * https://nwildner.com/posts/2020-07-04-secure-your-boot-process/
+* https://linux-club.de/forum/viewtopic.php?f=4&t=118035
