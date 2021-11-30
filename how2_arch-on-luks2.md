@@ -251,7 +251,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ### System verlassen und neu starten
 ```
 exit
-umount /mnt/{boot,home,}
+umount -R /mnt
 reboot
 ```
 
