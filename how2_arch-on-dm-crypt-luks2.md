@@ -1,5 +1,5 @@
 # Arch Linux mit dm-crypt/LUKS2 verschlüsseln
-Anleitung in einfacher Sprache ohne Ablenkung.
+Anleitung in einfacher Sprache.
 
 ### Kurzbeschreibung des Systems
 * die Rechner-Firmware ist EFI
@@ -7,7 +7,7 @@ Anleitung in einfacher Sprache ohne Ablenkung.
 * die EFI-Systempartition ist unverschlüsselt
 * Kernel und initramfs sind auf der EFI-Systempartition gespeichert
 * bootctl oder GRUB ist der Bootloader
-* rootfs und /home sind in einem dm-crypt/LUKS2-Container verschlüsselt
+* `/` und `/home` sind mit dm-crypt/LUKS2 verschlüsselt
 * als Dateisystem kommt ext4 zum Einsatz
 * das Betriebssystem ist Arch-Linux
 
