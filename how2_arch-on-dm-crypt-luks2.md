@@ -1,12 +1,12 @@
 # Arch Linux mit dm-crypt/LUKS2 verschlüsseln
 Anleitung in einfacher Sprache.
 
-### Kurzbeschreibung des Systems
+### Kurzbeschreibung des fertigen Systems
 * die Rechner-Firmware ist EFI
-* EFI Secure Boot ist ausgeschaltet
+* EFI Secure Boot ist deaktiviert
 * die EFI-Systempartition ist unverschlüsselt
-* Kernel und initramfs sind auf der EFI-Systempartition gespeichert
 * bootctl oder GRUB ist der Bootloader
+* Kernel und initramfs sind auch auf der EFI-Systempartition gespeichert
 * `/` und `/home` sind mit dm-crypt/LUKS2 verschlüsselt
 * als Dateisystem kommt ext4 zum Einsatz
 * das Betriebssystem ist Arch-Linux
@@ -42,7 +42,7 @@ lsblk -p
 HD='/dev/sda'  # Beispiel
 ```
 
-### Neue GPT auf Systemfestplatte erzeugen
+### GPT (GUID Partition Table) auf Systemfestplatte erzeugen
 ```
 sgdisk -o $HD
 ```
@@ -180,13 +180,12 @@ hwclock --systohc
 
 ### initramfs vorbereiten
 ```
-nano /etc/mkinitcpio.conf
-```
-```
->>>
-MODULES=(ext4)
-HOOKS=(base udev autodetect modconf block keyboard keymap encrypt lvm2 filesystems fsck shutdown)
-<<<
+# Konfiguration sichern
+cp /etc/mkinitcpio.conf{,~}
+
+# Konfiguration ändern
+sed -i 's/^MODULES=.*$/MODULES=(ext4)/' /etc/mkinitcpio.conf
+sed -i 's/^HOOKS=.*$/HOOKS=(base udev autodetect modconf block keyboard keymap encrypt lvm2 filesystems fsck shutdown)/' /etc/mkinitcpio.conf
 ```
 
 ### initramfs generieren
