@@ -32,6 +32,7 @@ ip a sh
 ```
 
 ### Von einem beliebigen Rechner im Netzwerk weiterarbeiten
+Hinweis: Das geschieht, um Befehle einfach in das Terminal kopieren zu können.
 ```
 ssh root@<ip-addr>
 ```
