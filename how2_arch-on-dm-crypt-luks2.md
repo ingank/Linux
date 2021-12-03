@@ -12,9 +12,9 @@ Anleitung in einfacher Sprache.
 * das Betriebssystem ist Arch-Linux
 
 ### Vorbereitung
-* ISO-Datei des neuesten Arch Linux herunterladen
+* ISO-Datei des neuesten _Arch Linux_ herunterladen
 * ISO-Datei booten
-* Konsole des Users `root` wird angezeigt
+* Konsole des Benutzers `root` wird angezeigt
 
 ### deutsche Tastatur einstellen
 ```
