@@ -65,16 +65,13 @@ Number  Start (sector)    End (sector)  Size       Code  Name
 <<<
 ```
 
-### Blockgerätedateien für Partitionen ermitteln
+### Blockgerätedateien für Partitionen ermitteln und merken
 ```
 lsblk -p
+EFI='/dev/sda1'   # Beispiel
+LUKS='/dev/sda2'  # Beispiel
 ```
 
-### Blockdateien für Partitionen merken (Beispiel)
-```
-EFI='/dev/sda1'
-LUKS='/dev/sda2'
-```
 ### LUKS-Container anlegen
 ```
 cryptsetup luksFormat $LUKS
@@ -85,7 +82,7 @@ cryptsetup luksFormat $LUKS
 cryptsetup luksDump $LUKS
 ```
 
-### LUKS-Container nach /dev/mapper/lvm mappen
+### LUKS-Container nach `/dev/mapper/lvm` mappen
 ```
 cryptsetup luksOpen $LUKS lvm
 ```
@@ -112,7 +109,7 @@ lvcreate -l 100%FREE -n home main
 ### PV/VG/LV (Mehrzahl) inspizieren
 `lvdisplay, lvscan, lvs, vgscan, vgs, pvscan, pvs`
 
-### Dateisysteme in '/', '/home' und EFI erstellen
+### Dateisysteme in '/', '/home' und der EFI-Systempartition erstellen
 ```
 mkfs.ext4 -L root /dev/mapper/main-root
 mkfs.ext4 -L home /dev/mapper/main-home
@@ -128,7 +125,7 @@ mkdir /mnt/boot
 mount $EFI /mnt/boot
 ```
 
-### Spiegelserverliste standortbezogen updaten (kann dauern)
+### Spiegelserverliste standortbezogen updaten (ca. 2 Minuten)
 ```
 reflector -c Germany -p http -p https --sort rate -n 5 > /etc/pacman.d/mirrorlist
 ```
@@ -141,7 +138,7 @@ pacstrap /mnt base base-devel linux linux-firmware \
     nano man-db 
 ```
 
-### /etc/fstab erzeugen
+### aus den aktuellen Mountpunkten unter `/mnt` die Datei `/etc/fstab` erzeugen
 ```
 genfstab -Lp /mnt > /mnt/etc/fstab
 ```
@@ -201,12 +198,12 @@ passwd
 ### bootctl als Bootloader
 Vier Punkte.
 
-#### Bootloader schreiben
+#### 1:bootctl-Bootloader schreiben
 ```
 bootctl install
 ```
 
-#### Menüeintrag 'Arch Linux'
+#### 2:Menüeintrag 'Arch Linux'
 ```
 cat << EOT > /boot/loader/entries/arch.conf
 title    Arch Linux
@@ -215,7 +212,7 @@ initrd   /initramfs-linux.img
 options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw init=/usr/lib/systemd/systemd
 EOT
 ```
-#### Menüeintrag 'Arch Linux Fallback'
+#### 3:Menüeintrag 'Arch Linux Fallback'
 ```
 cat << EOT > /boot/loader/entries/arch-fallback.conf
 title    Arch Linux Fallback
@@ -225,7 +222,7 @@ options  cryptdevice=${LUKS}:main root=/dev/mapper/main-root rw init=/usr/lib/sy
 EOT
 ```
 
-#### bootctl - Grundeinstellungen
+#### 4:bootctl: Grundeinstellungen
 ```
 cat << EOT > /boot/loader/loader.conf
 timeout 1
@@ -236,17 +233,17 @@ EOT
 ### GRUB als Bootloader
 Drei Punkte.
 
-#### GRUB-Paket installieren
+#### 1:GRUB-Paket installieren
 ```
 pacman -S grub
 ```
 
-#### GRUB: Grundeinstellungen ändern
+#### 2:GRUB: Grundeinstellungen ändern
 ```
 # /etc/default/grub
 GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:main init=/usr/lib/systemd/systemd"
 ```
-#### GRUB-Bootloader und Konfiguration schreiben 
+#### 3:GRUB-Bootloader und Konfiguration schreiben 
 ```
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
