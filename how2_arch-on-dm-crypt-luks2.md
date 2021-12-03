@@ -234,14 +234,19 @@ EOT
 ```
 
 ### GRUB als Bootloader
-Zwei Punkte.
+Drei Punkte.
 
-#### GRUB - Grundeinstellungen
+#### GRUB-Paket installieren
+```
+pacman -S grub
+```
+
+#### GRUB: Grundeinstellungen ändern
 ```
 # /etc/default/grub
 GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:main init=/usr/lib/systemd/systemd"
 ```
-#### Bootloader und Konfiguration schreiben 
+#### GRUB-Bootloader und Konfiguration schreiben 
 ```
 grub-install --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
