@@ -35,7 +35,6 @@ a=`date`
 echo -e "$a :: perform README.md update" >> $LOG
 a=`git merge 2>&1`
 
-
 echo -e "# \`Linux\`\n" > $FILE
 echo -e "\`Das Schweizer Taschenmesser für den Linuxalltag.\`\n" >> $FILE
 echo -e "#### \`HAUPTVERZEICHNIS\`\n" >> $FILE
