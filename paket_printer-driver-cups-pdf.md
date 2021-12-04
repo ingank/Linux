@@ -1,4 +1,4 @@
-# Der CUPS PDF-Drucker
+# Das Paket printer-driver-cups-pdf (CUPS PDF-Drucker)
 
 ## Installation und Konfiguration
 
