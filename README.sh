@@ -8,7 +8,7 @@
 # erzeugt automatisch eine aktuelle README.md
 # lädt die Änderungen per git push in das remote Repository
 # wird über den cron-Dienst bspw. fünf-minütlich getriggert:
-# 5 * * * * /home/foo/Linux/README.sh
+# */5 * * * * /home/foo/Linux/README.sh
 
 cd `dirname $0`
 
