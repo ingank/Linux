@@ -1,5 +1,6 @@
-# Mit dem Kommando tput die Terminal-Ausgabe erweitern
-`tput` kann genutzt werden, um die Terminal-Ausgabe aussagekräftiger zu gestalten.
+# Das Kommando tput (Terminal-Ausgabe erweitern)
+`tput` kann genutzt werden, um die Terminal-Ausgabe aussagekräftiger zu gestalten.<br>
+
 Es gibt:
 * Farben
 * Auszeichnungen
