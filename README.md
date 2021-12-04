@@ -4,6 +4,7 @@
 
 #### `HAUPTVERZEICHNIS`
 
+[`Der Befehl dpkg-query (Paketdatenbank durchsuchen)`](command_dpkg-query.md)<br>
 [`Der Befehl sed (Streameditor)`](command_sed.md)<br>
 [`Der Befehl tput (Terminalausgabe aussagekräftig gestalten)`](command_tput.md)<br>
 [`Der Befehl tty-clock (Terminal-Uhr)`](command_tty-clock.md)<br>
@@ -57,7 +58,6 @@
 [`Zugriffsrechte auf Partitionen mit Gnome steuern`](tweak_hd-access-per-gnome.md)<br>
 [`IPv6 Privacy Extensions anpassen`](tweak_privacy-extensions.md)<br>
 [`Installation von "apt-get build-dep" verwerfen`](undo_apt-get_build-dep.md)<br>
-[`Die Paketdatenbank mit dpkg-query durchsuchen`](use_dpkg-query.md)<br>
 [`Kleines Git HowTo`](use_git.md)<br>
 [`Mit host, dig und nslookup Namenauflösung untersuchen`](use_host-dig-nslookup.md)<br>
 [`Die Linux Benutzerverwaltung`](use_linux-user-management.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 23:43:01 CET 2021`
+`Aktualisiert am Sa 4. Dez 23:55:01 CET 2021`
