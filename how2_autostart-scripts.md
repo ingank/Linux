@@ -12,7 +12,7 @@ Der Bootprozess beginnt mit dem Laden des Bootloaders und endet mit der ersten m
 
 Loginskripte werden automatisch bei einem Konsolen-Login ausgeführt.
 Konsole ist hier ein Oberbegriff für alle auf dem System vorhandenen Benutzerschnittstellen,
-sei sie nun textbasiert oder grafisch ausgeführt.
+seien sie nun textbasiert oder grafisch ausgeführt.
 
 ## Cronjobs
 
