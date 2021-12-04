@@ -1,4 +1,4 @@
-# Mit host, dig und nslookup Namenauflösung untersuchen
+# Das Paket dnsutils (host, dig, nslookup)
 
 Die dns-Tools `host`, `dig` und `nslookup` sind Teil des GNU/Linux Debian Pakets `dnsutils`.
 
