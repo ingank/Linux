@@ -4,13 +4,13 @@
 
 #### `HAUPTVERZEICHNIS`
 
+[`Netzwerk-Sockets inspizieren`](check_nw-sockets.md)<br>
 [`Der Befehl dpkg-query (Paketdatenbank durchsuchen)`](command_dpkg-query.md)<br>
 [`Der Befehl sed (Streameditor)`](command_sed.md)<br>
 [`Der Befehl tput (Terminalausgabe aussagekräftig gestalten)`](command_tput.md)<br>
 [`Der Befehl tty-clock (Terminal-Uhr)`](command_tty-clock.md)<br>
 [`Der Befehl umask`](command_umask.md)<br>
 [`Audio-CD-Ripping unter Linux`](do_cd-ripping.md)<br>
-[`Netzwerk-Sockets inspizieren`](do_check-sockets.md)<br>
 [`Verzögerter ssh-Login auf GNU/Linux`](fix_delayed-ssh-login.md)<br>
 [`Fix: initrd und swap unterbrechen Bootvorgang`](fix_frozen-bootstrap.md)<br>
 [`GRUB 2 - GPT - EF02`](fix_gpt-for-grub2.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am So 5. Dez 00:00:01 CET 2021`
+`Aktualisiert am So 5. Dez 00:05:01 CET 2021`
