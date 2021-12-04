@@ -46,7 +46,7 @@
 [`Keyboardtasten und Tastenkombinationen in Textform darstellen`](keyboard-key-symbols.md)<br>
 [`Live-ISO's mit GRUB-2 direkt starten`](starting_iso-s_with_grub2.md)<br>
 [`Der CUPS PDF-Drucker`](the_cups-pdf-printer.md)<br>
-[`Der Streameditor sed`](the_streameditor_sed.md)<br>
+[`Das Kommando sed (Streameditor)`](the_streameditor_sed.md)<br>
 [`Mit dem Kommando tput die Terminal-Ausgabe erweitern`](the_tput_command.md)<br>
 [`Das Kommando umask`](the_umask_command.md)<br>
 [`Grundlagen der Linux-Benutzerverwaltung`](the_user-management.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 11:59:10 CET 2021`
+`Aktualisiert am Sa 4. Dez 12:04:22 CET 2021`
