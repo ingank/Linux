@@ -4,6 +4,7 @@
 
 #### `HAUPTVERZEICHNIS`
 
+[`Der Befehl sed (Streameditor)`](command_sed.md)<br>
 [`Der Befehl tput (Terminalausgabe aussagekräftig gestalten)`](command_tput.md)<br>
 [`Der Befehl tty-clock (Terminal-Uhr)`](command_tty-clock.md)<br>
 [`Der Befehl umask`](command_umask.md)<br>
@@ -49,7 +50,6 @@
 [`Keyboardtasten und Tastenkombinationen in Textform darstellen`](keyboard-key-symbols.md)<br>
 [`Live-ISO's mit GRUB-2 direkt starten`](starting_iso-s_with_grub2.md)<br>
 [`Der CUPS PDF-Drucker`](the_cups-pdf-printer.md)<br>
-[`Das Kommando sed (Streameditor)`](the_streameditor_sed.md)<br>
 [`Grundlagen der Linux-Benutzerverwaltung`](the_user-management.md)<br>
 [`Deaktivierung des Bootsplash`](turn-off_bootsplash.md)<br>
 [`Aussehen und Handling des Gnome-Docks anpassen`](tweak_gnome-dock.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 23:39:01 CET 2021`
+`Aktualisiert am Sa 4. Dez 23:41:01 CET 2021`
