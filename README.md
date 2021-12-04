@@ -5,6 +5,7 @@
 #### `HAUPTVERZEICHNIS`
 
 [`Netzwerk-Sockets inspizieren`](check_nw-sockets.md)<br>
+[`Der Befehl crontab`](command_crontab.md)<br>
 [`Der Befehl dpkg-query (Paketdatenbank durchsuchen)`](command_dpkg-query.md)<br>
 [`Der Befehl sed (Streameditor)`](command_sed.md)<br>
 [`Der Befehl tput (Terminalausgabe aussagekräftig gestalten)`](command_tput.md)<br>
@@ -22,7 +23,6 @@
 [`GRUB Version 2.06 kompilieren`](how2_build-grub2-on-debian.md)<br>
 [`WeeChat aus den Quellen installieren`](how2_build-weechat@ubuntu.md)<br>
 [`MBR (Master Boot Record) inspizieren`](how2_check-mbr.md)<br>
-[`Nutzerbasierte crontab`](how2_crontab-userbased.md)<br>
 [`DS-Lite: SSH-Fernwartung per Jumpserver`](how2_dslite-ssh-jumpserver.md)<br>
 [`Schneller Screencast mit ffmpeg`](how2_ffmpeg-screencast.md)<br>
 [`FM4 Audiostream als mp3 speichern und schneiden`](how2_fm4-record+cut.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am So 5. Dez 00:05:01 CET 2021`
+`Aktualisiert am So 5. Dez 00:10:01 CET 2021`
