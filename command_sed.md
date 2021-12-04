@@ -1,4 +1,4 @@
-# Das Kommando sed (Streameditor)
+# Der Befehl sed (Streameditor)
 
 Das mächtige Urgestein zum gezielten Verändern von Textströmen, *sed*, ist in seinen Anwendungsmöglichkeiten so vielfältig, dass in diesem Dokument nur auf externe Ressourcen verwiesen wird.
 
