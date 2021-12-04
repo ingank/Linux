@@ -1,4 +1,4 @@
-# Terminal-Befehle per SSH unmittelbar auf dem Zielhost ausführen
+# Der Befehl ssh -t foo (Befehle umittelbar ausführen)
 
 Dem Kommando ssh kann ein auf dem Zielhost auszuführender Befehl als Argument übergeben werden.
 ```
