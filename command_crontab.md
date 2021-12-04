@@ -1,4 +1,4 @@
-# Nutzerbasierte crontab
+# Der Befehl crontab
 
 Systemweite, von *root* editierbare Konfigurationsdateien für den *cron*-Daemon werden unter /etc/crontab und /etc/cron* gespeichert.
 
