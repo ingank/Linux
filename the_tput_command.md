@@ -1,4 +1,4 @@
-# Das Kommando tput (Terminal-Ausgabe erweitern)
+# Der Befehl tput (Terminalausgabe aussagekräftig gestalten)
 `tput` kann genutzt werden, um die Terminal-Ausgabe aussagekräftiger zu gestalten.<br>
 
 Es gibt:
