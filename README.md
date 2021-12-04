@@ -5,6 +5,7 @@
 #### `HAUPTVERZEICHNIS`
 
 [`Der Befehl tty-clock (Terminal-Uhr)`](command_tty-clock.md)<br>
+[`Der Befehl umask`](command_umask.md)<br>
 [`Audio-CD-Ripping unter Linux`](do_cd-ripping.md)<br>
 [`Netzwerk-Sockets inspizieren`](do_check-sockets.md)<br>
 [`Verzögerter ssh-Login auf GNU/Linux`](fix_delayed-ssh-login.md)<br>
@@ -49,7 +50,6 @@
 [`Der CUPS PDF-Drucker`](the_cups-pdf-printer.md)<br>
 [`Das Kommando sed (Streameditor)`](the_streameditor_sed.md)<br>
 [`Das Kommando tput (Terminal-Ausgabe erweitern)`](the_tput_command.md)<br>
-[`Das Kommando umask`](the_umask_command.md)<br>
 [`Grundlagen der Linux-Benutzerverwaltung`](the_user-management.md)<br>
 [`Deaktivierung des Bootsplash`](turn-off_bootsplash.md)<br>
 [`Aussehen und Handling des Gnome-Docks anpassen`](tweak_gnome-dock.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 23:32:01 CET 2021`
+`Aktualisiert am Sa 4. Dez 23:34:01 CET 2021`
