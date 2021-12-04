@@ -47,6 +47,7 @@
 [`Live-ISO's mit GRUB-2 direkt starten`](starting_iso-s_with_grub2.md)<br>
 [`Der CUPS PDF-Drucker`](the_cups-pdf-printer.md)<br>
 [`Der Streameditor *sed*`](the_streameditor_sed.md)<br>
+[`Mit dem Kommando `tput` die Terminal-Ausgabe erweitern`](the_tput_command.md)<br>
 [`Das Kommando umask`](the_umask_command.md)<br>
 [`Grundlagen der Linux-Benutzerverwaltung`](the_user-management.md)<br>
 [`Deaktivierung des Bootsplash`](turn-off_bootsplash.md)<br>
@@ -54,7 +55,6 @@
 [`Tastaturlayout der GRUB-2-Konsole anpassen`](tweak_grub2-keyboard-layout.md)<br>
 [`Zugriffsrechte auf Partitionen mit Gnome steuern`](tweak_hd-access-per-gnome.md)<br>
 [`IPv6 Privacy Extensions anpassen`](tweak_privacy-extensions.md)<br>
-[`Terminal Input/Output optimieren`](tweak_terminal-io.md)<br>
 [`Installation von "apt-get build-dep" verwerfen`](undo_apt-get_build-dep.md)<br>
 [`Die Paketdatenbank mit dpkg-query durchsuchen`](use_dpkg-query.md)<br>
 [`Kleines Git HowTo`](use_git.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 11:33:18 CET 2021`
+`Aktualisiert am Sa 4. Dez 11:56:34 CET 2021`
