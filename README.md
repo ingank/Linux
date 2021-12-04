@@ -49,6 +49,7 @@
 [`VSCode: Senkrechte Lineale anzeigen`](how2_vscode-rulers.md)<br>
 [`k9copy-reloaded auf Ubuntu 18.04 installieren`](install_k9copy-reloaded.md)<br>
 [`Keyboardtasten und Tastenkombinationen in Textform darstellen`](keyboard-key-symbols.md)<br>
+[`Das Paket dnsutils (host, dig, nslookup)`](paket_dnsutils.md)<br>
 [`Live-ISO's mit GRUB-2 direkt starten`](starting_iso-s_with_grub2.md)<br>
 [`Der CUPS PDF-Drucker`](the_cups-pdf-printer.md)<br>
 [`Grundlagen der Linux-Benutzerverwaltung`](the_user-management.md)<br>
@@ -59,7 +60,6 @@
 [`IPv6 Privacy Extensions anpassen`](tweak_privacy-extensions.md)<br>
 [`Installation von "apt-get build-dep" verwerfen`](undo_apt-get_build-dep.md)<br>
 [`Kleines Git HowTo`](use_git.md)<br>
-[`Mit host, dig und nslookup Namenauflösung untersuchen`](use_host-dig-nslookup.md)<br>
 [`Die Linux Benutzerverwaltung`](use_linux-user-management.md)<br>
 [`Passwörter erstellen und benutzen`](use_passwords.md)<br>
 [`SSH Public Key Authentifizierung`](use_ssh-pka.md)<br>
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 23:55:01 CET 2021`
+`Aktualisiert am So 5. Dez 00:00:01 CET 2021`
