@@ -4,6 +4,7 @@
 
 #### `HAUPTVERZEICHNIS`
 
+[`Der Befehl tty-clock (Terminal-Uhr)`](command_tty-clock.md)<br>
 [`Audio-CD-Ripping unter Linux`](do_cd-ripping.md)<br>
 [`Netzwerk-Sockets inspizieren`](do_check-sockets.md)<br>
 [`Verzögerter ssh-Login auf GNU/Linux`](fix_delayed-ssh-login.md)<br>
@@ -65,7 +66,6 @@
 [`Terminal-Befehle per SSH unmittelbar auf dem Zielhost ausführen`](use_ssh-t.md)<br>
 [`Mails mit ssmtp versenden`](use_ssmtp.md)<br>
 [`su und sudo - eine kleine Einführung`](use_su-sudo.md)<br>
-[`tty-clock als Terminal-Uhr`](use_tty-clock.md)<br>
 
 #### `VERZEICHNIS: files`
 
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am Sa 4. Dez 23:25:02 CET 2021`
+`Aktualisiert am Sa 4. Dez 23:30:01 CET 2021`
