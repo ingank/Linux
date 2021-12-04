@@ -11,12 +11,14 @@
 # 5 * * * * /home/foo/Linux/README.sh
 
 a=`ping -c1 github.com 2>&1`
-if [ $? -ne 0 ]; do
+if [ $? -ne 0 ]
+then
     exit
 fi
 
 a=`git fetch 2>&1`
-if [ "$a" == "" ]; do
+if [ "$a" == "" ]
+then
     exit
 fi
 
