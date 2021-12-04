@@ -4,10 +4,12 @@
 #
 # Dieses Skript:
 #
-# aktualisiert über git pull das lokale Repository
+# aktualisiert das lokale Repository
 # erzeugt automatisch eine aktuelle README.md
-# lädt die Änderungen per git push in das remote Repository
-# wird über den cron-Dienst bspw. fünf-minütlich getriggert:
+# lädt die Änderungen in das remote Repository hoch
+# wird über den cron-Dienst bspw. fünf-minütlich getriggert
+#
+# crontab -e
 # */5 * * * * /home/foo/Linux/README.sh
 
 cd `dirname $0`
