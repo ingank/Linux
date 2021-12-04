@@ -10,6 +10,9 @@
 # wird über den cron-Dienst bspw. fünf-minütlich getriggert:
 # 5 * * * * /home/foo/Linux/README.sh
 
+d=`date`
+echo -e "$d :: this is README.sh" >> /home/foo/README.log
+
 a=`ping -c1 github.com 2>&1`
 if [ $? -ne 0 ]
 then
