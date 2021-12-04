@@ -12,4 +12,6 @@ echo "git merge"
 
 bash ./README.build
 
+git add *
+git commit -m "autoupdate README.md"
 git push
