@@ -8,6 +8,18 @@ eigene Skripte automatisiert ausführen zu lassen.
 Bootskripte werden durch den Kommandozeileninterpreter während des Bootens ausgeführt.
 Der Bootprozess beginnt mit dem Laden des Bootloaders und endet mit der ersten möglichen Benutzerinteraktion.
 
+Ein Bootskript wird heute am sichersten mit Hilfe der Komponente systemd-init ausgeführt.
+
+In drei Schritten zum Bootskript (systemd-init):
+
+### 1:systemd unit erstellen
+Als priveligierter Benutzer:
+```
+echo << EOF
+```
+
+
+
 ## Loginskripte
 
 Loginskripte werden automatisch bei einem Konsolen-Login ausgeführt.
