@@ -1,4 +1,4 @@
-# Die Paketdatenbank mit dpkg-query durchsuchen
+# Der Befehl dpkg-query (Paketdatenbank durchsuchen)
 
 ```
 NAME
