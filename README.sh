@@ -27,6 +27,8 @@ then
     exit
 fi
 
+a=`date`
+echo -e "$a :: perform README.md update" >> ../README.log
 a=`git merge 2>&1`
 
 FILE='./README.md'
@@ -57,3 +59,5 @@ echo "\`Aktualisiert am $DATE\`" >> $FILE
 a=`git add * 2>&1`
 a=`git commit -m "README.md: cron-driven update" 2>&1`
 a=`git push 2>&1`
+a=`date`
+echo -e "$a :: README.md update done" >> ../README.log
