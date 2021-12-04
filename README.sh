@@ -1,9 +1,9 @@
 #!/bin/env bash
 
-a=`git fetch`
+a=`git fetch 2>&1`
 while [ "$a" == "" ]; do
     sleep 10
-    a=`git fetch`
+    a=`git fetch 2>&1`
     echo "git fetch"
 done
 
