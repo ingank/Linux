@@ -1,13 +1,16 @@
-#!/bin/bash
-
-# README.make
-# Dieses Skript erzeugt automatisch eine aktuelle README.md-Datei
-# aus den Dateien im Haupt- und den Unterverzeichnissen
+#!/bin/env bash
+#
+# README.sh
+#
+# Dieses Skript:
+#
+# * aktualisiert über git pull das lokale Repository
+# * erzeugt automatisch eine aktuelle README.md
+# * lädt die Änderungen per git push in das remote Repository
 
 FILE='./README.md'
 DATE=`date`
 MD='*.md'
-OTHER='*.txt|*.sh|*.pl|*.jpg|*.png'
 
 echo -e "# \`Linux\`\n" > $FILE
 echo -e "\`Das Schweizer Taschenmesser für den Linuxalltag.\`\n" >> $FILE
