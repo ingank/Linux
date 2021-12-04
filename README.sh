@@ -14,8 +14,10 @@
 
 cd `dirname $0`
 
-a=`date`
-echo -e "$a :: this is README.sh" >> ../README.log
+FILE='./README.md'
+LOG='./README.log'
+DATE=`date`
+MD='*.md'
 
 a=`ping -c1 github.com 2>&1`
 if [ $? -ne 0 ]
@@ -30,12 +32,10 @@ then
 fi
 
 a=`date`
-echo -e "$a :: perform README.md update" >> ../README.log
+echo -e "$a :: perform README.md update" >> $LOG
 a=`git merge 2>&1`
 
-FILE='./README.md'
-DATE=`date`
-MD='*.md'
+
 echo -e "# \`Linux\`\n" > $FILE
 echo -e "\`Das Schweizer Taschenmesser für den Linuxalltag.\`\n" >> $FILE
 echo -e "#### \`HAUPTVERZEICHNIS\`\n" >> $FILE
@@ -62,4 +62,4 @@ a=`git add * 2>&1`
 a=`git commit -m "README.md: cron-driven update" 2>&1`
 a=`git push 2>&1`
 a=`date`
-echo -e "$a :: README.md update done" >> ../README.log
+echo -e "$a :: README.md update done" >> $LOG
