@@ -1,4 +1,4 @@
-# Das Kommando umask
+# Der Befehl umask
 
 In short, umask is used to restrict the access rights of new folders and files in such a way that only authorized users can have read, write and execute access.
 
