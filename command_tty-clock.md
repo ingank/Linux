@@ -1,4 +1,4 @@
-# tty-clock als Terminal-Uhr
+# Der Befehl tty-clock (Terminal-Uhr)
 
 Das Programm `tty-clock` zeigt eine große Uhr im Terminal an.
 Ohne die Verwendung von Befehlszeilenoptionen werden aktuelle Uhrzeit und Datum links oben im aktuellen Terminalbildschirm angezeigt. 
