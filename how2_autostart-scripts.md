@@ -10,15 +10,35 @@ Der Bootprozess beginnt mit dem Laden des Bootloaders und endet mit der ersten m
 
 Ein Bootskript wird heute am sichersten mit Hilfe der Komponente systemd-init ausgeführt.
 
-In drei Schritten zum Bootskript (systemd-init):
+In vier Schritten zum eigenen Bootskript (per systemd-init):
 
-### 1:systemd unit erstellen
+### 1:systemd unit mit dem Namen 'my-startscript.service' erstellen
 Als priveligierter Benutzer:
 ```
-echo << EOF
+cat << EOF > /etc/systemd/system/my-startscript.service
+[Unit]
+Description=Mein Startskript
+
+[Service]
+ExecStart=/home/foo/startscript.sh start
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+### 2:Ein eigenes Startskript schreiben
+Als unprivilegierter Benutzer:
 ```
 
 
+```
+### 3:Das Skript testen
+```
+```
+
+### 4: Das Skript in den systemd-init einbinden
+```
+```
 
 ## Loginskripte
 
