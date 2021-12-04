@@ -57,9 +57,8 @@ for DIR in "${DIRS[@]}"; do
 done
 echo -e "\n---\n" >> $FILE
 echo "\`Aktualisiert am $DATE\`" >> $FILE
-
+a=`date`
+echo -e "$a :: README.md update done" >> $LOG
 a=`git add * 2>&1`
 a=`git commit -m "README.md: cron-driven update" 2>&1`
 a=`git push 2>&1`
-a=`date`
-echo -e "$a :: README.md update done" >> $LOG
