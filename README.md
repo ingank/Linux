@@ -8,6 +8,7 @@
 [`Der Befehl crontab`](command_crontab.md)<br>
 [`Der Befehl dpkg-query (Paketdatenbank durchsuchen)`](command_dpkg-query.md)<br>
 [`Der Befehl sed (Streameditor)`](command_sed.md)<br>
+[`Der Befehl ssh -t foo (Befehle umittelbar ausführen)`](command_ssh_-t.md)<br>
 [`Der Befehl tput (Terminalausgabe aussagekräftig gestalten)`](command_tput.md)<br>
 [`Der Befehl tty-clock (Terminal-Uhr)`](command_tty-clock.md)<br>
 [`Der Befehl umask`](command_umask.md)<br>
@@ -50,8 +51,8 @@
 [`k9copy-reloaded auf Ubuntu 18.04 installieren`](install_k9copy-reloaded.md)<br>
 [`Keyboardtasten und Tastenkombinationen in Textform darstellen`](keyboard-key-symbols.md)<br>
 [`Das Paket dnsutils (host, dig, nslookup)`](paket_dnsutils.md)<br>
+[`Das Paket printer-driver-cups-pdf (CUPS PDF-Drucker)`](paket_printer-driver-cups-pdf.md)<br>
 [`Live-ISO's mit GRUB-2 direkt starten`](starting_iso-s_with_grub2.md)<br>
-[`Der CUPS PDF-Drucker`](the_cups-pdf-printer.md)<br>
 [`Grundlagen der Linux-Benutzerverwaltung`](the_user-management.md)<br>
 [`Deaktivierung des Bootsplash`](turn-off_bootsplash.md)<br>
 [`Aussehen und Handling des Gnome-Docks anpassen`](tweak_gnome-dock.md)<br>
@@ -63,7 +64,6 @@
 [`Die Linux Benutzerverwaltung`](use_linux-user-management.md)<br>
 [`Passwörter erstellen und benutzen`](use_passwords.md)<br>
 [`SSH Public Key Authentifizierung`](use_ssh-pka.md)<br>
-[`Terminal-Befehle per SSH unmittelbar auf dem Zielhost ausführen`](use_ssh-t.md)<br>
 [`Mails mit ssmtp versenden`](use_ssmtp.md)<br>
 [`su und sudo - eine kleine Einführung`](use_su-sudo.md)<br>
 
@@ -103,4 +103,4 @@
 
 ---
 
-`Aktualisiert am So 5. Dez 00:10:01 CET 2021`
+`Aktualisiert am So 5. Dez 00:15:01 CET 2021`
